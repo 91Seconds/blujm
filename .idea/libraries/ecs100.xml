@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="ecs100">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/Blujm Game/src/ecs100" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="file://$PROJECT_DIR$/../../COMP112" />
+    </SOURCES>
+  </library>
+</component>
