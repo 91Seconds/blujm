@@ -11,6 +11,8 @@ public class GWorld {
 
     private GCell[][] cells;
 
-
+    public GCell getCell(int row, int column) {
+        return cells[row][column];
+    }
 
 }

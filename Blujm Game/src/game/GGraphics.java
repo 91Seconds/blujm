@@ -15,9 +15,12 @@ public class GGraphics {
     }
 
     public void draw() {
+
+        UI.drawImage(world.backImage, 0, 0);
+
         for(int i = 0; i < world.cells.length; i++) {
             for(int j = 0; j < world.cells[0].length; j++) {
-                UI.drawImage(world.cells[i][j].imageFile, j*cellSize, i*cellSize);
+                UI.drawImage(world.cells.get(i, j).imageFile, j*cellSize, i*cellSize);
             }
         }
     }

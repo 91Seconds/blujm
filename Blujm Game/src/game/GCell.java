@@ -11,9 +11,13 @@ public class GCell {
     private String imageFile;
     private String name;
 
-    public GCell(int x, int y,String imageFile){
+    public GCell(String imageFile){
         location = new Point(x,y);
         this.imageFile = imageFile;
+    }
+
+    public String getImage() {
+        return imageFile;
     }
 
 }
