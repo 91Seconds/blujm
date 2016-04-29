@@ -9,6 +9,15 @@ package game;
  */
 public class GLogic {
 
+    GWorld world;
 
+    public GLogic(GWorld world) {
+        this.world = world;
 
+        setupKeys();
+    }
+
+    setupKeys() {
+
+    }
 }

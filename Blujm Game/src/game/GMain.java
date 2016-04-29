@@ -7,6 +7,8 @@ import ecs100.UI;
  */
 public class GMain {
 
+    private boolean exit = false;
+
     public static void main(String[] args) {
         UI.initialise();
         GWorld world = GWorldLoader.getWorld();
