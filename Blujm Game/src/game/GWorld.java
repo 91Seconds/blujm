@@ -1,6 +1,6 @@
 package game;
 
-import game.GCell;
+import java.io.File;
 
 /**
  * Created by Dylan on 29/04/16.
@@ -17,8 +17,10 @@ public class GWorld {
     // Drawing
     /**
      * The image that is repeated to make the background
+     * It may not need to be final, but is for now
      */
-    private String backImage;
+    private final String BACKGROUND_IMAGE_PATH = "resources" + File.pathSeparator +
+            "images" + File.pathSeparator + "backgroundImage.png";
     /**
      * The number of units (in width, and in height) that
      * the back image should fill up
@@ -67,8 +69,8 @@ public class GWorld {
     public boolean isMoveLeft() { return moveLeft; }
     public boolean isMoveRight() { return moveRight; }
 
-    public String getBackImage() {
-        return backImage;
+    public String getBACKGROUND_IMAGE_PATH() {
+        return BACKGROUND_IMAGE_PATH;
     }
 
     /**

@@ -19,7 +19,7 @@ public final class GGraphics {
     public static void drawWorld(GWorld world) {
 
         // TODO dylan check if the image exists, otherwise crash the program
-        UI.drawImage(world.getBackImage(), 0, 0);
+        UI.drawImage(world.getBACKGROUND_IMAGE_PATH(), 0, 0);
 
         for (int col = 0; col < world.getWidth(); col++) {
             for (int row = 0; row < world.getHeight(); row++) {
@@ -33,5 +33,9 @@ public final class GGraphics {
         }
 
         // TODO dylan draw backgournd
+    }
+
+    private boolean doesImageExist(String path) {
+
     }
 }
