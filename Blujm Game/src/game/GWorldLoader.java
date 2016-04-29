@@ -9,7 +9,8 @@ import java.util.Scanner;
 /**
  * Created by Dylan on 29/04/16.
  *
- * Creates a GWorld object from a file. Details not decided
+ * Creates a GWorld object from a file. Details not decided.
+ * Static-only class
  */
 public class GWorldLoader {
 

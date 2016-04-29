@@ -2,6 +2,9 @@ package game;
 
 /**
  * Created by Dylan on 29/04/16.
+ *
+ * Deals with all of the game's drawing functionality.
+ * Static-only class
  */
 import ecs100.*;
 
@@ -33,9 +36,5 @@ public final class GGraphics {
         }
 
         // TODO dylan draw backgournd
-    }
-
-    private boolean doesImageExist(String path) {
-
     }
 }
