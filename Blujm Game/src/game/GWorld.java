@@ -1,13 +1,14 @@
 package game;
 
 import java.io.File;
+import java.io.Serializable;
 
 /**
  * Created by Dylan on 29/04/16.
  *
  * Contains all of the level's contents
  */
-public class GWorld {
+public class GWorld implements Serializable{
 
     private boolean moveUp = false;
     private boolean moveDown = false;
