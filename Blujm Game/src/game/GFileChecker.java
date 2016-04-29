@@ -14,13 +14,13 @@ public class GFileChecker {
 
     /**
      * @param imagePath
-     * @return null if the file exists, otherwise an error object to throw
+     * @return null if the file exists, otherwise an error message
      */
-    public static Error checkIfFilePathExists(String imagePath) {
+    public static String checkIfFilePathExists(String imagePath) {
         File f = new File(imagePath);
 
-        if (!f.exists()) return new Error("File " + imagePath + " does not exist");
-        if (f.isDirectory()) return new Error("File " + imagePath + " is a directory, not an image");
+        if (!f.exists()) return "File " + imagePath + " does not exist";
+        if (f.isDirectory()) return "File " + imagePath + " is a directory, not an image";
 
         return null;
     }

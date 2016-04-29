@@ -24,14 +24,36 @@ public final class GGraphics {
         drawCells(world);
     }
 
+    /**
+     * Draws the background using the repeating image.
+     *
+     * If the world width or height is not a multiple of
+     * world.getBACK_IMAGE_SIZE(), then the method will
+     * erase whatever part of the image goes over the edge.
+     * NOTE: The background should be drawn first to avoid
+     * erasing other objects the world in this case.
+     * @param world The world to draw
+     */
     private static void drawWorldBackground(GWorld world) {
-        String worldBGPath = world.getBACKGROUND_IMAGE_PATH();
+        final String worldBGPath = world.getBACKGROUND_IMAGE_PATH();
 
-        //Check if the image exists, otherwise crash the program
+        // Check if the image exists, otherwise crash the program
         Error e = GFileChecker.checkIfFilePathExists(worldBGPath);
         if (e != null) throw e;
 
-        int bgSize =
+        // Size in units
+        final int bgSize = world.getBACK_IMAGE_SIZE();
+
+        float xRepeats = world.getWidth() / (float) bgSize;
+        float yRepeats = world.getHeight() / (float) bgSize;
+
+        for (int bgX = 0; bgX < xRepeats; bgX++) {
+            for (int bgY = 0; bgY < yRepeats; bgY++) {
+                //
+            }
+        }
+
+        // TODO: 30/04/16 MANUAL TEST
     }
 
     private static void drawCells(GWorld world) {
