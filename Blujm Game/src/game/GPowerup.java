@@ -1,17 +1,14 @@
 package game;
 
-import java.awt.*;
-
 /**
- * Created by Dylan on 29/04/16.
+ * Created by Daniel Young on 4/29/2016.
  */
-public class GCell extends GSquare{
-
+public class GPowerup extends GSquare{
 
     private String type;
 
-    public GCell(String imageFile, String type){
-        super(imageFile);
+    public GPowerup(String imageName, String type){
+        super(imageName);
         this.type = type;
     }
 
@@ -21,5 +18,4 @@ public class GCell extends GSquare{
     public void setType(String newType){
         type = newType;
     }
-
 }
