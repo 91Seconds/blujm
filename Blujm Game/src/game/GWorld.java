@@ -21,11 +21,12 @@ public class GWorld {
      */
     private final String BACKGROUND_IMAGE_PATH = "resources" + File.pathSeparator +
             "images" + File.pathSeparator + "backgroundImage.png";
+
     /**
      * The number of units (in width, and in height) that
      * the back image should fill up
      */
-    public static final int backImageSize = 5;
+    private final int BACK_IMAGE_SIZE = 5;
 
     private final GCell[][] cells;
 
@@ -60,17 +61,22 @@ public class GWorld {
     }
 
     public void setMoveUp() { moveUp = true; }
+
     public void setMoveDown() { moveDown = true; }
     public void setMoveLeft() { moveLeft = true; }
     public void setMoveRight() { moveRight = true; }
-
     public boolean isMoveUp() { return moveUp; }
+
     public boolean isMoveDown() { return moveDown; }
     public boolean isMoveLeft() { return moveLeft; }
     public boolean isMoveRight() { return moveRight; }
 
     public String getBACKGROUND_IMAGE_PATH() {
         return BACKGROUND_IMAGE_PATH;
+    }
+
+    public int getBACK_IMAGE_SIZE() {
+        return BACK_IMAGE_SIZE;
     }
 
     /**

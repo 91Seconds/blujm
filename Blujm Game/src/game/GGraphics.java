@@ -20,21 +20,32 @@ public final class GGraphics {
     private GGraphics() {}
 
     public static void drawWorld(GWorld world) {
+        drawWorldBackground(world);
+        drawCells(world);
+    }
 
-        // TODO dylan check if the image exists, otherwise crash the program
-        UI.drawImage(world.getBACKGROUND_IMAGE_PATH(), 0, 0);
+    private static void drawWorldBackground(GWorld world) {
+        String worldBGPath = world.getBACKGROUND_IMAGE_PATH();
 
+        //Check if the image exists, otherwise crash the program
+        Error e = GFileChecker.checkIfFilePathExists(worldBGPath);
+        if (e != null) throw e;
+
+        int bgSize =
+    }
+
+    private static void drawCells(GWorld world) {
         for (int col = 0; col < world.getWidth(); col++) {
             for (int row = 0; row < world.getHeight(); row++) {
                 GCell gCell = world.getCell(row, col);
-                String imageFile = gCell.getImagePath();
-                // TODO dylan check if the image file exists
+                String imagePath = gCell.getImagePath();
 
-                UI.drawImage(imageFile, LEFT + col* UNIT_SIZE, TOP + row* UNIT_SIZE,
+                Error imageError = GFileChecker.checkIfFilePathExists(imagePath);
+                if (imageError != null) throw imageError;
+
+                UI.drawImage(imagePath, LEFT + col* UNIT_SIZE, TOP + row* UNIT_SIZE,
                         UNIT_SIZE, UNIT_SIZE);
             }
         }
-
-        // TODO dylan draw backgournd
     }
 }
