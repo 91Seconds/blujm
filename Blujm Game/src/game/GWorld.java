@@ -14,7 +14,13 @@ public class GWorld {
     private boolean moveLeft = false;
     private boolean moveRight = false;
 
+    public static int GAMESIZE = 20; //Size of one side of the game window in terms of squares
+
     private GCell[][] cells;
+
+    public GWorld(){
+        cells = new GCell[GAMESIZE][GAMESIZE];
+    }
 
     public GCell getCell(int row, int column) {
         return cells[row][column];
@@ -36,7 +42,7 @@ public class GWorld {
             return null;
         }
 
-        return cells[row+drow][col+dcol];
+        return cells[row+drow][column+dcol];
     }
 
     public void setMoveUp() { moveUp = true; }
