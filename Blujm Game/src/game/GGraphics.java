@@ -20,7 +20,7 @@ public class GGraphics {
 
         for(int i = 0; i < world.cells.length; i++) {
             for(int j = 0; j < world.cells[0].length; j++) {
-                UI.drawImage(world.cells.get(i, j).imageFile, j*cellSize, i*cellSize);
+                UI.drawImage(world.cells.get(i, j).getImage(), j*cellSize, i*cellSize);
             }
         }
     }
