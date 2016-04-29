@@ -14,14 +14,9 @@ public class GLogic {
     public GLogic(GWorld world) {
         this.world = world;
 
-        setupKeys();
     }
 
-    update() {
-
-    }
-
-    setupKeys() {
+    public void update() {
 
     }
 }
