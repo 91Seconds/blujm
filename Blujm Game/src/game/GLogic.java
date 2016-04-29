@@ -18,7 +18,7 @@ public class GLogic {
     }
 
     update() {
-        
+
     }
 
     setupKeys() {
