@@ -13,6 +13,11 @@ public class GMain {
         GGraphics g = new GGraphics(world);
         GLogic l = new GLogic(world);
 
+        while(exit == false) {
+            l.update();
+            g.draw();
+        }
+
     }
 
 }
