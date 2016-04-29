@@ -9,6 +9,6 @@ package game;
  */
 public class GLogic {
 
-    
+
 
 }

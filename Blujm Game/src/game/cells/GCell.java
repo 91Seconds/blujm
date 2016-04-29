@@ -9,6 +9,6 @@ public abstract class GCell {
 
     public static final int SIZE = 40;
 
-    private Point location;
+    private String imageFile;
 
 }
