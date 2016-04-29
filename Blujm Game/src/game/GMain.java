@@ -10,8 +10,8 @@ public class GMain {
     public static void main(String[] args) {
         UI.initialise();
         GWorld world = GWorldLoader.getWorld();
-        GGraphics g = new GGraphics();
-        GLogic l = new GLogic();
+        GGraphics g = new GGraphics(world);
+        GLogic l = new GLogic(world);
 
     }
 
