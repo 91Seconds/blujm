@@ -15,7 +15,7 @@ public class GMain {
 
     public static void main(String[] args) {
         UI.initialise();
-        GWorld world = GWorldLoader.getWorld();
+        GWorld world = GWorldLoader.getWorld(currentWorld);
         GLogic l = new GLogic(world);
 
         while(shouldExit == false) {

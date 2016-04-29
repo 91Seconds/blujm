@@ -14,7 +14,6 @@ public class GWorld {
     private boolean moveLeft = false;
     private boolean moveRight = false;
 
-
     // Drawing
     /**
      * The image that is repeated to make the background
@@ -26,11 +25,10 @@ public class GWorld {
      */
     public static final int backImageSize = 5;
 
-    private GCell[][] cells;
+    private final GCell[][] cells;
 
     public GWorld(int width, int height) {
         cells = new GCell[width][height];
-
         // TODO someone complete this
     }
 
