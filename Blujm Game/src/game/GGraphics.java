@@ -5,23 +5,33 @@ package game;
  */
 import ecs100.*;
 
-public class GGraphics {
-    GWorld world;
+public final class GGraphics {
 
-    int cellSize = 20;
+    public static final int LEFT = 0;
+    public static final int TOP = 0;
+    public static final int UNIT_SIZE = 20;
 
-    public GGraphics(GWorld world) {
-        this.world = world;
-    }
+    /**
+     * Prevents any instances of the class
+     */
+    private GGraphics() {}
 
-    public void draw() {
+    public static void drawWorld(GWorld world) {
 
-        UI.drawImage(world.backImage, 0, 0);
+        // TODO dylan check if the image exists, otherwise crash the program
+        UI.drawImage(world.getBackImage(), 0, 0);
 
-        for(int i = 0; i < world.cells.length; i++) {
-            for(int j = 0; j < world.cells[0].length; j++) {
-                UI.drawImage(world.cells.get(i, j).getImage(), j*cellSize, i*cellSize);
+        for (int col = 0; col < world.getWidth(); col++) {
+            for (int row = 0; row < world.getHeight(); row++) {
+                GCell gCell = world.getCell(row, col);
+                String imageFile = gCell.getImagePath();
+                // TODO dylan check if the image file exists
+
+                UI.drawImage(imageFile, LEFT + col* UNIT_SIZE, TOP + row* UNIT_SIZE,
+                        UNIT_SIZE, UNIT_SIZE);
             }
         }
+
+        // TODO dylan draw backgournd
     }
 }

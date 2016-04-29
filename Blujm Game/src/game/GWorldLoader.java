@@ -13,20 +13,33 @@ import java.util.Scanner;
  */
 public class GWorldLoader {
 
-    public GWorldLoader(){
+    /**
+     * Fit an integer between the prefix and suffix to get the file name
+     */
+    private static final String WORLD_FILE_PREFIX = "resources/worlds/world-";
+    private static final String WORLD_FILE_SUFFIX = ".world";
 
-    }
+    /**
+     * Private constructor makes this a static-only class
+     */
+    private GWorldLoader() {}
 
     /**
      * Reads a world from a file
      * @return
      */
-    public GWorld getWorld(int level){
-        try{
+    public static GWorld getWorld(int level){
+
+        GWorld gWorld = null;
+        try {
             Scanner scan = new Scanner(new File("level" + level));
+            /// TODO finish this method and construct a new world object
         }
         catch(IOException e){
             UI.println("File Reading Error:" + e);
+            return null;
         }
+
+        return gWorld;
     }
 }

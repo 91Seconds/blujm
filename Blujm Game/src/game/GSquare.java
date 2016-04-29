@@ -5,16 +5,16 @@ package game;
  */
 public abstract class GSquare {
 
-    private String imageName;
+    private String imagePath;
 
-    public GSquare(String imageName){
-        this.imageName = imageName;
+    public GSquare(String imagePath){
+        this.imagePath = imagePath;
     }
 
-    public String getImageName(){
-        return imageName;
+    public String getImagePath(){
+        return imagePath;
     }
-    public void setImageName(String newImageName){
-        imageName = newImageName;
+    public void setImagePath(String newImageName){
+        imagePath = newImageName;
     }
 }

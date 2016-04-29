@@ -5,7 +5,7 @@ import java.awt.*;
 /**
  * Created by Dylan on 29/04/16.
  */
-public class GCell extends GSquare{
+public class GCell extends GSquare {
 
 
     private String type;
