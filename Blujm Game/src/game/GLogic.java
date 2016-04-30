@@ -101,30 +101,29 @@ public class GLogic {
             dRow = 1;
         } else if(moveUp) {
             dRow = -1;
+        } else {
+            dRow = 0;
         }
 
         if(moveRight) {
             dCol = 1;
         } else if(moveLeft) {
             dCol = -1;
+        } else {
+            dCol = 0; 
         }
 
     }
 
     private String getMoveDecision(GSquare thisSquare, GSquare nextSquare) {
-        if(thisSquare != null && thisSquare.getType().equals(GSquare.USER_TYPE)) {
-            if(nextSquare != null) {
-                switch(nextSquare.getType()) {
-                    case GSquare.USER_TYPE:
-                        return "defer";
-                    case GSquare.WALL_TYPE:
-                        return "stay";
-                    case "grow":
-                        return "moveGrow";
-                }
-            } else {
-                return "move";
-            }
+        if(thisSquare.getType().equals(GSquare.USER_TYPE)) {
+             if(nextSquare.getType().equals(GSquare.EMPTY_TYPE)) {
+                 return "move";
+             } else if(nextSquare.getType().equals(GSquare.USER_TYPE)) {
+                 return "defer";
+             } else if(nextSquare.getType().equals(GSquare.WALL_TYPE)) {
+                 return "stay";
+             }
         } else {
             return "nothing";
         }
