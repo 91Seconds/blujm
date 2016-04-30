@@ -63,7 +63,7 @@ public class GGraphicsManualTest {
 
 
     /**
-     * Not Tested and completed
+     * Tested and completed
      *
      * This (since it draws) tests both the background
      * and the cell drawing
