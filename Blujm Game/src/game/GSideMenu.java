@@ -1,4 +1,4 @@
-package game;
+//package game;
 
 import ecs100.UI;
 
@@ -11,7 +11,7 @@ import static java.lang.System.currentTimeMillis;
 
 /**
  * Created by Daniel Young on 4/30/2016.
- */
+ */ /*
 public class GSideMenu {
 
     public static final int SIDE_MENU_WIDTH = 90;
@@ -49,3 +49,4 @@ public class GSideMenu {
         //UI.drawString(toReadableTime(), );
     }
 }
+*/

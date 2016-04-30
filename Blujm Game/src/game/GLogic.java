@@ -63,7 +63,12 @@ public class GLogic {
                 neighbourSquare = world.getCell(i + dRow, j + dCol);
 
                 String decision = getMoveDecision(currentSquare, neighbourSquare);
-                UI.println(decision);
+                if(!decision.equals("nothing")){
+                    UI.println(decision);
+                    UI.println(currentSquare);
+                    UI.println(currentSquare.getType());
+                    UI.println(neighbourSquare.getType());
+                }
                 switch(decision) {
                     case "defer":
                         continue;
@@ -107,12 +112,12 @@ public class GLogic {
     }
 
     private String getMoveDecision(GSquare thisSquare, GSquare nextSquare) {
-        if(thisSquare != null && thisSquare.getType().equals("user")) {
+        if(thisSquare != null && thisSquare.getType().equals(GSquare.USER_TYPE)) {
             if(nextSquare != null) {
                 switch(nextSquare.getType()) {
-                    case "user":
+                    case GSquare.USER_TYPE:
                         return "defer";
-                    case "wall":
+                    case GSquare.WALL_TYPE:
                         return "stay";
                     case "grow":
                         return "moveGrow";
