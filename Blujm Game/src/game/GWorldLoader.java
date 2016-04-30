@@ -4,8 +4,10 @@ import ecs100.UI;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.Scanner;
 
 /**
@@ -40,7 +42,7 @@ public class GWorldLoader {
             ois = new ObjectInputStream(new FileInputStream(WORLD_FILE_PREFIX + world + WORLD_FILE_SUFFIX));
             gWorld = (GWorld)(ois.readObject());
             ois.close();
-            
+
         } catch(IOException e){
             UI.println("File Reading Error:" + e);
             return null;
@@ -50,5 +52,18 @@ public class GWorldLoader {
         }
 
        return gWorld;
+    }
+
+    public static GWorld saveWorld(GWorld world, int worldNumber) {
+        ObjectOutputStream oos = null;
+        try {
+            oos = new ObjectOutputStream(new FileOutputStream(WORLD_FILE_PREFIX + worldNumber + WORLD_FILE_SUFFIX));
+            oos.writeObject((Object) world);
+            oos.close();
+
+            UI.println("World " + worldNumber + " saved");
+        } catch (Exception e) {
+            UI.println("Exception caught: " + e);
+        }
     }
 }
