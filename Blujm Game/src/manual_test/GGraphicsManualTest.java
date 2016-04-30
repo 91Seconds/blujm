@@ -1,10 +1,7 @@
 package manual_test;
 
 import ecs100.UI;
-import game.GCell;
-import game.GFileChecker;
-import game.GGraphics;
-import game.GWorld;
+import game.*;
 
 import java.io.File;
 
@@ -62,5 +59,29 @@ public class GGraphicsManualTest {
         public void addWallCell(int row, int col) {
             gWorld.setCell(new GCell(wallPath, "test"), row, col);
         }
+    }
+
+
+    /**
+     * Tested and completed
+     *
+     * This (since it draws) tests both the background
+     * and the cell drawing
+     */
+    public void testGoalAndBG() {
+        GGoal gg = new GGoal(22, 18);
+        gg.setValue(true, 0, 0);
+        gg.setValue(true, 1, 1);
+        gg.setValue(true, 17, 21);
+        for (int row = 5; row < 10; row++) {
+            for (int col = 5; col < 10; col++) {
+                gg.setValue(true, row, col);
+            }
+        }
+
+        GCell[][] cells = new GCell[18][22];
+        GWorld gWorld = new GWorld(cells, gg);
+
+        GGraphics.drawWorld(gWorld);
     }
 }
