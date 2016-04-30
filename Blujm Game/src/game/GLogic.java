@@ -26,8 +26,8 @@ public class GLogic {
         boolean movingLeft = world.isMoveLeft();
         boolean movingRight = world.isMoveRight();
 
-        int drow;
-        int dcol;
+        int drow = 0;
+        int dcol = 0;
 
         if(movingDown) {
             drow = 1;
@@ -42,13 +42,15 @@ public class GLogic {
         }
 
         GSquare currentSquare;
+        GSquare neighbourSquare;
 
         for(int i = 0; i < height; i++) {
             for(int j = 0; j < width; j++) {
                 currentSquare = world.getCell(i, j);
+                neighbourSquare = world.getNeighbour(i, j, drow, dcol);
 
-                if(world.getNeighbour(i, j, drow, dcol) != null) {
-                    // determine action
+                if(neighbourSquare != null) {
+
                 } else {
                     world.move(i, j, drow, dcol);
                 }
