@@ -65,7 +65,7 @@ public class GLevelMaker {
         }
 
         GGoal levelGoal = new GGoal(25,25);
-        levelGoal.setValuesInRect(true,8,1,11,4);
+        levelGoal.setValuesInRect(true,1,8,3,3);
 // TODO ciaran make the levelgoal load from the file (use the levelGoal.toString() to get the string for pasting into the file)
 
         GWorld GW = new GWorld(cellArray,levelGoal);
