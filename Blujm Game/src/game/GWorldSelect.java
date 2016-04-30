@@ -2,6 +2,7 @@ package game;
 
 import ecs100.UI;
 
+import java.awt.*;
 import java.io.File;
 
 /**
@@ -20,14 +21,13 @@ public class GWorldSelect {
 
     //Image file for the background and title of world select screen
     private String backgroundImage = GFileChecker.RESOURCES_ROOT + File.separator
-            + "images" + File.separator + "side-menu-1.png";
+            + "images" + File.separator + "Menu.png";
     private String buttonImage = GFileChecker.RESOURCES_ROOT + File.separator
             + "images" + File.separator + "world-select-button.png";
 
 
 
-    private String worldsFolder = GFileChecker.RESOURCES_ROOT + File.separator
-            + "worlds";
+    private String worldsFolder = GWorldLoader.getWorldFolderPath(false);
     private static final int spacing = 20;
 
 
@@ -49,20 +49,26 @@ public class GWorldSelect {
     }
 
     public void update(){
+        UI.drawImage(backgroundImage, 0,0, GGraphics.WORLD_WIDTH, GGraphics.WORLD_HEIGHT);
         int row = 0;
         int col = 0;
         int index = 0;
         int buttonLeft = 0;
         int buttonTop = 0;
         for(int counter = 0; counter < worlds.length; counter++){
+
             row = counter / cellsPerRow;
             col = counter % cellsPerRow;
-            buttonLeft = LEFT + (col*spacing) +col*buttonWidth;
-            buttonTop = TOP + (row*spacing) + row*buttonHeight;
+            buttonLeft = LEFT + (col*spacing) + spacing +col*buttonWidth;
+            buttonTop = TOP + (row*spacing) + spacing + row*buttonHeight;
             UI.drawImage(buttonImage, buttonLeft , buttonTop,
                           buttonWidth, buttonHeight);
             index = worlds[counter].indexOf(".");
-            UI.drawString("World " + worlds[counter].substring(index - 1, index), buttonLeft, buttonTop + buttonHeight*(3/4));
+            UI.setFontSize(24);
+            UI.setColor(Color.BLACK);
+            UI.drawString("World", buttonLeft + buttonWidth* .1, buttonTop + buttonHeight*.5);
+            UI.drawString(worlds[counter].substring(index - 1, index), buttonLeft + buttonWidth*.43,
+                            buttonTop + buttonHeight*.85);
         }
     }
 }
