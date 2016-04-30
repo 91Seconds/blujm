@@ -26,12 +26,12 @@ public class GMain {
         UI.setDivider(DIVIDER_POSITION);
 
         GWorld world = GWorldLoader.getWorld(currentWorld);
-        GLogic l = new GLogic(world);
-        GInput i = new GInput(world);
+        GLogic gLogic = new GLogic(world);
+        GInput gInput = new GInput(world);
 
         while(shouldExit == false) {
-            i.update();
-            l.update();
+            gInput.update();
+            gLogic.update();
             GGraphics.drawWorld(world);
         }
 
