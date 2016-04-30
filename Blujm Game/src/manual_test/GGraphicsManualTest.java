@@ -22,31 +22,50 @@ public class GGraphicsManualTest {
      * Tested and completed
      */
     public void testBG() {
-        UI.initialise();
-
         GWorld w = new GWorld(7, 11, GWorld.KEY_I_AM_TESTING_ONLY);
         GGraphics.drawWorld(w);
     }
 
     /**
+     * Tested and completed
      *
+     * This (since it draws) tests both the background
+     * and the cell drawing
      */
     public void testCellsAndBG() {
-        final String wallPath = GFileChecker.RESOURCES_ROOT + File.separator
-                + "images" + File.separator + "wall.png";
-        final String liveCellPath = GFileChecker.RESOURCES_ROOT + File.separator
-                + "images" + File.separator + "live-cell.png";
+        GWorld gWorld = new GWorld(22, 18, GWorld.KEY_I_AM_TESTING_ONLY);
+        CellAdder cs = new CellAdder(gWorld);
 
-        UI.initialise();
+        cs.addLiveCell(0, 0);
+        cs.addLiveCell(2, 0);
+        cs.addLiveCell(16, 20);
 
-        GWorld w = new GWorld(22, 18, GWorld.KEY_I_AM_TESTING_ONLY);
+        cs.addWallCell(1, 1);
+        cs.addWallCell(10, 1);
+        cs.addWallCell(10, 5);
+        cs.addWallCell(17, 21);
 
-        {
-            GCell gCell = new GCell(liveCellPath, "test");
-            GWorld.
-        }
-
-        GGraphics.drawWorld(w);
+        GGraphics.drawWorld(gWorld);
     }
 
+    /**
+     * This class is used to quickly add cells to different coordinates
+     */
+    private class CellAdder {
+        public final String wallPath = GFileChecker.RESOURCES_ROOT + File.separator
+                + "images" + File.separator + "wall.png";
+        public final String liveCellPath = GFileChecker.RESOURCES_ROOT + File.separator
+                + "images" + File.separator + "live-cell.png";
+        private GWorld gWorld;
+        public CellAdder(GWorld gWorld) {
+            this.gWorld = gWorld;
+        }
+        public void addLiveCell(int row, int col) {
+            // types weren't defined when I was making this so I'm using "test"
+            gWorld.setCell(new GCell(liveCellPath, "test"), row, col);
+        }
+        public void addWallCell(int row, int col) {
+            gWorld.setCell(new GCell(wallPath, "test"), row, col);
+        }
+    }
 }

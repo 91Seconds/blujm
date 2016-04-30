@@ -16,11 +16,12 @@ public class MainManualTest {
         UI.setWindowSize(GMain.WINDOW_WIDTH, GMain.WINDOW_HEIGHT);
         UI.setDivider(GMain.DIVIDER_POSITION);
 
-        // TESTS HERE: ('Completed' means the test has passes before)
+        // TESTS HERE:
+        // ('Completed' means the test has passed before)
 
 //        testPath(); // Completed
 //        (new GGraphicsManualTest()).testBG(); // Completed
-        (new GGraphicsManualTest()).testCellsAndBG();
+//        (new GGraphicsManualTest()).testCellsAndBG(); // Completed
 
     }
 
