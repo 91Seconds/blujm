@@ -28,6 +28,9 @@ public class GWorld implements Serializable {
     private final GGoal goal;
 
     private boolean[][] cantMove = new boolean[25][25];
+    public void resetCantMoveField() {
+        cantMove = new boolean[25][25];
+    }
 
     public GWorld(GCell[][] cellArray, GGoal goalObj) {
         cells = cellArray;

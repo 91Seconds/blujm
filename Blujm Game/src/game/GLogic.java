@@ -104,6 +104,7 @@ public class GLogic {
 
         cleanUpAfterUpdate(updated);
         cleanMovement();
+        world.resetCantMoveField();
     }
 
 
