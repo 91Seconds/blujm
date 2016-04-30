@@ -16,7 +16,7 @@ public class GSideMenu {
 
     public static final int SIDE_MENU_WIDTH = 90;
     public static final int SIDE_MENU_HEIGHT = GGraphics.WORLD_HEIGHT;
-    public static int LEFT = GGraphics.WORLD_WIDTH;
+    public static int LEFT = GGraphics.WORLD_LEFT + GGraphics.WORLD_WIDTH;
     public static int TOP = GGraphics.WORLD_TOP;
 
     private String fName = GFileChecker.RESOURCES_ROOT + File.separator
