@@ -9,11 +9,12 @@ import game.GWorld;
  */
 public class GGraphicsManualTest {
 
+    // Tested and completed
     public void testBG() {
         UI.initialise();
 
         // Note: may break as constructor is changed
-        GWorld w = new GWorld(20, 15);
+        GWorld w = new GWorld(22, 16);
         GGraphics.drawWorld(w);
     }
 
