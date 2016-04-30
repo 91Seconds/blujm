@@ -104,14 +104,11 @@ public class GLogic {
 
         cleanUpAfterUpdate(updated);
         cleanMovement();
+        world.resetCantMoveField();
     }
 
-    private void cleanMovement() {
-        moveUp = false;
-        moveDown = false;
-        moveLeft = false;
-        moveRight = false;
 
+    private void cleanMovement() {
         dRow = 0;
         dCol = 0;
     }
@@ -133,6 +130,10 @@ public class GLogic {
             dCol = 0;
         }
 
+        moveDown = false;
+        moveUp = false;
+        moveLeft = false;
+        moveRight = false;
     }
 
     private String getMoveDecision(GSquare thisSquare, GSquare nextSquare) {

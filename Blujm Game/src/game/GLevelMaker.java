@@ -30,6 +30,46 @@ public class GLevelMaker {
     public static void main(String[] args){
         UI.initialise();
         UI.addButton("Load World from txt", GLevelMaker::parse);
+        UI.addButton("Just Fucking give me a file that works",GLevelMaker::justFuckingDoIt);
+    }
+
+    private static void justFuckingDoIt()   {
+        File level = new File(GFileChecker.RESOURCES_ROOT + File.separator + "level-prototype.txt");
+
+        GCell[][] cellArray = new GCell[25][25];
+        try {
+            Scanner sc = new Scanner(level);
+            for(int i=0;i<25;i++)   {
+                String[] line = getNonEmpty(sc.nextLine().split(" "));
+
+                for(int j=0;j<25;j++)   {
+                    System.out.print(line[j]);
+                    if(line[j].equals("x")) {
+                        cellArray[i][j] = new GCell(GSquare.WALL_PATH,GSquare.WALL_TYPE);
+                    }
+                    if(line[j].equals("1")) {
+                        cellArray[i][j] = new GCell(GSquare.USER_PATH,GSquare.USER_TYPE);
+                    }
+                    if(line[j].equals("0")) {
+                        cellArray[i][j] = new GCell(GSquare.EMPTY_PATH, GSquare.EMPTY_TYPE);
+                    }
+                    if(line[j].equals("e")) {
+                        cellArray[i][j] = new GCell(GSquare.ENEMY_PATH,GSquare.ENEMY_TYPE);
+                    }
+                }
+                System.out.print("\n");
+            }
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        GGoal levelGoal = new GGoal(25,25);
+        levelGoal.setValuesInRect(true,1,8,4,11);
+
+        GWorld GW = new GWorld(cellArray,levelGoal);
+
+        GWorldLoader.saveWorld(GW,1);
     }
 
     private static void parse() {
