@@ -41,7 +41,6 @@ public class GSideMenu {
         long millisDifference = System.currentTimeMillis() - startTimeMillis;
         SimpleDateFormat sdf = new SimpleDateFormat("mm:ss");
         Date resultDate = new Date(millisDifference);
-        UI.println(sdf.format(resultDate));
         return sdf.format(resultDate);
     }
 
