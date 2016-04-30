@@ -63,6 +63,10 @@ public class GWorld implements Serializable{
         cells[row][col] = null;
     }
 
+    public void grow(int row, int col) {
+        if()
+    }
+
 
     public GCell getCell(int row, int column) {
         return cells[row][column];

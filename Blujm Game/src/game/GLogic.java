@@ -47,6 +47,9 @@ public class GLogic {
                         break;
                     case "nothing":
                         break;
+                    case "moveGrow":
+                        world.move(i, j, drow, dcol);
+                        world.grow(i, j);
                     default:
                         break;
                 }
@@ -92,6 +95,8 @@ public class GLogic {
                         return "defer";
                     case "wall":
                         return "stay";
+                    case "grow":
+                        return "moveGrow";
                 }
             } else {
                 return "move";
