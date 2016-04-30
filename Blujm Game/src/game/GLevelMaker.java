@@ -44,10 +44,10 @@ public class GLevelMaker {
                 for(int j=0;j<25;j++)   {
                     System.out.println(line[j]);
                     if(line[j].equals("x")) {
-                        cellArray[i][j] = new GCell("filename","Wall");
+                        cellArray[i][j] = new GCell(GSquare.wallPath,GSquare.wallType);
                     }
                     if(line[j].equals("1")) {
-                        cellArray[i][j] = new GCell("filename","LiveCell");
+                        cellArray[i][j] = new GCell(GSquare.userPath,GSquare.userType);
                     }
                 }
             }
