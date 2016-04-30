@@ -51,6 +51,11 @@ public class GInput {
         if(movingRight) {
             logic.setMoveRight();
         }
+
+        movingUp = false;
+        movingDown = false;
+        movingLeft = false;
+        movingRight = false;
     }
 
     private void keyboardInput(String key) {
