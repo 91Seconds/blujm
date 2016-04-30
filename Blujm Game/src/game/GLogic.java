@@ -9,37 +9,22 @@ package game;
  */
 public class GLogic {
 
-    GWorld world;
+    private GWorld world;
+
+    private int drow;
+    private int dcol;
 
     public GLogic(GWorld world) {
         this.world = world;
 
     }
 
+
+
     public void update() {
         int width = world.getWidth();
         int height = world.getHeight();
         boolean[][] updated = new boolean[height][width];
-
-        boolean movingDown = world.isMoveDown();
-        boolean movingUp = world.isMoveUp();
-        boolean movingLeft = world.isMoveLeft();
-        boolean movingRight = world.isMoveRight();
-
-        int drow = 0;
-        int dcol = 0;
-
-        if(movingDown) {
-            drow = 1;
-        } else if(movingUp) {
-            drow = -1;
-        }
-
-        if(movingRight) {
-            dcol = 1;
-        } else if(movingLeft) {
-            dcol = -1;
-        }
 
         GSquare currentSquare;
         GSquare neighbourSquare;
@@ -73,6 +58,30 @@ public class GLogic {
         }
 
         cleanUpAfterUpdate(updated);
+    }
+
+    private void checkMovements() {
+
+        boolean movingDown = world.isMoveDown();
+        boolean movingUp = world.isMoveUp();
+        boolean movingLeft = world.isMoveLeft();
+        boolean movingRight = world.isMoveRight();
+
+        int drow = 0;
+        int dcol = 0;
+
+        if(movingDown) {
+            drow = 1;
+        } else if(movingUp) {
+            drow = -1;
+        }
+
+        if(movingRight) {
+            dcol = 1;
+        } else if(movingLeft) {
+            dcol = -1;
+        }
+
     }
 
     private void cleanUpAfterUpdate(boolean[][] updated) {
