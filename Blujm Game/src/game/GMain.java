@@ -2,6 +2,8 @@ package game;
 
 import ecs100.UI;
 
+import java.io.File;
+
 /**
  * Created by Dylan on 24/04/16.
  */
@@ -27,7 +29,7 @@ public class GMain {
         UI.setDivider(DIVIDER_POSITION);
         UI.setImmediateRepaint(false);
 
-        GWorld world = loadWorld(currentWorld);
+        GWorld world = GWorldLoader.loadWorld(currentWorld);
         GLogic gLogic = new GLogic(world);
         GInput gInput = new GInput(gLogic);
         GSideMenu gSideMenu = new GSideMenu(currentWorld, System.currentTimeMillis());
@@ -41,19 +43,4 @@ public class GMain {
         }
 
     }
-
-    /**
-     * Tries to load the windows save, and if that fails
-     * loads the unix save
-     * @param world
-     * @return
-     */
-    private static GWorld loadWorld(int world) {
-        try {
-            GWorldLoader.loadWorld(world, true);
-        } catch (Exception e) {
-            GWorldLoader.loadWorld(world, false);
-        }
-    }
-
 }

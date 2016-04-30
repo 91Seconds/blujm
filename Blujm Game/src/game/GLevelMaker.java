@@ -70,7 +70,7 @@ public class GLevelMaker {
 
         GWorld GW = new GWorld(cellArray,levelGoal);
 
-        GWorldLoader.saveWorld(GW,1);
+        GWorldLoader.saveWorld(GW, 1);
     }
 
     private static void parse() {

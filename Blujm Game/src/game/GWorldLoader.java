@@ -28,12 +28,12 @@ public class GWorldLoader {
      * Reads a world from a file
      * @return A new GWorld object. Returns null if there is an error
      */
-   public static GWorld loadWorld(int world, boolean isWindows){
+   public static GWorld loadWorld(int world){
 
         GWorld gWorld = null;
         ObjectInputStream ois = null;
         try {
-            if (isWindows)
+            if (File.separator.equals("\\"))
                 ois = new ObjectInputStream(new FileInputStream(WINDOWS_WORLD_FILE_PREFIX + world + WORLD_FILE_SUFFIX));
             else
                 ois = new ObjectInputStream(new FileInputStream(UNIX_WORLD_FILE_PREFIX + world + WORLD_FILE_SUFFIX));
@@ -51,10 +51,10 @@ public class GWorldLoader {
        return gWorld;
     }
 
-    public static void saveWorld(GWorld world, int worldNumber, boolean isWindows) {
+    public static void saveWorld(GWorld world, int worldNumber) {
         ObjectOutputStream oos = null;
         try {
-            if (isWindows)
+            if (File.separator.equals("\\"))
                 oos = new ObjectOutputStream(new FileOutputStream(WINDOWS_WORLD_FILE_PREFIX + worldNumber + WORLD_FILE_SUFFIX));
             else
                 oos = new ObjectOutputStream(new FileOutputStream(UNIX_WORLD_FILE_PREFIX + worldNumber + WORLD_FILE_SUFFIX));
