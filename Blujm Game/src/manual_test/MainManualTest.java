@@ -18,9 +18,9 @@ public class MainManualTest {
 
         // TESTS HERE:
 
-//        testPath();
+//        testPath(); // Completed
 
-        (new GGraphicsManualTest()).testBG();
+//        (new GGraphicsManualTest()).testBG(); // Completed
 //        (new GGraphicsManualTest()).testCells();
 
     }
