@@ -19,12 +19,9 @@ public class GLogic {
     public void setMoveUp() {
         if(moveDown == false && moveLeft == false && moveRight == false) {
             moveUp = true;
-<<<<<<< HEAD
             UI.println("Moving up");
-=======
             System.out.println("moved up");
->>>>>>> 485648c32ce09e8c7db3edd370063672831eb83c
-        }
+       }
     }
     public void setMoveDown() {
         if(moveUp == false && moveLeft == false && moveRight == false) {
