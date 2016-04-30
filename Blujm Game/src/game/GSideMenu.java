@@ -27,7 +27,7 @@ public class GSideMenu {
 
     public static void main(String[]args){
         GSideMenu g = new GSideMenu(0,System.currentTimeMillis());
-        g.draw();
+        g.update();
         //g.toReadableTime();
     }
 
@@ -45,7 +45,7 @@ public class GSideMenu {
         return sdf.format(resultDate);
     }
 
-    public void draw(){
+    public void update(){
         UI.drawImage(fName, LEFT, TOP, SIDE_MENU_WIDTH, SIDE_MENU_HEIGHT);
         UI.setFontSize(28);
         UI.setColor(Color.WHITE);

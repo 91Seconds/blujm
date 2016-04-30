@@ -28,10 +28,12 @@ public class GMain {
         GWorld world = GWorldLoader.loadWorld(currentWorld);
         GLogic gLogic = new GLogic(world);
         GInput gInput = new GInput(gLogic);
+        GSideMenu gSideMenu = new GSideMenu(currentWorld, System.currentTimeMillis());
 
         while(shouldExit == false) {
             gInput.update();
             gLogic.update();
+            gSideMenu.update();
             GGraphics.drawWorld(world);
             UI.sleep(100);
         }
