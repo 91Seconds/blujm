@@ -15,10 +15,10 @@ public class GLevelMaker {
 
     public static void main(String[] args){
         UI.initialise();
-        UI.addButton("Load World from txt",GLevelMaker::initparse);
+        UI.addButton("Load World from txt", GLevelMaker::initParse);
     }
 
-    private static void initparse() {
+    private static void initParse() {
         String path = UIFileChooser.open("open a level in plaintext");
         File level = new File(path);
 

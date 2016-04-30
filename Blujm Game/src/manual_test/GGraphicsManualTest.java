@@ -3,7 +3,6 @@ package manual_test;
 import ecs100.UI;
 import game.GGraphics;
 import game.GWorld;
-//import game.GWorld;
 
 /**
  * Created by Dylan on 30/04/16.
@@ -15,7 +14,9 @@ public class GGraphicsManualTest {
         gTest.testBG();
     }
 
-    // Tested and completed
+    /**
+     * Tested and completed
+     */
     public void testBG() {
         UI.initialise();
 
@@ -23,14 +24,17 @@ public class GGraphicsManualTest {
         GGraphics.drawWorld(w);
     }
 
-    public void testCells() {
-//        UI.initialise();
-//
-//      // Note: may break as constructor is changed
-//      GWorld w = new GWorld();
-        // TODO setup some cells
+    /**
+     *
+     */
+    public void testCellsAndBG() {
+        UI.initialise();
 
-//      GGraphics.drawWorld(w);
+        GWorld w = new GWorld(22, 18, GWorld.KEY_I_AM_TESTING_ONLY);
+
+        
+
+        GGraphics.drawWorld(w);
     }
 
 }
