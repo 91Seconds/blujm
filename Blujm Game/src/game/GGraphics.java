@@ -34,7 +34,7 @@ public final class GGraphics {
         UI.clearGraphics();
         //UI.drawImage(Menu,0,0);
         //drawing menu
-        drawMenu()
+       // drawMenu()
     }
     //ToDo make this method great again
 
