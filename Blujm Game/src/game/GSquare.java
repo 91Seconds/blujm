@@ -12,8 +12,8 @@ public abstract class GSquare implements Serializable{
     protected static final String userType = "user";
     protected static final String wallType = "wall";
 
-    protected static final String userPath = "live-cell.png";
-    protected static final String wallPath = "wall.png";
+    protected static final String userPath = GFileChecker.RESOURCES_ROOT + "live-cell.png";
+    protected static final String wallPath = GFileChecker.RESOURCES_ROOT + "wall.png";
 
     private String imagePath;
     private String type;
