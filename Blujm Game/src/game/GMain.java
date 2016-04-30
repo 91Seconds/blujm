@@ -27,8 +27,10 @@ public class GMain {
 
         GWorld world = GWorldLoader.getWorld(currentWorld);
         GLogic l = new GLogic(world);
+        GInput i = new GInput(world);
 
         while(shouldExit == false) {
+            i.update();
             l.update();
             GGraphics.drawWorld(world);
         }

@@ -19,7 +19,7 @@ public class GInput {
         this.world = world;
     }
 
-    public void updateMovements() {
+    public void update() {
         if(movingUp) {
             world.setMoveUp();
         }
