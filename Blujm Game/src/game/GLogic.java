@@ -153,7 +153,26 @@ public class GLogic {
     }
 
     private void cleanUpAfterUpdate(boolean[][] updated) {
-        
+        GSquare currentSquare;
+        GSquare nextSquare;
+        String decision;
+
+        for(int i = 24; i > 0; i--) {
+            for(int j = 24; j > 0; j--) {
+                if(updated[i][j] == false) {
+                    currentSquare = world.getCell(i, j);
+                    nextSquare = world.getCell(i + dRow, j + dCol);
+
+                    decision = getMoveDecision(currentSquare, nextSquare);
+                    switch(decision) {
+                        case "move":
+                            world.move(i, j, dRow, dCol);
+                        default:
+                            break;
+                    }
+                }
+            }
+        }
     }
 
     // TODO NEXT: 30/04/16 DYLAN check the ggoal object if the user won
