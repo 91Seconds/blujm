@@ -157,8 +157,8 @@ public class GLogic {
         GSquare nextSquare;
         String decision;
 
-        for(int i = 0; i < updated.length; i++) {
-            for(int j = 0; j < updated[0].length; j++) {
+        for(int i = 24; i > 0; i--) {
+            for(int j = 24; j > 0; j--) {
                 if(updated[i][j] == false) {
                     currentSquare = world.getCell(i, j);
                     nextSquare = world.getCell(i + dRow, j + dCol);
