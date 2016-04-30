@@ -10,9 +10,11 @@ import ecs100.*;
 
 public final class GGraphics {
 
-    public static final int UNIT_SIZE = 15;
+    public static final int UNIT_SIZE = 30;
     public static final int WORLD_LEFT = UNIT_SIZE;
     public static final int WORLD_TOP = WORLD_LEFT;
+    public static final int WORLD_WIDTH = 810;
+    public static final int WORLD_HEIGHT = 600;
 
     /**
      * Prevents any instances of the class

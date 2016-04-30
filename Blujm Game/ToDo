@@ -19,3 +19,10 @@ To Do
 6. Create algorithm to determine if the live cells have fit into the goal cells
 
 7. Make world a serializable class
+
+Cells
+    - Live Cells
+    - Dead Cells
+    - Goal Cells
+    - Walls
+    -
