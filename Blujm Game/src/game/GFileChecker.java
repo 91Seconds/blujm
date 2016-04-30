@@ -10,6 +10,8 @@ import java.io.File;
  */
 public class GFileChecker {
 
+    public static final String RESOURCES_ROOT = "Blujm Game" + File.separator + "resources"; // TODO
+
     private GFileChecker() {}
 
     /**
@@ -19,8 +21,8 @@ public class GFileChecker {
     public static String checkIfFilePathExists(String imagePath) {
         File f = new File(imagePath);
 
-        if (!f.exists()) return "File " + imagePath + " does not exist";
-        if (f.isDirectory()) return "File " + imagePath + " is a directory, not an image";
+        if (!f.exists()) return "File '" + imagePath + "' does not exist";
+        if (f.isDirectory()) return "File '" + imagePath + "' is a directory, not an image";
 
         return null;
     }

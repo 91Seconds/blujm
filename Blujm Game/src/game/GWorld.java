@@ -19,8 +19,8 @@ public class GWorld {
      * The image that is repeated to make the background
      * It may not need to be final, but is for now
      */
-    private final String BACKGROUND_IMAGE_PATH = "resources" + File.pathSeparator +
-            "images" + File.pathSeparator + "backgroundImage.png";
+    private final String BACKGROUND_IMAGE_PATH = GFileChecker.RESOURCES_ROOT + File.separator
+            + "images" + File.separator + "background-image-placeholder.png";
 
     /**
      * The number of units (in width, and in height) that
@@ -31,7 +31,7 @@ public class GWorld {
     private final GCell[][] cells;
 
     public GWorld(int width, int height) {
-        cells = new GCell[width][height];
+        cells = new GCell[height][width];
         // TODO someone complete this
     }
 

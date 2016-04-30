@@ -35,21 +35,27 @@ public final class GGraphics {
      * @param world The world to draw
      */
     private static void drawWorldBackground(GWorld world) {
-        final String worldBGPath = world.getBACKGROUND_IMAGE_PATH();
+        final String bgPath = world.getBACKGROUND_IMAGE_PATH();
 
         // Check if the image exists, otherwise crash the program
-        Error e = GFileChecker.checkIfFilePathExists(worldBGPath);
-        if (e != null) throw e;
+        String errorMessage = GFileChecker.checkIfFilePathExists(bgPath);
+        if (errorMessage != null) throw new Error("World background error: " + errorMessage);
 
         // Size in units
-        final int bgSize = world.getBACK_IMAGE_SIZE();
+        final int bgSizeUnits = world.getBACK_IMAGE_SIZE();
+        // Size in pixels
+        final int bgSize = bgSizeUnits * UNIT_SIZE;
 
-        float xRepeats = world.getWidth() / (float) bgSize;
-        float yRepeats = world.getHeight() / (float) bgSize;
+        float xRepeats = world.getWidth() / (float) bgSizeUnits;
+        float yRepeats = world.getHeight() / (float) bgSizeUnits;
 
-        for (int bgX = 0; bgX < xRepeats; bgX++) {
-            for (int bgY = 0; bgY < yRepeats; bgY++) {
-                //
+        for (int nthX = 0; nthX < xRepeats; nthX++) {
+            for (int nthY = 0; nthY < yRepeats; nthY++) {
+
+                UI.drawImage(bgPath, LEFT + nthX*bgSize, TOP + nthY*bgSize,
+                        bgSize, bgSize);
+
+                // TODO erase off the edges
             }
         }
 
@@ -60,10 +66,13 @@ public final class GGraphics {
         for (int col = 0; col < world.getWidth(); col++) {
             for (int row = 0; row < world.getHeight(); row++) {
                 GCell gCell = world.getCell(row, col);
+                if (gCell == null) continue;
+
                 String imagePath = gCell.getImagePath();
 
-                Error imageError = GFileChecker.checkIfFilePathExists(imagePath);
-                if (imageError != null) throw imageError;
+                String errorMessage = GFileChecker.checkIfFilePathExists(imagePath);
+                if (errorMessage != null) throw new Error("Cell at row: " + row + ", " +
+                        "col: " + col + " image error: " + errorMessage);
 
                 UI.drawImage(imagePath, LEFT + col* UNIT_SIZE, TOP + row* UNIT_SIZE,
                         UNIT_SIZE, UNIT_SIZE);
