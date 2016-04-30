@@ -1,4 +1,5 @@
 package game;
+import ecs100.*;
 
 /**
  * Created by Dylan on 29/04/16.
@@ -15,10 +16,26 @@ public class GLogic {
     private boolean moveLeft = false;
     private boolean moveRight = false;
 
-    public void setMoveUp() { moveUp = true; }
-    public void setMoveDown() { moveDown = true; }
-    public void setMoveLeft() { moveLeft = true; }
-    public void setMoveRight() { moveRight = true; }
+    public void setMoveUp() {
+        if(!(moveDown || moveLeft || moveRight)) {
+            moveUp = true;
+        }
+    }
+    public void setMoveDown() {
+        if(!(moveUp || moveLeft || moveRight)) {
+            moveDown = true;
+        }
+    }
+    public void setMoveLeft() {
+        if(!(moveUp || moveRight || moveDown)) {
+            moveLeft = true;
+        }
+    }
+    public void setMoveRight() {
+        if(!(moveLeft || moveUp || moveDown)) {
+            moveRight = true;
+        }
+    }
 
     private GWorld world;
 
@@ -45,11 +62,13 @@ public class GLogic {
                 currentSquare = world.getCell(i, j);
                 neighbourSquare = world.getCell(i + drow, j + dcol);
 
-
-                switch(getMoveDecision(currentSquare, neighbourSquare)) {
+                String decision = getMoveDecision(currentSquare, neighbourSquare);
+                UI.println(decision);
+                switch(decision) {
                     case "defer":
                         continue;
                     case "move":
+                        UI.println("Moving in this direction");
                         world.move(i, j, drow, dcol);
                         break;
                     case "stay":
