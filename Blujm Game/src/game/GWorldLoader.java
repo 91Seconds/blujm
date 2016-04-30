@@ -3,7 +3,9 @@ package game;
 import ecs100.UI;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.util.Scanner;
 
 /**
@@ -20,16 +22,6 @@ public class GWorldLoader {
     private static final String WORLD_FILE_PREFIX = "resources/worlds/world-";
     private static final String WORLD_FILE_SUFFIX = ".world";
 
-    /**
-     * Contains the characters that represent the different squares in the game
-     */
-    private char liveCell = 'L';
-    private char deadCell = 'D';
-    private char goalCell = 'G';
-    private char wall = 'X';
-    private char pMove = ' ';
-    private char pScale = ' ';
-    //Need to plan out the rest of the types of cells and powerups
 
     /**
      * Private constructor makes this a static-only class
@@ -38,17 +30,16 @@ public class GWorldLoader {
 
     /**
      * Reads a world from a file
-     * Format
-     * Size of level
-     * 2D array of squares in the level
      * @return A new GWorld object. Returns null if there is an error
      */
-   public static GWorld getWorld(int level){
+   public static GWorld getWorld(int world){
 
         GWorld gWorld = null;
+        ObjectInputStream ois = null;
         try {
-            Scanner scan = new Scanner(new File("level" + level));
-
+            ois = new ObjectInputStream(new FileInputStream(WORLD_FILE_PREFIX + world + WORLD_FILE_SUFFIX));
+            gWorld = (GWorld)(ois.readObject());
+            ois.close();
             // TODO Dan fix - if you set GAMESIZE as a constant, then
             // the size of the world cannot change between levels (and the world
             // must always be a square
@@ -60,8 +51,11 @@ public class GWorldLoader {
         } catch(IOException e){
             UI.println("File Reading Error:" + e);
             return null;
+        } catch (ClassNotFoundException e) {
+            UI.println(e);
+            return null;
         }
 
-        return gWorld;
+       return gWorld;
     }
 }
