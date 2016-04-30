@@ -25,6 +25,7 @@ public class GMain {
         UI.initialise();
         UI.setWindowSize(WINDOW_WIDTH, WINDOW_HEIGHT);
         UI.setDivider(DIVIDER_POSITION);
+        UI.setImmediateRepaint(false);
 
         GWorld world = GWorldLoader.loadWorld(currentWorld);
         GLogic gLogic = new GLogic(world);
