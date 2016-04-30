@@ -21,8 +21,8 @@ public class GSideMenu {
     private long startTimeMillis;
 
     public static void main(String[]args){
-        GSideMenu g = new GSideMenu();
-        g.draw();
+        //GSideMenu g = new GSideMenu();
+        //g.draw();
 
     }
 
