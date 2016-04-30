@@ -64,7 +64,13 @@ public class GWorld implements Serializable{
     }
 
     public void grow(int row, int col) {
-        if()
+        for(int i = row - 1; i < row + 1; i++) {
+            for(int j = col - 1; j < col + 1; j++) {
+                if(cells[i][j] == null) {
+                    cells[i][j] = new GCell("user");
+                }
+            }
+        }
     }
 
 

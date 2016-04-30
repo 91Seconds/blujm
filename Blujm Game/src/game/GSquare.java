@@ -8,8 +8,9 @@ public abstract class GSquare {
     private String imagePath;
     private String type;
 
-    public GSquare(String imagePath){
+    public GSquare(String imagePath, String type){
         this.imagePath = imagePath;
+        this.type = type;
     }
 
     public String getImagePath(){
