@@ -9,12 +9,6 @@ import java.io.Serializable;
  * Contains all of the level's contents
  */
 public class GWorld implements Serializable {
-
-    private boolean moveUp = false;
-    private boolean moveDown = false;
-    private boolean moveLeft = false;
-    private boolean moveRight = false;
-
     /**
      * The image that is repeated to make the background
      */
@@ -74,16 +68,6 @@ public class GWorld implements Serializable {
             }
         }
     }
-
-    public void setMoveUp() { moveUp = true; }
-    public void setMoveDown() { moveDown = true; }
-    public void setMoveLeft() { moveLeft = true; }
-    public void setMoveRight() { moveRight = true; }
-
-    public boolean isMoveUp() { return moveUp; }
-    public boolean isMoveDown() { return moveDown; }
-    public boolean isMoveLeft() { return moveLeft; }
-    public boolean isMoveRight() { return moveRight; }
 
     public String getBACKGROUND_IMAGE_PATH() {
         return BACKGROUND_IMAGE_PATH;
