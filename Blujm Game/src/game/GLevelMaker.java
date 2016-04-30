@@ -25,7 +25,7 @@ public class GLevelMaker {
         GCell[][] cellArray = new GCell[25][25];
         try {
             Scanner sc = new Scanner(level);
-            
+
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }

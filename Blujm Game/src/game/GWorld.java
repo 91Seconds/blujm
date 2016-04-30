@@ -32,8 +32,14 @@ public class GWorld implements Serializable{
 
     private final GCell[][] cells;
 
+
     public GWorld(GCell[][] cellArray) {
         cells = cellArray;
+    }
+
+    public GWorld() {
+        cells = new GCell[GGraphics.WORLD_HEIGHT/GGraphics.UNIT_SIZE][GGraphics.WORLD_WIDTH/GGraphics.UNIT_SIZE];
+
         // TODO someone complete this
     }
 
@@ -61,6 +67,10 @@ public class GWorld implements Serializable{
     public void move(int row, int col, int drow, int dcol) {
         cells[row+drow][col+dcol] = cells[row][col];
         cells[row][col] = null;
+    }
+
+    public void grow(int row, int col) {
+        if()
     }
 
 
@@ -98,4 +108,8 @@ public class GWorld implements Serializable{
     public int getHeight() {
         return cells.length;
     }
+
+    /*public GCell[][] setCells(GCell[][] newCells){
+        cells = newCells;
+    }*/
 }

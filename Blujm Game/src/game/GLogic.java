@@ -9,17 +9,61 @@ package game;
  */
 public class GLogic {
 
-    GWorld world;
+    private GWorld world;
+
+    private int drow;
+    private int dcol;
 
     public GLogic(GWorld world) {
         this.world = world;
 
     }
 
+
+
     public void update() {
         int width = world.getWidth();
         int height = world.getHeight();
         boolean[][] updated = new boolean[height][width];
+
+        checkMovements();
+
+        GSquare currentSquare;
+        GSquare neighbourSquare;
+
+        for(int i = 0; i < height; i++) {
+            for(int j = 0; j < width; j++) {
+                currentSquare = world.getCell(i, j);
+                neighbourSquare = world.getNeighbour(i, j, drow, dcol);
+
+
+                switch(getMoveDecision(currentSquare, neighbourSquare)) {
+                    case "defer":
+                        continue;
+                    case "move":
+                        world.move(i, j, drow, dcol);
+                        break;
+                    case "stay":
+                        break;
+                    case "nothing":
+                        break;
+                    case "moveGrow":
+                        world.move(i, j, drow, dcol);
+                        world.grow(i, j);
+                    default:
+                        break;
+                }
+                updated[i][j] = true;
+            }
+        }
+
+        cleanUpAfterUpdate(updated);
+
+        drow = 0;
+        dcol = 0;
+    }
+
+    private void checkMovements() {
 
         boolean movingDown = world.isMoveDown();
         boolean movingUp = world.isMoveUp();
@@ -41,25 +85,27 @@ public class GLogic {
             dcol = -1;
         }
 
-        GSquare currentSquare;
-        GSquare neighbourSquare;
+    }
 
-        for(int i = 0; i < height; i++) {
-            for(int j = 0; j < width; j++) {
-                currentSquare = world.getCell(i, j);
-                neighbourSquare = world.getNeighbour(i, j, drow, dcol);
-
-                if(neighbourSquare != null) {
-
-                } else {
-                    world.move(i, j, drow, dcol);
+    private String getMoveDecision(GSquare thisSquare, GSquare nextSquare) {
+        if(thisSquare != null && thisSquare.getType().equals("user")) {
+            if(nextSquare != null) {
+                switch(nextSquare.getType()) {
+                    case "user":
+                        return "defer";
+                    case "wall":
+                        return "stay";
+                    case "grow":
+                        return "moveGrow";
                 }
-
-                updated[i][j] = true;
+            } else {
+                return "move";
             }
+        } else {
+            return "nothing";
         }
 
-        cleanUpAfterUpdate(updated);
+        return "nothing";
     }
 
     private void cleanUpAfterUpdate(boolean[][] updated) {
