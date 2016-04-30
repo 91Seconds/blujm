@@ -51,7 +51,7 @@ public class GLevelMaker {
                         cellArray[i][j] = new GCell(GSquare.USER_PATH,GSquare.USER_TYPE);
                     }
                     if(line[j].equals("0")) {
-                        cellArray[i][j] = null;
+                        cellArray[i][j] = new GCell(GSquare.EMPTY_PATH, GSquare.EMPTY_TYPE);
                     }
                     if(line[j].equals("e")) {
                         cellArray[i][j] = new GCell(GSquare.ENEMY_PATH,GSquare.ENEMY_TYPE);

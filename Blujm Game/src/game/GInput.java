@@ -34,6 +34,7 @@ public class GInput {
 
     public GInput(GLogic logic) {
         UI.setKeyListener(this::keyboardInput);
+        System.out.println("key listener set");
         this.logic = logic;
     }
 
@@ -54,16 +55,17 @@ public class GInput {
 
     private void keyboardInput(String key) {
         switch(key) {
-            case "W":
+            case "w":
                 movingUp = true;
+//                System.out.println("w recieved from keyboard");
                 break;
-            case "A":
+            case "a":
                 movingLeft = true;
                 break;
-            case "S":
+            case "s":
                 movingDown = true;
                 break;
-            case "D":
+            case "d":
                 movingRight = true;
                 break;
             default:
