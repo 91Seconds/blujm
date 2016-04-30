@@ -15,6 +15,8 @@ public class GCell extends GSquare {
         this.type = type;
     }
 
+
+
     public String getType(){
         return type;
     }
