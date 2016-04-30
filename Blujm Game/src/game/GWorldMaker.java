@@ -29,32 +29,42 @@ public class GWorldMaker {
 
     public static void main(String[] args){
         UI.initialise();
-        UI.addButton("Load World from txt", GWorldMaker::parse);
-        UI.addButton("Just Fucking give me a file that works", GWorldMaker::justFuckingDoIt);
+        UI.addButton("Load World from txt", GWorldMaker::loadChosenPrototype);
+        UI.addButton("Load Default Prototype", GWorldMaker::loadAndSaveFromDefaultPrototype);
     }
 
-    private static void justFuckingDoIt()   {
-        File level = new File(GFileChecker.RESOURCES_ROOT + File.separator + "world-prototype.txt");
+    private static void loadAndSaveFromDefaultPrototype()   {
+        File world = new File(GFileChecker.RESOURCES_ROOT + File.separator + "world-prototype.txt");
+        GWorldLoader.saveWorld(loadWorldFromPrototype(world), 1);
+    }
 
-        GCell[][] cellArray = new GCell[25][25];
+    private static void loadChosenPrototype() {
+        String path = UIFileChooser.open("open a world in plaintext");
+        File worldFile = new File(path);
+        GWorld world = loadWorldFromPrototype(worldFile);
+        GWorldLoader.saveWorld(world, 1);
+    }
+
+    private static GWorld loadWorldFromPrototype(File world) {
+        GCell[][] cellArray = new GCell[GGraphics.WORLD_HEIGHT_IN_UNITS][GGraphics.WORLD_WIDTH_IN_UNITS];
         try {
-            Scanner sc = new Scanner(level);
-            for(int i=0;i<25;i++)   {
+            Scanner sc = new Scanner(world);
+            for(int row=0;row<GGraphics.WORLD_HEIGHT_IN_UNITS;row++)   {
                 String[] line = getNonEmpty(sc.nextLine().split(" "));
 
-                for(int j=0;j<25;j++)   {
-                    System.out.print(line[j]);
-                    if(line[j].equals("x")) {
-                        cellArray[i][j] = new GCell(GSquare.WALL_PATH,GSquare.WALL_TYPE);
+                for(int col=0;col<GGraphics.WORLD_WIDTH_IN_UNITS;col++)   {
+                    System.out.print(line[col]);
+                    if(line[col].equals("x")) {
+                        cellArray[row][col] = new GCell(GSquare.WALL_PATH,GSquare.WALL_TYPE);
                     }
-                    if(line[j].equals("1")) {
-                        cellArray[i][j] = new GCell(GSquare.USER_PATH,GSquare.USER_TYPE);
+                    if(line[col].equals("1")) {
+                        cellArray[row][col] = new GCell(GSquare.USER_PATH,GSquare.USER_TYPE);
                     }
-                    if(line[j].equals("0")) {
-                        cellArray[i][j] = new GCell(GSquare.EMPTY_PATH, GSquare.EMPTY_TYPE);
+                    if(line[col].equals("0")) {
+                        cellArray[row][col] = new GCell(GSquare.EMPTY_PATH, GSquare.EMPTY_TYPE);
                     }
-                    if(line[j].equals("e")) {
-                        cellArray[i][j] = new GCell(GSquare.ENEMY_PATH,GSquare.ENEMY_TYPE);
+                    if(line[col].equals("e")) {
+                        cellArray[row][col] = new GCell(GSquare.ENEMY_PATH,GSquare.ENEMY_TYPE);
                     }
                 }
                 System.out.print("\n");
@@ -64,55 +74,12 @@ public class GWorldMaker {
             e.printStackTrace();
         }
 
-        GGoal levelGoal = new GGoal(25,25);
+        GGoal levelGoal = new GGoal(GGraphics.WORLD_WIDTH_IN_UNITS, GGraphics.WORLD_HEIGHT_IN_UNITS);
         levelGoal.setValuesInRect(true,1,8,3,3);
 
-//        String g = levelGoal.toString();
-        // TODO DYLAN later load the levelGoal from file (the levelGoal.toString() and new GGoal(String) methods will be used)
+        String g = levelGoal.toString();
 
-        GWorld GW = new GWorld(cellArray,levelGoal);
-
-        GWorldLoader.saveWorld(GW, 1);
-    }
-
-    private static void parse() {
-        String path = UIFileChooser.open("open a level in plaintext");
-        File level = new File(path);
-
-        GCell[][] cellArray = new GCell[25][25];
-        try {
-            Scanner sc = new Scanner(level);
-            for(int i=0;i<25;i++)   {
-                String[] line = getNonEmpty(sc.nextLine().split(" "));
-
-                for(int j=0;j<25;j++)   {
-                    System.out.print(line[j]);
-                    if(line[j].equals("x")) {
-                        cellArray[i][j] = new GCell(GSquare.WALL_PATH,GSquare.WALL_TYPE);
-                    }
-                    if(line[j].equals("1")) {
-                        cellArray[i][j] = new GCell(GSquare.USER_PATH,GSquare.USER_TYPE);
-                    }
-                    if(line[j].equals("0")) {
-                        cellArray[i][j] = new GCell(GSquare.EMPTY_PATH, GSquare.EMPTY_TYPE);
-                    }
-                    if(line[j].equals("e")) {
-                        cellArray[i][j] = new GCell(GSquare.ENEMY_PATH,GSquare.ENEMY_TYPE);
-                    }
-                }
-                System.out.print("\n");
-            }
-
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-
-        GGoal levelGoal = new GGoal(25,25);
-        levelGoal.setValuesInRect(true,8,1,11,4);
-
-        GWorld GW = new GWorld(cellArray,levelGoal);
-        
-        GWorldLoader.saveWorld(GW,1);
+        return new GWorld(cellArray,levelGoal);
     }
 
     private static String[] getNonEmpty(String[] possiblyEmptyStuff) {

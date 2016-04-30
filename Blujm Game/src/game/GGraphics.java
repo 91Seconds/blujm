@@ -17,9 +17,10 @@ public final class GGraphics {
     public static final int UNIT_SIZE = 25;
     public static final int WORLD_LEFT = UNIT_SIZE;
     public static final int WORLD_TOP = WORLD_LEFT;
-    public static final int WORLD_WIDTH = 625;
-    public static final int WORLD_HEIGHT = 625;
-
+    public static final int WORLD_WIDTH_IN_UNITS = 25;
+    public static final int WORLD_HEIGHT_IN_UNITS = 25;
+    public static final int WORLD_WIDTH = UNIT_SIZE*WORLD_WIDTH_IN_UNITS;
+    public static final int WORLD_HEIGHT = UNIT_SIZE*WORLD_HEIGHT_IN_UNITS;
 
     public static final String GOAL_IMAGE_PATH = GFileChecker.RESOURCES_ROOT + File.separator
             + "images" + File.separator + "goal-square.png";
