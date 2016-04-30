@@ -19,26 +19,26 @@ public class GLogic {
     public void setMoveUp() {
         if(moveDown == false && moveLeft == false && moveRight == false) {
             moveUp = true;
-            UI.println("Moving up");
-            System.out.println("moved up");
+//            UI.println("Moving up");
+//            System.out.println("moved up");
        }
     }
     public void setMoveDown() {
         if(moveUp == false && moveLeft == false && moveRight == false) {
             moveDown = true;
-            UI.println("Moving down");
+//            UI.println("Moving down");
         }
     }
     public void setMoveLeft() {
         if(moveRight == false && moveUp == false && moveDown == false) {
             moveLeft = true;
-            UI.println("Moving left");
+//            UI.println("Moving left");
         }
     }
     public void setMoveRight() {
         if(moveLeft == false && moveUp == false && moveDown == false) {
             moveRight = true;
-            UI.println("Moving right");
+//            UI.println("Moving right");
         }
     }
 
@@ -49,7 +49,6 @@ public class GLogic {
 
     public GLogic(GWorld world) {
         this.world = world;
-
     }
 
     public void update() {
@@ -73,19 +72,19 @@ public class GLogic {
 
                 String decision = getMoveDecision(currentSquare, neighbourSquare);
                 if(!decision.equals("nothing")){
-                    UI.println("Single movement");
-                    UI.println(decision);
-                    UI.println(currentSquare);
-                    UI.println(currentSquare.getType());
-                    UI.println(neighbourSquare);
-                    UI.println(neighbourSquare.getType());
-                    UI.println("\n");
+//                    UI.println("Single movement");
+//                    UI.println(decision);
+//                    UI.println(currentSquare);
+//                    UI.println(currentSquare.getType());
+//                    UI.println(neighbourSquare);
+//                    UI.println(neighbourSquare.getType());
+//                    UI.println("\n");
                 }
                 switch(decision) {
                     case "defer":
                         continue;
                     case "move":
-                        UI.println("Moving in this direction");
+//                        UI.println("Moving in this direction");
                         world.move(i, j, dRow, dCol);
                         break;
                     case "stay":
@@ -105,6 +104,10 @@ public class GLogic {
         cleanUpAfterUpdate(updated);
         cleanMovement();
         world.resetCantMoveField();
+
+        if (hasUserWon()) {
+            UI.println("YOU WON! LELZ");
+        }
     }
 
 
@@ -175,5 +178,24 @@ public class GLogic {
         }
     }
 
-    // TODO NEXT: 30/04/16 DYLAN check the ggoal object if the user won
+    private boolean hasUserWon() {
+        return world.getGoal().matchesUserState(getUserTileState());
+    }
+
+    /**
+     * The true values are where the user has a tile there
+     * @return This result is compared with GGoal to check if the user fits the goal
+     */
+    private boolean[][] getUserTileState() {
+        boolean[][] state = new boolean[world.getHeight()][world.getWidth()];
+        for (int col = 0; col < world.getWidth(); col++) {
+            for (int row = 0; row < world.getHeight(); row++) {
+                GCell cell = world.getCell(row, col);
+                if (cell.getType().equals(GSquare.USER_TYPE)) {
+                    state[row][col] = true;
+                }
+            }
+        }
+        return state;
+    }
 }

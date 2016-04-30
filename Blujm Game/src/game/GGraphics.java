@@ -137,12 +137,11 @@ public final class GGraphics {
                 if (errorMessage != null) throw new Error("Cell at row: " + row + ", " +
                         "col: " + col + " image error: " + errorMessage);
 
+                if (imagePath.equals(GSquare.EMPTY_PATH)) continue;
+
                 UI.drawImage(imagePath, WORLD_LEFT + col*UNIT_SIZE, WORLD_TOP + row*UNIT_SIZE,
                         UNIT_SIZE, UNIT_SIZE);
             }
         }
     }
-
-
-    // TODO: 30/04/16 DYLAN draw the goal
 }

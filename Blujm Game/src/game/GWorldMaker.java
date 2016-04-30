@@ -24,17 +24,17 @@ import java.util.Scanner;
  * modifiers are done in prefixes. //note, currently no support for modifiers
  *
  */
-public class GLevelMaker {
+public class GWorldMaker {
     public static GWorld world;
 
     public static void main(String[] args){
         UI.initialise();
-        UI.addButton("Load World from txt", GLevelMaker::parse);
-        UI.addButton("Just Fucking give me a file that works",GLevelMaker::justFuckingDoIt);
+        UI.addButton("Load World from txt", GWorldMaker::parse);
+        UI.addButton("Just Fucking give me a file that works", GWorldMaker::justFuckingDoIt);
     }
 
     private static void justFuckingDoIt()   {
-        File level = new File(GFileChecker.RESOURCES_ROOT + File.separator + "level-prototype.txt");
+        File level = new File(GFileChecker.RESOURCES_ROOT + File.separator + "world-prototype.txt");
 
         GCell[][] cellArray = new GCell[25][25];
         try {
@@ -65,12 +65,14 @@ public class GLevelMaker {
         }
 
         GGoal levelGoal = new GGoal(25,25);
-        levelGoal.setValuesInRect(true,1,8,4,11);
+        levelGoal.setValuesInRect(true,1,8,3,3);
 
+//        String g = levelGoal.toString();
+        // TODO DYLAN later load the levelGoal from file (the levelGoal.toString() and new GGoal(String) methods will be used)
 
         GWorld GW = new GWorld(cellArray,levelGoal);
 
-        GWorldLoader.saveWorld(GW,1);
+        GWorldLoader.saveWorld(GW, 1);
     }
 
     private static void parse() {
@@ -106,7 +108,7 @@ public class GLevelMaker {
         }
 
         GGoal levelGoal = new GGoal(25,25);
-        levelGoal.setValuesInRect(true,1,8,4,11);
+        levelGoal.setValuesInRect(true,8,1,11,4);
 
         GWorld GW = new GWorld(cellArray,levelGoal);
         

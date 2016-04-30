@@ -17,28 +17,24 @@ public class GGoalTest {
 
     GGoal gGoal;
     String idealResult = "" +
-            "1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\n" +
-            "0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\n" +
-            "0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\n" +
-            "0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\n" +
-            "0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\n" +
-            "0 0 0 0 0 1 1 1 1 1 0 0 0 0 0 0 0 0\n" +
-            "0 0 0 0 0 1 1 1 1 1 0 0 0 0 0 0 0 0\n" +
-            "0 0 0 0 0 1 1 1 1 1 0 0 0 0 0 0 0 0\n" +
-            "0 0 0 0 0 1 1 1 1 1 0 0 0 0 0 0 0 0\n" +
-            "0 0 0 0 0 1 1 1 1 1 0 0 0 0 0 0 0 0\n" +
-            "0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\n" +
-            "0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\n" +
-            "0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\n" +
-            "0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\n" +
-            "0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\n" +
-            "0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\n" +
-            "0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\n" +
-            "0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\n" +
-            "0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\n" +
-            "0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\n" +
-            "0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\n" +
-            "0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1\n";
+            "1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\n" +
+            "0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\n" +
+            "0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\n" +
+            "0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\n" +
+            "0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\n" +
+            "0 0 0 0 0 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0\n" +
+            "0 0 0 0 0 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0\n" +
+            "0 0 0 0 0 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0\n" +
+            "0 0 0 0 0 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0\n" +
+            "0 0 0 0 0 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0\n" +
+            "0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\n" +
+            "0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\n" +
+            "0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\n" +
+            "0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\n" +
+            "0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\n" +
+            "0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\n" +
+            "0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\n" +
+            "0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1";
 
     private void setSomeValues(GGoal gg) {
         gg.setValue(true, 0, 0);
@@ -84,8 +80,18 @@ public class GGoalTest {
     public void testSetValuesInRect() throws Exception {
         gGoal = getNewGGoal();
         setSomeValues(gGoal);
-        gGoal.setValuesInRect(true, 5, 5, 10, 10);
+        gGoal.setValuesInRect(true, 5, 5, 5, 5);
         String result = gGoal.toString();
+        Assert.assertEquals("Result was not equal to the idealResult", idealResult, result);
+    }
+
+    /**
+     * Tests the from string constructor and to string method at the same time
+     */
+    @Test
+    public void testFromStringConstructor() throws Exception {
+        GGoal goal = new GGoal(idealResult);
+        String result = goal.toString();
         Assert.assertEquals("Result was not equal to the idealResult", idealResult, result);
     }
 } 

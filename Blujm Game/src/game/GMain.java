@@ -2,6 +2,8 @@ package game;
 
 import ecs100.UI;
 
+import java.io.File;
+
 /**
  * Created by Dylan on 24/04/16.
  */
@@ -37,9 +39,8 @@ public class GMain {
             gLogic.update();
             gSideMenu.update();
             GGraphics.drawWorld(world);
-            UI.sleep(100);
+            UI.sleep(10);
         }
 
     }
-
 }
