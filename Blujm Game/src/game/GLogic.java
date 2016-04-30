@@ -17,23 +17,27 @@ public class GLogic {
     private boolean moveRight = false;
 
     public void setMoveUp() {
-        if(!(moveDown || moveLeft || moveRight)) {
+        if(moveDown == false && moveLeft == false && moveRight == false) {
             moveUp = true;
+            UI.println("Moving up");
         }
     }
     public void setMoveDown() {
-        if(!(moveUp || moveLeft || moveRight)) {
+        if(moveUp == false && moveLeft == false && moveRight == false) {
             moveDown = true;
+            UI.println("Moving down");
         }
     }
     public void setMoveLeft() {
-        if(!(moveUp || moveRight || moveDown)) {
+        if(moveRight == false && moveUp == false && moveDown == false) {
             moveLeft = true;
+            UI.println("Moving left");
         }
     }
     public void setMoveRight() {
-        if(!(moveLeft || moveUp || moveDown)) {
+        if(moveLeft == false && moveUp == false && moveDown == false) {
             moveRight = true;
+            UI.println("Moving right");
         }
     }
 
@@ -57,6 +61,10 @@ public class GLogic {
         GSquare currentSquare;
         GSquare neighbourSquare;
 
+        if(dRow == 0 && dCol == 0) {
+            return; // no change
+        }
+
         for(int i = 0; i < height; i++) {
             for(int j = 0; j < width; j++) {
                 currentSquare = world.getCell(i, j);
@@ -64,10 +72,13 @@ public class GLogic {
 
                 String decision = getMoveDecision(currentSquare, neighbourSquare);
                 if(!decision.equals("nothing")){
+                    UI.println("Single movement");
                     UI.println(decision);
                     UI.println(currentSquare);
                     UI.println(currentSquare.getType());
+                    UI.println(neighbourSquare);
                     UI.println(neighbourSquare.getType());
+                    UI.println("\n");
                 }
                 switch(decision) {
                     case "defer":
@@ -91,26 +102,34 @@ public class GLogic {
         }
 
         cleanUpAfterUpdate(updated);
+        cleanMovement();
+    }
+
+    private void cleanMovement() {
+        moveUp = false;
+        moveDown = false;
+        moveLeft = false;
+        moveRight = false;
 
         dRow = 0;
         dCol = 0;
     }
 
     private void checkMovements() {
-        if(moveDown) {
+        if(moveDown == true) {
             dRow = 1;
-        } else if(moveUp) {
+        } else if(moveUp == true) {
             dRow = -1;
         } else {
             dRow = 0;
         }
 
-        if(moveRight) {
+        if(moveRight == true) {
             dCol = 1;
-        } else if(moveLeft) {
+        } else if(moveLeft == true) {
             dCol = -1;
         } else {
-            dCol = 0; 
+            dCol = 0;
         }
 
     }
