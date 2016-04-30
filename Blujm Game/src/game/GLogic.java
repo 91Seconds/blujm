@@ -26,6 +26,8 @@ public class GLogic {
         int height = world.getHeight();
         boolean[][] updated = new boolean[height][width];
 
+        checkMovements();
+
         GSquare currentSquare;
         GSquare neighbourSquare;
 
@@ -58,6 +60,9 @@ public class GLogic {
         }
 
         cleanUpAfterUpdate(updated);
+
+        drow = 0;
+        dcol = 0;
     }
 
     private void checkMovements() {
