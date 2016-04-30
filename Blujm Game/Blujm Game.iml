@@ -18,6 +18,9 @@
         <SOURCES />
       </library>
     </orderEntry>
+<<<<<<< HEAD
+    <orderEntry type="library" name="ecs100" level="project" />
+=======
     <orderEntry type="module-library">
       <library>
         <CLASSES />
@@ -27,6 +30,7 @@
         </SOURCES>
       </library>
     </orderEntry>
+>>>>>>> ebbf729416efc456b08e21a18d897d748c87056f
   </component>
   <component name="org.twodividedbyzero.idea.findbugs">
     <option name="_basePreferences">
