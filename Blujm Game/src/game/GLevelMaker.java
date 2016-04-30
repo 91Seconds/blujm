@@ -45,6 +45,6 @@ public class GLevelMaker {
 
         GWorld GW = new GWorld(cellArray);
 
-        GWorldLoader.saveWorld(GW,0);
+        GWorldLoader.saveWorld(GW,1);
     }
 }
