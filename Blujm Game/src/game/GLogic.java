@@ -45,7 +45,14 @@ public class GLogic {
                             break;
                     }
                 }
+
+                updated[i][j] = true;
             }
         }
+
+        cleanUpAfterUpdate(updated);
+    }
+
+    private void cleanUpAfterUpdate(boolean[][] updated) {
     }
 }
