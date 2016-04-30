@@ -53,4 +53,3 @@ public class GSideMenu {
         UI.drawString(toReadableTime(), LEFT + 8, 575);
     }
 }
-*/

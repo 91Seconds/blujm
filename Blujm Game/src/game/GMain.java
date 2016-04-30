@@ -20,7 +20,7 @@ public class GMain {
     // TODO we will have to move the code in the main method into a new class
     // if we are to have a main menu screen (do we need one?)
 
-    public static void main(String[] args) {
+    public static void main() {
         UI.initialise();
         UI.setWindowSize(WINDOW_WIDTH, WINDOW_HEIGHT);
         UI.setDivider(DIVIDER_POSITION);
