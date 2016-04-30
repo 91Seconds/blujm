@@ -1,6 +1,7 @@
 package manual_test;
 
 import ecs100.UI;
+import game.GCell;
 import game.GGraphics;
 import game.GWorld;
 
@@ -20,7 +21,7 @@ public class GGraphicsManualTest {
     public void testBG() {
         UI.initialise();
 
-        GWorld w = new GWorld(22, 18, GWorld.KEY_I_AM_TESTING_ONLY);
+        GWorld w = new GWorld(7, 11, GWorld.KEY_I_AM_TESTING_ONLY);
         GGraphics.drawWorld(w);
     }
 
@@ -32,7 +33,9 @@ public class GGraphicsManualTest {
 
         GWorld w = new GWorld(22, 18, GWorld.KEY_I_AM_TESTING_ONLY);
 
-        
+        {
+//            GCell gCell = new GCell();
+        }
 
         GGraphics.drawWorld(w);
     }
