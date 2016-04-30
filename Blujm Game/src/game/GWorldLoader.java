@@ -54,7 +54,7 @@ public class GWorldLoader {
        return gWorld;
     }
 
-    public static GWorld saveWorld(GWorld world, int worldNumber) {
+    public static void saveWorld(GWorld world, int worldNumber) {
         ObjectOutputStream oos = null;
         try {
             oos = new ObjectOutputStream(new FileOutputStream(WORLD_FILE_PREFIX + worldNumber + WORLD_FILE_SUFFIX));
@@ -65,5 +65,6 @@ public class GWorldLoader {
         } catch (Exception e) {
             UI.println("Exception caught: " + e);
         }
+        
     }
 }
