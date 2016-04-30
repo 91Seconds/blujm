@@ -3,13 +3,13 @@ package ecs100;
 // Change to JTextField.
 // Needs to then change the TextListener to an ActionListener
 
-import javax.swing.JTextField;
-import java.awt.event.ActionListener;
+import javax.swing.*;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
-import javax.swing.event.DocumentListener;
-import javax.swing.event.DocumentEvent;
 
 class Ecs100TextField extends JTextField {
     private UITextFieldListener controller;

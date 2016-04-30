@@ -1,10 +1,6 @@
 package ecs100;
 
-import javax.swing.JFrame;
-import javax.swing.JMenuBar;
-import javax.swing.JTextArea;
-import javax.swing.JOptionPane;
-import javax.swing.JScrollPane;
+import javax.swing.*;
 
   /** The Trace class provides a simple debugging facility by which a program can print
     * out information into a trace window without affecting the operation of the program.<P>

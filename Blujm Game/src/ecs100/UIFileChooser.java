@@ -1,9 +1,7 @@
 package ecs100;
 
+import javax.swing.*;
 import java.lang.reflect.InvocationTargetException;
-
-import javax.swing.JFileChooser;
-import javax.swing.SwingUtilities;
 
 /** Provides static methods to get a file name using the standard
  * swing file dialog box.

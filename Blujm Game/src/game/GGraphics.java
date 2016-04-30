@@ -6,7 +6,8 @@ package game;
  * Deals with all of the game's drawing functionality.
  * Static-only class
  */
-import ecs100.*;
+
+import ecs100.UI;
 
 public final class GGraphics {
 

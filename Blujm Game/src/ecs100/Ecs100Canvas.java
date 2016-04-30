@@ -1,23 +1,10 @@
 package ecs100;
 
-import java.awt.Image;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.Dimension;
-import java.awt.Rectangle;
-import java.awt.Shape;
-import java.awt.Color;
-import java.awt.FontMetrics;
-import java.awt.BasicStroke;
-import java.awt.MediaTracker;
-import java.awt.Toolkit;
-import java.io.File;
-import java.awt.Canvas;  
-import java.awt.Component;  
-import javax.swing.JComponent;
-import javax.swing.JPanel;
+import javax.swing.*;
+import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.File;
 
 //extending lightweight components doesn't work on Windows
 //extending heavyweight components such as Canvas has a problem

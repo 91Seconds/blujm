@@ -1,8 +1,8 @@
 package ecs100;
 
 import java.awt.event.MouseAdapter;
-import java.awt.event.MouseMotionListener;
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseMotionListener;
 
 class Ecs100MouseListener extends MouseAdapter implements MouseMotionListener{
     private UIMouseListener controller;

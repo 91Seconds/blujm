@@ -1,7 +1,5 @@
 package game;
 
-import java.awt.*;
-
 /**
  * Created by Dylan on 29/04/16.
  */

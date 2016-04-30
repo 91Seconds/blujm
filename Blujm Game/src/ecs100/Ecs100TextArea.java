@@ -1,12 +1,12 @@
 package ecs100;
 
-import javax.swing.JTextArea;
+import javax.swing.*;
+import javax.swing.text.AttributeSet;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.PlainDocument;
-import javax.swing.text.AttributeSet;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 import java.util.regex.Pattern;
-import java.util.InputMismatchException;
 
 class Ecs100TextArea extends JTextArea {
 

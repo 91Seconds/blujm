@@ -1,12 +1,11 @@
 package game;
 
-import ecs100.*;
-import ecs100.*;
+import ecs100.UI;
+import ecs100.UIFileChooser;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
-import java.util.StringJoiner;
 
 /**
  * Created by surface on 30/04/2016.
