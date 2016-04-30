@@ -37,23 +37,18 @@ public class GLogic {
                 neighbourSquare = world.getNeighbour(i, j, drow, dcol);
 
 
-                // need to reduce cyclomatic complexity
-                if(currentSquare != null && currentSquare.getType().equals("user")) {
-                    if(neighbourSquare != null) {
-                        switch(neighbourSquare.getType()) {
-                            case "user":
-                                // defer action
-                                break;
-                            case "wall":
-                                // stay still
-                                break;
-
-                        }
-                    } else {
+                switch(getMoveDecision(currentSquare, neighbourSquare)) {
+                    case "defer":
+                        continue;
+                    case "move":
                         world.move(i, j, drow, dcol);
-                    }
-                } else {
-                    continue;
+                        break;
+                    case "stay":
+                        break;
+                    case "nothing":
+                        break;
+                    default:
+                        break;
                 }
                 updated[i][j] = true;
             }
@@ -87,6 +82,25 @@ public class GLogic {
             dcol = -1;
         }
 
+    }
+
+    private String getMoveDecision(GSquare thisSquare, GSquare nextSquare) {
+        if(thisSquare != null && thisSquare.getType().equals("user")) {
+            if(nextSquare != null) {
+                switch(nextSquare.getType()) {
+                    case "user":
+                        return "defer";
+                    case "wall":
+                        return "stay";
+                }
+            } else {
+                return "move";
+            }
+        } else {
+            return "nothing";
+        }
+
+        return "nothing";
     }
 
     private void cleanUpAfterUpdate(boolean[][] updated) {
