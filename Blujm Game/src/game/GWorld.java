@@ -91,26 +91,11 @@ public class GWorld implements Serializable {
     }
 
     public GCell getCell(int row, int col) {
-        try {
-            if (cells == null)
-                throw new Exception("The cells 2d array is not defined");
-            return cells[row][col];
-        } catch (Exception e) {
-            String msg = "Cannot get GCell for row: " + row +
-                    ", col: + " + col + ": " + e.getMessage();
-            throw new Error(msg);
-        }
+        return cells[row][col];
     }
 
     public void setCell(GCell gCell, int row, int col) {
-        try {
-            if (cells == null) throw new Exception("The cells 2d array is not defined");
-            cells[row][col] = gCell;
-        } catch (Exception e) {
-            String msg = "Cannot set CGell for row: " + row +
-                    ", col: + " + col + ": " + e.getMessage();
-            throw new Error(msg);
-        }
+        cells[row][col] = gCell;
     }
 
     /*public GCell[][] setCells(GCell[][] newCells){
