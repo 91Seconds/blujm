@@ -19,6 +19,11 @@ public class GWorldLoader {
     private static final String UNIX_WORLD_FILE_PREFIX = GFileChecker.RESOURCES_ROOT + File.separator + "worlds" + File.separator + "unix" + File.separator + "world-";
     private static final String WORLD_FILE_SUFFIX = ".world";
     private static final int GAMESIZE = 25;
+    public static String getWorldFilePrefix() {
+        if (File.separator.equals("\\")) return WINDOWS_WORLD_FILE_PREFIX;
+        return UNIX_WORLD_FILE_PREFIX;
+    }
+
     /**
      * Private constructor makes this a static-only class
      */
@@ -28,15 +33,12 @@ public class GWorldLoader {
      * Reads a world from a file
      * @return A new GWorld object. Returns null if there is an error
      */
-   public static GWorld loadWorld(int world){
+    public static GWorld loadWorld(int world){
 
         GWorld gWorld = null;
         ObjectInputStream ois = null;
         try {
-            if (File.separator.equals("\\"))
-                ois = new ObjectInputStream(new FileInputStream(WINDOWS_WORLD_FILE_PREFIX + world + WORLD_FILE_SUFFIX));
-            else
-                ois = new ObjectInputStream(new FileInputStream(UNIX_WORLD_FILE_PREFIX + world + WORLD_FILE_SUFFIX));
+            ois = new ObjectInputStream(new FileInputStream(getWorldFilePrefix() + world + WORLD_FILE_SUFFIX));
             gWorld = (GWorld)(ois.readObject());
             ois.close();
 
@@ -48,16 +50,13 @@ public class GWorldLoader {
             return null;
         }
 
-       return gWorld;
+        return gWorld;
     }
 
     public static void saveWorld(GWorld world, int worldNumber) {
         ObjectOutputStream oos = null;
         try {
-            if (File.separator.equals("\\"))
-                oos = new ObjectOutputStream(new FileOutputStream(WINDOWS_WORLD_FILE_PREFIX + worldNumber + WORLD_FILE_SUFFIX));
-            else
-                oos = new ObjectOutputStream(new FileOutputStream(UNIX_WORLD_FILE_PREFIX + worldNumber + WORLD_FILE_SUFFIX));
+            oos = new ObjectOutputStream(new FileOutputStream(getWorldFilePrefix() + worldNumber + WORLD_FILE_SUFFIX));
             oos.writeObject((Object) world);
             oos.close();
 
