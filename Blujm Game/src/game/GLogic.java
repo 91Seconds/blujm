@@ -34,7 +34,7 @@ public class GLogic {
         for(int i = 0; i < height; i++) {
             for(int j = 0; j < width; j++) {
                 currentSquare = world.getCell(i, j);
-                neighbourSquare = world.getNeighbour(i, j, drow, dcol);
+                neighbourSquare = world.getCell(i + drow, j + dcol);
 
 
                 switch(getMoveDecision(currentSquare, neighbourSquare)) {

@@ -8,30 +8,28 @@ import java.io.Serializable;
  *
  * Contains all of the level's contents
  */
-public class GWorld implements Serializable{
+public class GWorld implements Serializable {
 
     private boolean moveUp = false;
     private boolean moveDown = false;
     private boolean moveLeft = false;
     private boolean moveRight = false;
 
-
-    // Drawing
     /**
      * The image that is repeated to make the background
-     * It may not need to be final, but is for now
      */
     private final String BACKGROUND_IMAGE_PATH = GFileChecker.RESOURCES_ROOT + File.separator
             + "images" + File.separator + "background-5x5.png";
 
     /**
      * The number of units (in width, and in height) that
-     * the back image should fill up
+     * the back image should fill up - e.g. when set to 5,
+     * the GGraphics class will assume the BACKGROUND_IMAGE_PATH
+     * is of an image that is a 5x5 grid
      */
     private final int BACK_IMAGE_SIZE = 5;
 
     private final GCell[][] cells;
-
 
     public GWorld(GCell[][] cellArray) {
         cells = cellArray;
@@ -60,27 +58,6 @@ public class GWorld implements Serializable{
      */
     public static final String KEY_I_AM_TESTING_ONLY = "KEY_I_AM_TESTING_ONLY";
 
-    /**
-     * Responds with the neighbour in a given direction to the given row/col
-     * Directions are drow (right is +1, left is -1), dcol (down is +1, up is -1)
-     * RETURN FOR OVERFLOW ARRAY MUST BE UNAMBIGUOUS!!!!!!!!!!!!!!!!!!!
-     */
-    public GCell getNeighbour(int row, int col, int drow, int dcol) {
-        if (row + drow > cells.length) {
-            return null;
-        } else if(row + drow < 0) {
-            return null;
-        }
-
-        if (col + dcol > cells[0].length) {
-            return null;
-        } else if(col + dcol < 0) {
-            return null;
-        }
-
-        return cells[row+drow][col+dcol];
-    }
-
     public void move(int row, int col, int drow, int dcol) {
         cells[row+drow][col+dcol] = cells[row][col];
         cells[row][col] = null;
@@ -97,7 +74,6 @@ public class GWorld implements Serializable{
             }
         }
     }
-
 
     public void setMoveUp() { moveUp = true; }
     public void setMoveDown() { moveDown = true; }
@@ -132,7 +108,8 @@ public class GWorld implements Serializable{
 
     public GCell getCell(int row, int col) {
         try {
-            if (cells == null) throw new Exception("The cells 2d array is not defined");
+            if (cells == null)
+                throw new Exception("The cells 2d array is not defined");
             return cells[row][col];
         } catch (Exception e) {
             String msg = "Cannot get GCell for row: " + row +
