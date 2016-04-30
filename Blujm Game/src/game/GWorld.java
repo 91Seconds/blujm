@@ -27,6 +27,8 @@ public class GWorld implements Serializable {
 
     private final GGoal goal;
 
+    private boolean[][] cantMove = new boolean[25][25];
+
     public GWorld(GCell[][] cellArray, GGoal goalObj) {
         cells = cellArray;
         goal = goalObj;
@@ -71,8 +73,11 @@ public class GWorld implements Serializable {
     }
 
     public void move(int row, int col, int drow, int dcol) {
-        cells[row+drow][col+dcol] = cells[row][col];
-        cells[row][col] = null;
+        if(cantMove[row][col] == false) {
+            cells[row + drow][col + dcol] = cells[row][col];
+            cells[row][col] = new GCell(GSquare.EMPTY_PATH, GSquare.EMPTY_TYPE);
+            cantMove[row+drow][col+dcol] = true;
+        }
     }
 
     public void grow(int row, int col) {
