@@ -24,17 +24,17 @@ import java.util.Scanner;
  * modifiers are done in prefixes. //note, currently no support for modifiers
  *
  */
-public class GLevelMaker {
+public class GWorldMaker {
     public static GWorld world;
 
     public static void main(String[] args){
         UI.initialise();
-        UI.addButton("Load World from txt", GLevelMaker::parse);
-        UI.addButton("Just Fucking give me a file that works",GLevelMaker::justFuckingDoIt);
+        UI.addButton("Load World from txt", GWorldMaker::parse);
+        UI.addButton("Just Fucking give me a file that works", GWorldMaker::justFuckingDoIt);
     }
 
     private static void justFuckingDoIt()   {
-        File level = new File(GFileChecker.RESOURCES_ROOT + File.separator + "level-prototype.txt");
+        File level = new File(GFileChecker.RESOURCES_ROOT + File.separator + "world-prototype.txt");
 
         GCell[][] cellArray = new GCell[25][25];
         try {
