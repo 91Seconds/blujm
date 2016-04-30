@@ -22,7 +22,7 @@ public class MainManualTest {
 //        testPath(); // Completed
 //        (new GGraphicsManualTest()).testBG(); // Completed
 //        (new GGraphicsManualTest()).testCellsAndBG(); // Completed
-//        (new GGraphicsManualTest()).testGoalAndBG(); // Completed
+//       (new GGraphicsManualTest()).testGoalAndBG(); // Completed
 
     }
 
