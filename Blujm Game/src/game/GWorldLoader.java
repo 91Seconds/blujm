@@ -15,10 +15,9 @@ public class GWorldLoader {
     /**
      * Fit an integer between the prefix and suffix to get the file name
      */
-    private static final String WORLD_FILE_PREFIX = "resources/worlds/world-";
+    private static final String WORLD_FILE_PREFIX = GFileChecker.RESOURCES_ROOT + File.separator + "worlds" + File.separator + "world-";
     private static final String WORLD_FILE_SUFFIX = ".world";
     private static final int GAMESIZE = 25;
-
     /**
      * Private constructor makes this a static-only class
      */
