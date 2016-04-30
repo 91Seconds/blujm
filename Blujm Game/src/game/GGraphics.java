@@ -86,7 +86,6 @@ public final class GGraphics {
     }
 
     private static void drawCells(GWorld world) {
-        // TODO DYLAN NEXT test this
         for (int col = 0; col < world.getWidth(); col++) {
             for (int row = 0; row < world.getHeight(); row++) {
                 GCell gCell = world.getCell(row, col);
