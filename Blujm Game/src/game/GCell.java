@@ -1,9 +1,11 @@
 package game;
 
+import java.io.Serializable;
+
 /**
  * Created by Dylan on 29/04/16.
  */
-public class GCell extends GSquare {
+public class GCell extends GSquare implements Serializable{
 
 
 

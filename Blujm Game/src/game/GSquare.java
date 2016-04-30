@@ -1,9 +1,11 @@
 package game;
 
+import java.io.Serializable;
+
 /**
  * Created by Daniel Young on 4/29/2016.
  */
-public abstract class GSquare {
+public abstract class GSquare implements Serializable{
 
     private String imagePath;
     private String type;
