@@ -13,11 +13,6 @@ import java.io.File;
  */
 public class GGraphicsManualTest {
 
-    public static void main(String[] args){
-        GGraphicsManualTest gTest = new GGraphicsManualTest();
-        gTest.testBG();
-    }
-
     /**
      * Tested and completed
      */
