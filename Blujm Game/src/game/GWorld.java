@@ -112,7 +112,7 @@ public class GWorld implements Serializable {
         if(row >= 25 || col >= 25) {
             return new GCell(GSquare.WALL_PATH, GSquare.WALL_TYPE);
         }
-        
+
         return cells[row][col];
     }
 

@@ -23,6 +23,8 @@ public final class GGraphics {
 
     public static final String GOAL_IMAGE_PATH = GFileChecker.RESOURCES_ROOT + File.separator
             + "images" + File.separator + "goal-square.png";
+    public static final String MENU_PATH = GFileChecker.RESOURCES_ROOT + File.separator
+            + "images" + File.separator + "Menu.png";
 
     /**
      * Prevents any instances of the class
@@ -33,7 +35,7 @@ public final class GGraphics {
     //draws the menu for the game
     public static void drawMenu(){
         UI.clearGraphics();
-        UI.drawImage(Menu,0,0);
+        UI.drawImage(MENU_PATH,0,0);
         //drawing menu
 
        // drawMenu()
