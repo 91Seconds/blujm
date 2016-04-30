@@ -19,6 +19,7 @@ public final class GGraphics {
     public static final int WORLD_WIDTH = 625;
     public static final int WORLD_HEIGHT = 625;
 
+    private static GSideMenu sideMenu = new GSideMenu(0,System.currentTimeMillis());
     /**
      * Prevents any instances of the class
      */
@@ -30,7 +31,7 @@ public final class GGraphics {
         UI.clearGraphics();
         //UI.drawImage(Menu,0,0);
         //drawing menu
-        drawMenu()
+        drawMenu();
     }
     //ToDo make this method great again
 
@@ -113,6 +114,10 @@ public final class GGraphics {
                         UNIT_SIZE, UNIT_SIZE);
             }
         }
+    }
+
+    private static void drawSideMenu(){
+        sideMenu.draw();
     }
 
     // TODO: 30/04/16 DYLAN draw the goal 
