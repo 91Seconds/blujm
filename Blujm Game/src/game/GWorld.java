@@ -30,6 +30,7 @@ public class GWorld implements Serializable {
     public GWorld(GCell[][] cellArray, GGoal goalObj) {
         cells = cellArray;
         goal = goalObj;
+        validateSelf();
     }
 
     public GWorld() {
@@ -37,6 +38,7 @@ public class GWorld implements Serializable {
         int height = GGraphics.WORLD_HEIGHT/GGraphics.UNIT_SIZE;
         cells = new GCell[height][width];
         goal = new GGoal(width, height);
+        validateSelf();
     }
 
     /**
@@ -51,11 +53,22 @@ public class GWorld implements Serializable {
         }
         cells = new GCell[height][width];
         goal = new GGoal(width, height);
+        validateSelf();
     }
     /**
      * Pass this string into the testing constructor to use it.
      */
     public static final String KEY_I_AM_TESTING_ONLY = "KEY_I_AM_TESTING_ONLY";
+
+    /**
+     * Currently, just crashes the program if the goal and cells are different sizes
+     */
+    private void validateSelf() {
+        if (cells[0].length != goal.getWidth())
+            throw new Error("cells and goal must be the same width");
+        if (cells.length != goal.getHeight())
+            throw new Error("cells and goal must be the same height");
+    }
 
     public void move(int row, int col, int drow, int dcol) {
         cells[row+drow][col+dcol] = cells[row][col];
@@ -107,5 +120,5 @@ public class GWorld implements Serializable {
         return goal;
     }
 
-    // TODO: 30/04/16 DYLAN clean up this file 
+    // TODO: 30/04/16 DYLAN clean up this file
 }

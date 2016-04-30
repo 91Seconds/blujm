@@ -65,7 +65,7 @@ public class GLevelMaker {
         }
 
 
-        GWorld GW = new GWorld(cellArray);
+        GWorld GW = new GWorld(cellArray, null); // THIS IS ONLY FOR GETTING THE COMPILER TO BE HAPPY. TODO REMOVE!
 
         GWorldLoader.saveWorld(GW,1);
     }

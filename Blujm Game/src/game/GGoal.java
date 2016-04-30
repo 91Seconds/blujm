@@ -23,6 +23,7 @@ public class GGoal implements Serializable {
         return goals.length;
     }
 
+    public boolean getValue(int row, int col) { return goals[row][col]; }
     public void setValue(boolean isPartOfGoal, int row, int col) {
         goals[row][col] = isPartOfGoal;
     }
