@@ -49,6 +49,9 @@ public class GLevelMaker {
                     if(line[j].equals("1")) {
                         cellArray[i][j] = new GCell(GSquare.userPath,GSquare.userType);
                     }
+                    if(line[j].equals("0")) {
+                        cellArray[i][j] = null;
+                    }
                 }
             }
 
