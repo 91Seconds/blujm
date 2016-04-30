@@ -24,6 +24,7 @@ public class GWorld implements Serializable {
     private final int BACK_IMAGE_SIZE = 5;
 
     private final GCell[][] cells;
+
     private final GGoal goal;
 
     public GWorld(GCell[][] cellArray, GGoal goalObj) {
@@ -102,7 +103,9 @@ public class GWorld implements Serializable {
         cells[row][col] = gCell;
     }
 
-    /*public GCell[][] setCells(GCell[][] newCells){
-        cells = newCells;
-    }*/
+    public GGoal getGoal() {
+        return goal;
+    }
+
+    // TODO: 30/04/16 DYLAN clean up this file 
 }

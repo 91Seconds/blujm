@@ -36,6 +36,7 @@ public final class GGraphics {
 //        UI.clearGraphics();
         drawWorldBackground(world);
         drawCells(world);
+        drawGoal(world.getGoal());
     }
 
     /**
@@ -113,5 +114,7 @@ public final class GGraphics {
         }
     }
 
-    // TODO: 30/04/16 DYLAN draw the goal 
+    private static void drawGoal(GGoal goal) {
+        // TODO: 30/04/16 DYLAN draw the goal
+    }
 }
