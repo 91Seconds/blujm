@@ -28,6 +28,7 @@ public class GInput {
             }
         }
     }
+    // TODO need to put in the calls for the above methods
 
     public GInput(GLogic logic) {
         UI.setKeyListener(this::keyboardInput);
