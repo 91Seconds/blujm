@@ -154,5 +154,5 @@ public class GLogic {
         
     }
 
-    // TODO: 30/04/16 DYLAN check the ggoal object if the user won
+    // TODO NEXT: 30/04/16 DYLAN check the ggoal object if the user won
 }

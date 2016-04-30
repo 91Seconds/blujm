@@ -10,6 +10,7 @@ package game;
 import ecs100.UI;
 
 import java.awt.*;
+import java.io.File;
 
 public final class GGraphics {
 
@@ -18,6 +19,11 @@ public final class GGraphics {
     public static final int WORLD_TOP = WORLD_LEFT;
     public static final int WORLD_WIDTH = 625;
     public static final int WORLD_HEIGHT = 625;
+
+
+    private static GSideMenu sideMenu = new GSideMenu(0,System.currentTimeMillis());
+    public static final String GOAL_IMAGE_PATH = GFileChecker.RESOURCES_ROOT + File.separator
+            + "images" + File.separator + "goal-square.png";
 
     /**
      * Prevents any instances of the class
@@ -31,12 +37,18 @@ public final class GGraphics {
         //UI.drawImage(Menu,0,0);
         //drawing menu
         drawMenu();
+       // drawMenu()
     }
     //ToDo make this method great again
 
+    /**
+     * Calls all the other draw methods, in the right order
+     * @param world
+     */
     public static void drawWorld(GWorld world) {
 //        UI.clearGraphics();
         drawWorldBackground(world);
+        drawGoal(world.getGoal());
         drawCells(world);
     }
 
@@ -97,6 +109,18 @@ public final class GGraphics {
         }
     }
 
+    private static void drawGoal(GGoal goal) {
+        for (int col = 0; col < goal.getWidth(); col++) {
+            for (int row = 0; row < goal.getHeight(); row++) {
+                if (goal.getValue(row, col)) {
+                    UI.drawImage(GOAL_IMAGE_PATH, WORLD_LEFT + col*UNIT_SIZE, WORLD_TOP
+                            + row*UNIT_SIZE, UNIT_SIZE, UNIT_SIZE);
+                }
+            }
+        }
+    }
+
+
     private static void drawCells(GWorld world) {
         for (int col = 0; col < world.getWidth(); col++) {
             for (int row = 0; row < world.getHeight(); row++) {
@@ -115,5 +139,9 @@ public final class GGraphics {
         }
     }
 
-    // TODO: 30/04/16 DYLAN draw the goal 
+    private static void drawSideMenu(){
+        sideMenu.draw();
+    }
+
+    // TODO: 30/04/16 DYLAN draw the goal
 }
