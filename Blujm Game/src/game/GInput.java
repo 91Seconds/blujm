@@ -14,6 +14,21 @@ public class GInput {
 
     GWorld world;
 
+    public void doMouse(String action, double x, double y){
+        if(action.equals("released")){
+            if(x > 63 && x < 764 && y > 268 && y <570){
+                if(x > 63 && x <356 && y > 268 && y < 377){
+                    //new game
+
+                }else if(x > 475 && x < 764 && y > 268 && y <377){
+                    //load
+                }else if(x > 63 && x < 356 && y > 445 && y < 570) {
+                    //quit
+                };//what happens when user clicks on invalid area
+            }
+        }
+    }
+
     public GInput(GWorld world) {
         UI.setKeyListener(this::keyboardInput);
         this.world = world;
