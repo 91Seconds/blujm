@@ -1,9 +1,9 @@
 package ecs100;
 
-import javax.swing.JSlider;
-import javax.swing.event.ChangeListener;
+import javax.swing.*;
 import javax.swing.event.ChangeEvent;
-import java.awt.Dimension;
+import javax.swing.event.ChangeListener;
+import java.awt.*;
 
 class Ecs100Slider extends JSlider {
     private UISliderListener controller;

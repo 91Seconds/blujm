@@ -1,11 +1,8 @@
 package ecs100;
 
-import javax.swing.JButton;
-import javax.swing.JOptionPane;
-
-import java.awt.event.ActionListener;
+import javax.swing.*;
 import java.awt.event.ActionEvent;
-import java.awt.Color;
+import java.awt.event.ActionListener;
 
 class Ecs100Button extends JButton implements ActionListener {
   private UIButtonListener controller;

@@ -1,0 +1,40 @@
+To Do
+
+1. Create a menu screen
+    - Title
+    - Play
+    - Instructions?(or just tutorials through level design)
+    - Credits
+    - Easier to create all elements through the UI, or just draw an image and detect location of mouse clicks?
+
+2. Need to determine all types of powerups and functionality/behavior
+    - Determine naming for images and the types
+
+3. Need to create images for the powerups and the cells
+
+4. Drawing a board from the 2D squares array
+
+5. Implement movement of live cells
+
+6. Create algorithm to determine if the live cells have fit into the goal cells
+
+7. Make world a serializable class
+
+Cells
+    - Live Cells
+    - Dead Cells
+    - Goal Cells
+    - Walls
+    -
+
+Powerups
+    - Scale up
+        - Changes the amount of live cells
+        - Surrounds the collision cell with more live cells if possible
+    - Monster
+        - Moves across screen and eats all live cells
+        - Makes them dead cells
+    -
+
+To Win
+    - Filling up all the goal cells with a live cell
