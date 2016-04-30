@@ -52,8 +52,10 @@ public class GWorldSelect {
         if(action.equals("released")){
             int world = worldSelect(x,y);
             if(world != -1){
-                GWorldLoader.loadWorld(world);
-                GMain.main(new String[9]);
+                File worldFile = new File(GWorldLoader.getWorldFolderPath(true) + world + ".world");
+                UI.println(worldFile.getPath());
+                GWorld loadedWorld = GWorldMaker.loadWorldFromPrototype(worldFile);
+                GWorldLoader.saveWorld(loadedWorld, world);
             }
         }
     }

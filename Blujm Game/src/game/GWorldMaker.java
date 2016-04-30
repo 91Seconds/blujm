@@ -45,7 +45,7 @@ public class GWorldMaker {
         GWorldLoader.saveWorld(world, 1);
     }
 
-    private static GWorld loadWorldFromPrototype(File world) {
+    public static GWorld loadWorldFromPrototype(File world) {
         GCell[][] cellArray = new GCell[GGraphics.WORLD_HEIGHT_IN_UNITS][GGraphics.WORLD_WIDTH_IN_UNITS];
         try {
             Scanner sc = new Scanner(world);
