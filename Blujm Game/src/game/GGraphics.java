@@ -26,11 +26,13 @@ public final class GGraphics {
 
 
     //draws the menu for the game
-    public static void drawmenu(){
+    public static void drawMenu(){
         UI.clearGraphics();
         //UI.drawImage(Menu,0,0);
         //drawing menu
+        drawMenu()
     }
+    //ToDo make this method great again
 
     public static void drawWorld(GWorld world) {
 //        UI.clearGraphics();
@@ -112,4 +114,6 @@ public final class GGraphics {
             }
         }
     }
+
+    // TODO: 30/04/16 DYLAN draw the goal 
 }

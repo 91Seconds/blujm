@@ -1,9 +1,13 @@
 package game;
 
+import java.io.Serializable;
+
 /**
  * Created by Dylan on 30/04/16.
+ *
+ * Stores the data for the
  */
-public class GGoal {
+public class GGoal implements Serializable {
 
     boolean[][] goals;
 
@@ -42,8 +46,6 @@ public class GGoal {
         goals[rowStart][colStart] = isPartOfGoal;
 
     }
-
-    // TODO: 30/04/16 set rect for position
 
     public String toString() {
         StringBuilder sb = new StringBuilder();

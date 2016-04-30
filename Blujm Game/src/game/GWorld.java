@@ -24,15 +24,18 @@ public class GWorld implements Serializable {
     private final int BACK_IMAGE_SIZE = 5;
 
     private final GCell[][] cells;
+    private final GGoal goal;
 
-    public GWorld(GCell[][] cellArray) {
+    public GWorld(GCell[][] cellArray, GGoal goalObj) {
         cells = cellArray;
+        goal = goalObj;
     }
 
     public GWorld() {
-        cells = new GCell[GGraphics.WORLD_HEIGHT/GGraphics.UNIT_SIZE][GGraphics.WORLD_WIDTH/GGraphics.UNIT_SIZE];
-
-        // TODO someone complete this
+        int width = GGraphics.WORLD_WIDTH/GGraphics.UNIT_SIZE;
+        int height = GGraphics.WORLD_HEIGHT/GGraphics.UNIT_SIZE;
+        cells = new GCell[height][width];
+        goal = new GGoal(width, height);
     }
 
     /**
@@ -46,6 +49,7 @@ public class GWorld implements Serializable {
             throw e;
         }
         cells = new GCell[height][width];
+        goal = new GGoal(width, height);
     }
     /**
      * Pass this string into the testing constructor to use it.

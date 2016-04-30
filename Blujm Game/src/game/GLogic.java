@@ -132,5 +132,8 @@ public class GLogic {
     }
 
     private void cleanUpAfterUpdate(boolean[][] updated) {
+        
     }
+
+    // TODO: 30/04/16 DYLAN check the ggoal object if the user won
 }
