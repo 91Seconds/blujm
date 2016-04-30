@@ -15,10 +15,10 @@ public class GLevelMaker {
 
     public static void main(String[] args){
         UI.initialise();
-        UI.addButton("Load World from txt",GLevelMaker::initparse);
+        UI.addButton("Load World from txt",GLevelMaker::parse);
     }
 
-    private static void initparse() {
+    private static void parse() {
         String path = UIFileChooser.open("open a level in plaintext");
         File level = new File(path);
 
@@ -30,7 +30,7 @@ public class GLevelMaker {
                 for(int j=0;j<25;j++)   {
                     System.out.println(line[j]);
                     if(line[j].equals("x")) {
-                   //     GCell ngc = new GCell("")
+                        cellArray[i][j] = new GCell("filename","Wall");
                     }
                 }
             }
@@ -39,6 +39,9 @@ public class GLevelMaker {
             e.printStackTrace();
         }
 
+
         GWorld GW = new GWorld(cellArray);
+
+        GWorldLoader.saveWorld(GW,0);
     }
 }
