@@ -21,29 +21,36 @@ public class GLogic {
         int height = world.getHeight();
         boolean[][] updated = new boolean[height][width];
 
+        boolean movingDown = world.isMoveDown();
+        boolean movingUp = world.isMoveUp();
+        boolean movingLeft = world.isMoveLeft();
+        boolean movingRight = world.isMoveRight();
+
+        int drow;
+        int dcol;
+
+        if(movingDown) {
+            drow = 1;
+        } else if(movingUp) {
+            drow = -1;
+        }
+
+        if(movingRight) {
+            dcol = 1;
+        } else if(movingLeft) {
+            dcol = -1;
+        }
+
         GSquare currentSquare;
 
         for(int i = 0; i < height; i++) {
             for(int j = 0; j < width; j++) {
                 currentSquare = world.getCell(i, j);
-                if(currentSquare instanceof GCell) {
-                    switch(currentSquare.getType()) {
-                        case "user":
-                            // defer
-                            break;
-                        case "wall":
-                            // don't move
-                            break;
-                    }
-                } else if(currentSquare instanceof GPowerup) {
-                    switch(currentSquare.getType()) {
-                        case "expand":
-                            // todo
-                            break;
-                        case "contract":
-                            // todo
-                            break;
-                    }
+
+                if(world.getNeighbour(i, j, drow, dcol) != null) {
+                    // determine action
+                } else {
+                    world.move(i, j, drow, dcol);
                 }
 
                 updated[i][j] = true;

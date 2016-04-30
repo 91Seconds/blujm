@@ -58,6 +58,12 @@ public class GWorld implements Serializable{
         return cells[row+drow][col+dcol];
     }
 
+    public void move(int row, int col, int drow, int dcol) {
+        cells[row+drow][col+dcol] = cells[row][col];
+        cells[row][col] = null;
+    }
+
+
     public GCell getCell(int row, int column) {
         return cells[row][column];
     }
