@@ -49,9 +49,17 @@ public class GLogic {
                 currentSquare = world.getCell(i, j);
                 neighbourSquare = world.getNeighbour(i, j, drow, dcol);
 
-                if(currentSquare != null) {
+                if(currentSquare != null && currentSquare.getType().equals("user")) {
                     if(neighbourSquare != null) {
-
+                        switch(neighbourSquare.getType()) {
+                            case "user":
+                                // defer action
+                                break;
+                            case "wall":
+                                // stay still
+                                break;
+                            
+                        }
                     } else {
                         world.move(i, j, drow, dcol);
                     }
