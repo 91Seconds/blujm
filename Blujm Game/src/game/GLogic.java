@@ -49,12 +49,15 @@ public class GLogic {
                 currentSquare = world.getCell(i, j);
                 neighbourSquare = world.getNeighbour(i, j, drow, dcol);
 
-                if(neighbourSquare != null) {
+                if(currentSquare != null) {
+                    if(neighbourSquare != null) {
 
+                    } else {
+                        world.move(i, j, drow, dcol);
+                    }
                 } else {
-                    world.move(i, j, drow, dcol);
+                    continue;
                 }
-
                 updated[i][j] = true;
             }
         }
