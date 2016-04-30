@@ -66,6 +66,7 @@ public class GLevelMaker {
 
         GGoal levelGoal = new GGoal(25,25);
         levelGoal.setValuesInRect(true,1,8,4,11);
+        
 
         GWorld GW = new GWorld(cellArray,levelGoal);
 
