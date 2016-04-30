@@ -33,6 +33,7 @@ public class GMain {
             gInput.update();
             gLogic.update();
             GGraphics.drawWorld(world);
+            UI.sleep(100);
         }
 
     }
