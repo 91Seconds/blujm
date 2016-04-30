@@ -31,6 +31,7 @@ public class GSideMenu {
         //g.toReadableTime();
     }
 
+    //Need to implement level incrementing in other classes before this one
     public GSideMenu(int level, long timeMillis){
         startTimeMillis = currentTimeMillis();
         this.level = level;
