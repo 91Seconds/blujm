@@ -1,13 +1,17 @@
-/*package game;
+package game;
 
 import ecs100.UI;
 
 import java.awt.*;
 import java.io.File;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+import static java.lang.System.currentTimeMillis;
 
 /**
  * Created by Daniel Young on 4/30/2016.
- */ /*
+ */
 public class GSideMenu {
 
     public static final int SIDE_MENU_WIDTH = 90;
@@ -19,22 +23,32 @@ public class GSideMenu {
             + "images" + File.separator + "side-menu-1.png";
 
     private long startTimeMillis;
+    private int level;
 
     public static void main(String[]args){
-        //GSideMenu g = new GSideMenu();
-        //g.draw();
-
+        GSideMenu g = new GSideMenu(0,System.currentTimeMillis());
+        g.draw();
+        //g.toReadableTime();
     }
 
     public GSideMenu(int level, long timeMillis){
-        startTimeMillis = System.currentTimeMillis();
+        startTimeMillis = currentTimeMillis();
+        this.level = level;
+    }
+
+    public String toReadableTime(){
+        long millisDifference = System.currentTimeMillis() - startTimeMillis;
+        SimpleDateFormat sdf = new SimpleDateFormat("mm:ss");
+        Date resultDate = new Date(millisDifference);
+        UI.println(sdf.format(resultDate));
+        return sdf.format(resultDate);
     }
 
     public void draw(){
         UI.drawImage(fName, LEFT, TOP, SIDE_MENU_WIDTH, SIDE_MENU_HEIGHT);
         UI.setFontSize(28);
         UI.setColor(Color.WHITE);
-        UI.drawString("0", LEFT + 37, 350);
+        UI.drawString(Integer.toString(level), LEFT + 37, 350);
+        UI.drawString(toReadableTime(), LEFT + 8, 575);
     }
 }
-*/

@@ -24,6 +24,8 @@ public final class GGraphics {
      */
     private GGraphics() {}
 
+
+    //draws the menu for the game
     public static void drawmenu(){
         UI.clearGraphics();
         //UI.drawImage(Menu,0,0);
