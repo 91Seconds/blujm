@@ -64,4 +64,20 @@ public class GGoal implements Serializable {
         return sb.toString();
     }
 
+    /**
+     * See GLogic.getUserState()
+     * @param userState
+     * @return
+     */
+    public boolean matchesUserState(boolean[][] userState) {
+        for (int col = 0; col < userState[0].length; col++) {
+            for (int row = 0; row < userState.length; row++) {
+                if (userState[row][col] != getValue(row, col)) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
 }
