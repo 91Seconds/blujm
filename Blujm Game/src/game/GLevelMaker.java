@@ -23,7 +23,7 @@ import java.util.Scanner;
  *
  * modifiers are done in prefixes. //note, currently no support for modifiers
  *
- * /
+ */
 public class GLevelMaker {
     public static GWorld world;
 
