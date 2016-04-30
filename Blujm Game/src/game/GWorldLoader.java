@@ -27,7 +27,7 @@ public class GWorldLoader {
      * Reads a world from a file
      * @return A new GWorld object. Returns null if there is an error
      */
-   public static GWorld getWorld(int world){
+   public static GWorld loadWorld(int world){
 
         GWorld gWorld = null;
         ObjectInputStream ois = null;

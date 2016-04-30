@@ -9,6 +9,17 @@ package game;
  */
 public class GLogic {
 
+    // Movement functionality
+    private boolean moveUp = false;
+    private boolean moveDown = false;
+    private boolean moveLeft = false;
+    private boolean moveRight = false;
+
+    public void setMoveUp() { moveUp = true; }
+    public void setMoveDown() { moveDown = true; }
+    public void setMoveLeft() { moveLeft = true; }
+    public void setMoveRight() { moveRight = true; }
+
     private GWorld world;
 
     private int drow;
