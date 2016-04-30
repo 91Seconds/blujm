@@ -30,8 +30,6 @@ public class GLogic {
 
     }
 
-
-
     public void update() {
         int width = world.getWidth();
         int height = world.getHeight();
