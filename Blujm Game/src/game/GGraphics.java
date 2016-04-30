@@ -53,58 +53,35 @@ public final class GGraphics {
         float xRepeats = world.getWidth() / (float) bgSizeUnits;
         float yRepeats = world.getHeight() / (float) bgSizeUnits;
 
-        // Draw each background chunk, and erase edges as necessary
+        // Draw each background chunk, not erasing the sides
         for (int nthBGX = 0; nthBGX < xRepeats; nthBGX++) {
             for (int nthBGY = 0; nthBGY < yRepeats; nthBGY++) {
-
                 UI.drawImage(bgPath, WORLD_LEFT + nthBGX*bgSize, WORLD_TOP + nthBGY*bgSize,
                         bgSize, bgSize);
-
-                boolean shouldTrimRight = nthBGX > xRepeats - 1;
-                boolean shouldTrimBottom = nthBGY > yRepeats - 1;
-
-                if (!shouldTrimRight && !shouldTrimBottom) continue;
-
-                // Erase off the edges if there are
-
-                if (shouldTrimRight && shouldTrimBottom) {
-                    { // Trim entire right side
-                        double right = WORLD_LEFT + Math.ceil(xRepeats) * bgSize;
-                        double left = right - (Math.ceil(xRepeats) - xRepeats) * bgSize;
-                        double top = WORLD_TOP;
-                        double bottom = WORLD_TOP + Math.ceil(yRepeats)*bgSize;
-                        UI.eraseRect(left, top, right - left, bottom - top);
-                    }
-                    { // Trim entire right side
-                        double left = WORLD_LEFT;
-                        double right = WORLD_LEFT + Math.ceil(xRepeats)*bgSize;
-                        double bottom = WORLD_TOP + Math.ceil(yRepeats) * bgSize;
-                        double top = bottom - (Math.ceil(yRepeats) - yRepeats) * bgSize;
-                        UI.eraseRect(left, top, right - left, bottom - top);
-                    }
-                } else {
-                    double left, width, top, height;
-
-                    if (shouldTrimRight) {
-                        double right = WORLD_LEFT + Math.ceil(xRepeats) * bgSize;
-                        left = right - (Math.ceil(xRepeats) - xRepeats) * bgSize;
-                        width = right - left;
-                    } else {
-                        left = WORLD_LEFT + nthBGX * bgSize;
-                        width = bgSize;
-                    }
-                    if (shouldTrimBottom) {
-                        double bottom = WORLD_TOP + Math.ceil(yRepeats) * bgSize;
-                        top = bottom - (Math.ceil(yRepeats) - yRepeats) * bgSize;
-                        height = bottom - top;
-                    } else {
-                        top = WORLD_TOP + nthBGY * bgSize;
-                        height = bgSize;
-                    }
-
-                    UI.eraseRect(left, top, width, height);
-                }
             }
+        }
+
+        // Trim the sides
+
+        boolean shouldTrimRight = Math.ceil(xRepeats) > xRepeats;
+        boolean shouldTrimBottom = Math.ceil(yRepeats) > yRepeats;
+
+        if (!shouldTrimRight && !shouldTrimBottom) return;
+
+        if (shouldTrimRight) {
+            double right = WORLD_LEFT + Math.ceil(xRepeats) * bgSize;
+            double left = right - (Math.ceil(xRepeats) - xRepeats) * bgSize;
+            double top = WORLD_TOP;
+            double bottom = WORLD_TOP + Math.ceil(yRepeats)*bgSize;
+            UI.eraseRect(left, top, right - left, bottom - top);
+        }
+
+        if (shouldTrimBottom) {
+            double left = WORLD_LEFT;
+            double right = WORLD_LEFT + Math.ceil(xRepeats)*bgSize;
+            double bottom = WORLD_TOP + Math.ceil(yRepeats) * bgSize;
+            double top = bottom - (Math.ceil(yRepeats) - yRepeats) * bgSize;
+            UI.eraseRect(left, top, right - left, bottom - top);
         }
     }
 
