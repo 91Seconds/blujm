@@ -73,9 +73,6 @@ public class GLogic {
     }
 
     private void checkMovements() {
-        int drow = 0;
-        int dcol = 0;
-
         if(moveDown) {
             drow = 1;
         } else if(moveUp) {

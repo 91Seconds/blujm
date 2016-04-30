@@ -52,16 +52,16 @@ public class GInput {
 
     private void keyboardInput(String key) {
         switch(key) {
-            case "w":
+            case "W":
                 movingUp = true;
                 break;
-            case "a":
+            case "A":
                 movingLeft = true;
                 break;
-            case "s":
+            case "S":
                 movingDown = true;
                 break;
-            case "d":
+            case "D":
                 movingRight = true;
                 break;
             default:
