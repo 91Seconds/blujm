@@ -21,7 +21,7 @@ public class GWorldLoader {
      */
     private static final String WORLD_FILE_PREFIX = "resources/worlds/world-";
     private static final String WORLD_FILE_SUFFIX = ".world";
-
+    private static final int GAMESIZE = 25;
 
     /**
      * Private constructor makes this a static-only class
@@ -40,14 +40,7 @@ public class GWorldLoader {
             ois = new ObjectInputStream(new FileInputStream(WORLD_FILE_PREFIX + world + WORLD_FILE_SUFFIX));
             gWorld = (GWorld)(ois.readObject());
             ois.close();
-            // TODO Dan fix - if you set GAMESIZE as a constant, then
-            // the size of the world cannot change between levels (and the world
-            // must always be a square
-//            if (scan.nextInt() != GWorld.GAMESIZE){
-//                UI.println("Invalid Level Format: Incorrect Size");
-//                return null;
-//            }
-            // TODO Dan - make the new gworld object here
+            
         } catch(IOException e){
             UI.println("File Reading Error:" + e);
             return null;
