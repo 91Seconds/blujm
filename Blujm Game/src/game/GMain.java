@@ -37,7 +37,7 @@ public class GMain {
             gLogic.update();
             gSideMenu.update();
             GGraphics.drawWorld(world);
-            UI.sleep(100);
+            UI.sleep(10);
         }
 
     }
