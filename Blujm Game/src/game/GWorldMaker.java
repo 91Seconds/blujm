@@ -70,16 +70,24 @@ public class GWorldMaker {
                 System.out.print("\n");
             }
 
+            // TODO: 1/05/16 move world height in units into gworld
+            while (true) {
+                String line = sc.nextLine();
+                if (line.equals("//GOAL")) break;
+            }
+
+            String[] goalRows = new String[GGraphics.WORLD_HEIGHT_IN_UNITS];
+            for (int row = 0; row < GGraphics.WORLD_HEIGHT_IN_UNITS; row++) {
+                goalRows[row] = sc.nextLine();
+            }
+            GGoal levelGoal = new GGoal(goalRows);
+
+            return new GWorld(cellArray,levelGoal);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
 
-        GGoal levelGoal = new GGoal(GGraphics.WORLD_WIDTH_IN_UNITS, GGraphics.WORLD_HEIGHT_IN_UNITS);
-        levelGoal.setValuesInRect(true,1,8,3,3);
-
-        String g = levelGoal.toString();
-
-        return new GWorld(cellArray,levelGoal);
+        return null;
     }
 
     private static String[] getNonEmpty(String[] possiblyEmptyStuff) {

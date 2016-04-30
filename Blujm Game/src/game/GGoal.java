@@ -17,7 +17,10 @@ public class GGoal implements Serializable {
     }
 
     public GGoal(String fromString) {
-        String[] rows = fromString.split("\n");
+        this(fromString.split("\n"));
+    }
+
+    public GGoal(String[] rows) {
         String[][] values = new String[rows.length][];
         for (int r = 0; r < rows.length; r++) {
             String row = rows[r];
@@ -36,6 +39,7 @@ public class GGoal implements Serializable {
             }
         }
     }
+
 
     public int getWidth() {
         return goals[0].length;
