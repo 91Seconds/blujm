@@ -19,26 +19,26 @@ public class GLogic {
     public void setMoveUp() {
         if(moveDown == false && moveLeft == false && moveRight == false) {
             moveUp = true;
-            UI.println("Moving up");
-            System.out.println("moved up");
+//            UI.println("Moving up");
+//            System.out.println("moved up");
        }
     }
     public void setMoveDown() {
         if(moveUp == false && moveLeft == false && moveRight == false) {
             moveDown = true;
-            UI.println("Moving down");
+//            UI.println("Moving down");
         }
     }
     public void setMoveLeft() {
         if(moveRight == false && moveUp == false && moveDown == false) {
             moveLeft = true;
-            UI.println("Moving left");
+//            UI.println("Moving left");
         }
     }
     public void setMoveRight() {
         if(moveLeft == false && moveUp == false && moveDown == false) {
             moveRight = true;
-            UI.println("Moving right");
+//            UI.println("Moving right");
         }
     }
 
@@ -73,19 +73,19 @@ public class GLogic {
 
                 String decision = getMoveDecision(currentSquare, neighbourSquare);
                 if(!decision.equals("nothing")){
-                    UI.println("Single movement");
-                    UI.println(decision);
-                    UI.println(currentSquare);
-                    UI.println(currentSquare.getType());
-                    UI.println(neighbourSquare);
-                    UI.println(neighbourSquare.getType());
-                    UI.println("\n");
+//                    UI.println("Single movement");
+//                    UI.println(decision);
+//                    UI.println(currentSquare);
+//                    UI.println(currentSquare.getType());
+//                    UI.println(neighbourSquare);
+//                    UI.println(neighbourSquare.getType());
+//                    UI.println("\n");
                 }
                 switch(decision) {
                     case "defer":
                         continue;
                     case "move":
-                        UI.println("Moving in this direction");
+//                        UI.println("Moving in this direction");
                         world.move(i, j, dRow, dCol);
                         break;
                     case "stay":
