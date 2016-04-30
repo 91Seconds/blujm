@@ -25,7 +25,7 @@ public class GMain {
         UI.setWindowSize(WINDOW_WIDTH, WINDOW_HEIGHT);
         UI.setDivider(DIVIDER_POSITION);
 
-        GWorld world = GWorldLoader.getWorld(currentWorld);
+        GWorld world = GWorldLoader.loadWorld(currentWorld);
         GLogic gLogic = new GLogic(world);
         GInput gInput = new GInput(gLogic);
 
