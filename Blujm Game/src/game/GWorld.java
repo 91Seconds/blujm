@@ -22,7 +22,7 @@ public class GWorld implements Serializable{
      * It may not need to be final, but is for now
      */
     private final String BACKGROUND_IMAGE_PATH = GFileChecker.RESOURCES_ROOT + File.separator
-            + "images" + File.separator + "background-image-placeholder.png";
+            + "images" + File.separator + "5x5grid.png";
 
     /**
      * The number of units (in width, and in height) that
