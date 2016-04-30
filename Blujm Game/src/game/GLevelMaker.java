@@ -32,6 +32,9 @@ public class GLevelMaker {
                     if(line[j].equals("x")) {
                         cellArray[i][j] = new GCell("filename","Wall");
                     }
+                    if(line[j].equals("1")) {
+                        cellArray[i][j] = new GCell("filename","LiveCell");
+                    }
                 }
             }
 
