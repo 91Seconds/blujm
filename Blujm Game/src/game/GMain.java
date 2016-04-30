@@ -27,12 +27,13 @@ public class GMain {
 
         GWorld world = GWorldLoader.loadWorld(currentWorld);
         GLogic gLogic = new GLogic(world);
-        GInput gInput = new GInput(world);
+        GInput gInput = new GInput(gLogic);
 
         while(shouldExit == false) {
             gInput.update();
             gLogic.update();
             GGraphics.drawWorld(world);
+            UI.sleep(100);
         }
 
     }

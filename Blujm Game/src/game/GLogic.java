@@ -9,6 +9,17 @@ package game;
  */
 public class GLogic {
 
+    // Movement functionality
+    private boolean moveUp = false;
+    private boolean moveDown = false;
+    private boolean moveLeft = false;
+    private boolean moveRight = false;
+
+    public void setMoveUp() { moveUp = true; }
+    public void setMoveDown() { moveDown = true; }
+    public void setMoveLeft() { moveLeft = true; }
+    public void setMoveRight() { moveRight = true; }
+
     private GWorld world;
 
     private int drow;
@@ -18,8 +29,6 @@ public class GLogic {
         this.world = world;
 
     }
-
-
 
     public void update() {
         int width = world.getWidth();
@@ -64,24 +73,18 @@ public class GLogic {
     }
 
     private void checkMovements() {
-
-        boolean movingDown = world.isMoveDown();
-        boolean movingUp = world.isMoveUp();
-        boolean movingLeft = world.isMoveLeft();
-        boolean movingRight = world.isMoveRight();
-
         int drow = 0;
         int dcol = 0;
 
-        if(movingDown) {
+        if(moveDown) {
             drow = 1;
-        } else if(movingUp) {
+        } else if(moveUp) {
             drow = -1;
         }
 
-        if(movingRight) {
+        if(moveRight) {
             dcol = 1;
-        } else if(movingLeft) {
+        } else if(moveLeft) {
             dcol = -1;
         }
 

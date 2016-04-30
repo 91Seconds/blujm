@@ -9,6 +9,8 @@ package game;
 
 import ecs100.UI;
 
+import java.awt.*;
+
 public final class GGraphics {
 
     public static final int UNIT_SIZE = 25;
@@ -21,6 +23,12 @@ public final class GGraphics {
      * Prevents any instances of the class
      */
     private GGraphics() {}
+
+    public static void drawmenu(){
+        UI.clearGraphics();
+        //UI.drawImage(Menu,0,0);
+        //drawing menu
+    }
 
     public static void drawWorld(GWorld world) {
 //        UI.clearGraphics();
@@ -88,10 +96,10 @@ public final class GGraphics {
     private static void drawCells(GWorld world) {
         for (int col = 0; col < world.getWidth(); col++) {
             for (int row = 0; row < world.getHeight(); row++) {
-                GCell gCell = world.getCell(row, col);
-                if (gCell == null) continue;
+                GSquare currentSquare = world.getCell(row, col);
+                if (currentSquare == null) continue;
 
-                String imagePath = gCell.getImagePath();
+                String imagePath = currentSquare.getImagePath();
 
                 String errorMessage = GFileChecker.checkIfFilePathExists(imagePath);
                 if (errorMessage != null) throw new Error("Cell at row: " + row + ", " +

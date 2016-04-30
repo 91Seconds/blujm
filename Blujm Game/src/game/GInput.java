@@ -3,7 +3,7 @@ package game;
 import ecs100.UI;
 
 /**
- * Created by root on 29/04/16.
+ * Created by groot on 29/04/16.
  */
 public class GInput {
 
@@ -12,7 +12,7 @@ public class GInput {
     private boolean movingLeft = false;
     private boolean movingRight = false;
 
-    GWorld world;
+    GLogic logic;
 
     public void doMouse(String action, double x, double y){
         if(action.equals("released")){
@@ -28,24 +28,25 @@ public class GInput {
             }
         }
     }
+    // TODO need to put in the calls for the above methods and probably correct my code lel huehuehue
 
-    public GInput(GWorld world) {
+    public GInput(GLogic logic) {
         UI.setKeyListener(this::keyboardInput);
-        this.world = world;
+        this.logic = logic;
     }
 
     public void update() {
         if(movingUp) {
-            world.setMoveUp();
+            logic.setMoveUp();
         }
         if(movingDown) {
-            world.setMoveDown();
+            logic.setMoveDown();
         }
         if(movingLeft) {
-            world.setMoveLeft();
+            logic.setMoveLeft();
         }
         if(movingRight) {
-            world.setMoveRight();
+            logic.setMoveRight();
         }
     }
 
