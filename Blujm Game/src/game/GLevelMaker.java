@@ -17,7 +17,7 @@ public class GLevelMaker {
         UI.initialise();
         UI.addButton("Load World from txt", GLevelMaker::parse);
     }
-    
+
     private static void parse() {
         String path = UIFileChooser.open("open a level in plaintext");
         File level = new File(path);
