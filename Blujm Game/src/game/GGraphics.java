@@ -9,6 +9,8 @@ package game;
 
 import ecs100.UI;
 
+import java.awt.*;
+
 public final class GGraphics {
 
     public static final int UNIT_SIZE = 25;
@@ -24,7 +26,8 @@ public final class GGraphics {
 
     public static void drawmenu(){
         UI.clearGraphics();
-       // UI.drawImage();
+        //UI.drawImage(Menu,0,0);
+        //drawing menu
     }
 
     public static void drawWorld(GWorld world) {
