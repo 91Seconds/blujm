@@ -40,7 +40,8 @@ public class GLevelMaker {
         try {
             Scanner sc = new Scanner(level);
             for(int i=0;i<25;i++)   {
-                String[] line = sc.nextLine().split(" ");
+                String[] line = getNonEmpty(sc.nextLine().split(" "));
+
                 for(int j=0;j<25;j++)   {
                     System.out.print(line[j]);
                     if(line[j].equals("x")) {
@@ -64,5 +65,29 @@ public class GLevelMaker {
         GWorld GW = new GWorld(cellArray);
 
         GWorldLoader.saveWorld(GW,1);
+    }
+
+    private static String[] getNonEmpty(String[] possiblyEmptyStuff) {
+        int EmptyValues = 0;
+        int nonEmptyValues = possiblyEmptyStuff.length;
+        for(int i = 0; i < possiblyEmptyStuff.length; i++) {
+            if(possiblyEmptyStuff[i].equals("")) {
+                EmptyValues += 1;
+            }
+        }
+
+        nonEmptyValues -= EmptyValues;
+
+        String[] nonEmpty = new String[nonEmptyValues];
+
+        int dnonEmpty = 0;
+        for(int i = 0; i < possiblyEmptyStuff.length; i++) {
+            if(!possiblyEmptyStuff[i].equals("")) {
+                nonEmpty[dnonEmpty] = possiblyEmptyStuff[i];
+                dnonEmpty++;
+            }
+        }
+
+        return nonEmpty;
     }
 }
