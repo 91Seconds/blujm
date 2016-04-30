@@ -19,6 +19,7 @@ public class GLogic {
     public void setMoveUp() {
         if(!(moveDown || moveLeft || moveRight)) {
             moveUp = true;
+            System.out.println("moved up");
         }
     }
     public void setMoveDown() {

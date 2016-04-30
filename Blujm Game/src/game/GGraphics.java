@@ -50,6 +50,8 @@ public final class GGraphics {
         drawWorldBackground(world);
         drawGoal(world.getGoal());
         drawCells(world);
+        UI.repaintAllGraphics();
+        //System.out.println("Graphics Drew");
     }
 
     /**
