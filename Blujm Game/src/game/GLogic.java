@@ -22,8 +22,8 @@ public class GLogic {
 
     private GWorld world;
 
-    private int drow;
-    private int dcol;
+    private int dRow;
+    private int dCol;
 
     public GLogic(GWorld world) {
         this.world = world;
@@ -43,21 +43,21 @@ public class GLogic {
         for(int i = 0; i < height; i++) {
             for(int j = 0; j < width; j++) {
                 currentSquare = world.getCell(i, j);
-                neighbourSquare = world.getCell(i + drow, j + dcol);
+                neighbourSquare = world.getCell(i + dRow, j + dCol);
 
 
                 switch(getMoveDecision(currentSquare, neighbourSquare)) {
                     case "defer":
                         continue;
                     case "move":
-                        world.move(i, j, drow, dcol);
+                        world.move(i, j, dRow, dCol);
                         break;
                     case "stay":
                         break;
                     case "nothing":
                         break;
                     case "moveGrow":
-                        world.move(i, j, drow, dcol);
+                        world.move(i, j, dRow, dCol);
                         world.grow(i, j);
                     default:
                         break;
@@ -68,8 +68,8 @@ public class GLogic {
 
         cleanUpAfterUpdate(updated);
 
-        drow = 0;
-        dcol = 0;
+        dRow = 0;
+        dCol = 0;
     }
 
     private void checkMovements() {
