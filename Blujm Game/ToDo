@@ -26,3 +26,15 @@ Cells
     - Goal Cells
     - Walls
     -
+
+Powerups
+    - Scale up
+        - Changes the amount of live cells
+        - Surrounds the collision cell with more live cells if possible
+    - Monster
+        - Moves across screen and eats all live cells
+        - Makes them dead cells
+    -
+
+To Win
+    - Filling up all the goal cells with a live cell

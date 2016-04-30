@@ -19,8 +19,13 @@ public class MainManualTest {
         // TESTS HERE:
 
 //        testPath(); // Completed
-
-          (new GGraphicsManualTest()).testBG(); // Completed
+        for(int row = 0; row < 25; row++){
+            for(int col = 0; col < 25; col++){
+                UI.drawRect(col*30, row*30, 30, 30);
+            }
+        }
+        UI.drawRect(25*30, 0, 90, 25*30);
+//          (new GGraphicsManualTest()).testBG(); // Completed
 //        (new GGraphicsManualTest()).testCells();
 
     }

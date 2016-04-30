@@ -32,8 +32,8 @@ public class GWorld implements Serializable{
 
     private final GCell[][] cells;
 
-    public GWorld(int width, int height) {
-        cells = new GCell[height][width];
+    public GWorld() {
+        cells = new GCell[GGraphics.WORLD_HEIGHT/GGraphics.UNIT_SIZE][GGraphics.WORLD_WIDTH/GGraphics.UNIT_SIZE];
         // TODO someone complete this
     }
 
@@ -98,4 +98,8 @@ public class GWorld implements Serializable{
     public int getHeight() {
         return cells.length;
     }
+
+    /*public GCell[][] setCells(GCell[][] newCells){
+        cells = newCells;
+    }*/
 }
