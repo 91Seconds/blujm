@@ -49,6 +49,8 @@ public class GLogic {
                 currentSquare = world.getCell(i, j);
                 neighbourSquare = world.getNeighbour(i, j, drow, dcol);
 
+
+                // need to reduce cyclomatic complexity
                 if(currentSquare != null && currentSquare.getType().equals("user")) {
                     if(neighbourSquare != null) {
                         switch(neighbourSquare.getType()) {
@@ -58,7 +60,7 @@ public class GLogic {
                             case "wall":
                                 // stay still
                                 break;
-                            
+
                         }
                     } else {
                         world.move(i, j, drow, dcol);
