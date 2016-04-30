@@ -21,7 +21,6 @@ public final class GGraphics {
     public static final int WORLD_HEIGHT = 625;
 
 
-    private static GSideMenu sideMenu = new GSideMenu(0,System.currentTimeMillis());
     public static final String GOAL_IMAGE_PATH = GFileChecker.RESOURCES_ROOT + File.separator
             + "images" + File.separator + "goal-square.png";
 
@@ -139,9 +138,6 @@ public final class GGraphics {
         }
     }
 
-    private static void drawSideMenu(){
-        sideMenu.draw();
-    }
 
     // TODO: 30/04/16 DYLAN draw the goal
 }
