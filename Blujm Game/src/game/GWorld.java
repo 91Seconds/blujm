@@ -32,8 +32,8 @@ public class GWorld implements Serializable{
 
     private final GCell[][] cells;
 
-    public GWorld(int width, int height) {
-        cells = new GCell[height][width];
+    public GWorld(GCell[][] cellArray) {
+        cells = cellArray;
         // TODO someone complete this
     }
 
