@@ -28,10 +28,10 @@ public class GGoal implements Serializable {
         goals[row][col] = isPartOfGoal;
     }
 
-    public void setValuesInRect(boolean isPartOfGoal, int rowStart, int colStart, int rowEnd, int colEnd) {
-        for (int row = rowStart; row < rowEnd; row++) {
-            for (int col = colStart; col < colEnd; col++) {
-                setValue(isPartOfGoal, row, col);
+    public void setValuesInRect(boolean isPartOfGoal, int left, int top, int width, int height) {
+        for (int x = left; x < width + left; x++) {
+            for (int y = top; y < height + top; y++) {
+                setValue(isPartOfGoal, y, x);
             }
         }
     }

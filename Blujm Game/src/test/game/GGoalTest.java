@@ -84,7 +84,7 @@ public class GGoalTest {
     public void testSetValuesInRect() throws Exception {
         gGoal = getNewGGoal();
         setSomeValues(gGoal);
-        gGoal.setValuesInRect(true, 5, 5, 10, 10);
+        gGoal.setValuesInRect(true, 5, 5, 5, 5);
         String result = gGoal.toString();
         Assert.assertEquals("Result was not equal to the idealResult", idealResult, result);
     }
