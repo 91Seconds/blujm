@@ -27,7 +27,7 @@ public class GMain {
         UI.setDivider(DIVIDER_POSITION);
         UI.setImmediateRepaint(false);
 
-        GWorld world = GWorldLoader.loadWorld(currentWorld);
+        GWorld world = loadWorld(currentWorld);
         GLogic gLogic = new GLogic(world);
         GInput gInput = new GInput(gLogic);
         GSideMenu gSideMenu = new GSideMenu(currentWorld, System.currentTimeMillis());
@@ -40,6 +40,20 @@ public class GMain {
             UI.sleep(10);
         }
 
+    }
+
+    /**
+     * Tries to load the windows save, and if that fails
+     * loads the unix save
+     * @param world
+     * @return
+     */
+    private static GWorld loadWorld(int world) {
+        try {
+            GWorldLoader.loadWorld(world, true);
+        } catch (Exception e) {
+            GWorldLoader.loadWorld(world, false);
+        }
     }
 
 }

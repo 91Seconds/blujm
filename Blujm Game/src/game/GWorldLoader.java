@@ -15,7 +15,8 @@ public class GWorldLoader {
     /**
      * Fit an integer between the prefix and suffix to get the file name
      */
-    private static final String WORLD_FILE_PREFIX = GFileChecker.RESOURCES_ROOT + File.separator + "worlds" + File.separator + "world-";
+    private static final String WINDOWS_WORLD_FILE_PREFIX = GFileChecker.RESOURCES_ROOT + File.separator + "worlds" + File.separator + "windows" + File.separator + "world-";
+    private static final String UNIX_WORLD_FILE_PREFIX = GFileChecker.RESOURCES_ROOT + File.separator + "worlds" + File.separator + "unix" + File.separator + "world-";
     private static final String WORLD_FILE_SUFFIX = ".world";
     private static final int GAMESIZE = 25;
     /**
@@ -27,12 +28,15 @@ public class GWorldLoader {
      * Reads a world from a file
      * @return A new GWorld object. Returns null if there is an error
      */
-   public static GWorld loadWorld(int world){
+   public static GWorld loadWorld(int world, boolean isWindows){
 
         GWorld gWorld = null;
         ObjectInputStream ois = null;
         try {
-            ois = new ObjectInputStream(new FileInputStream(WORLD_FILE_PREFIX + world + WORLD_FILE_SUFFIX));
+            if (isWindows)
+                ois = new ObjectInputStream(new FileInputStream(WINDOWS_WORLD_FILE_PREFIX + world + WORLD_FILE_SUFFIX));
+            else
+                ois = new ObjectInputStream(new FileInputStream(UNIX_WORLD_FILE_PREFIX + world + WORLD_FILE_SUFFIX));
             gWorld = (GWorld)(ois.readObject());
             ois.close();
 
@@ -47,10 +51,13 @@ public class GWorldLoader {
        return gWorld;
     }
 
-    public static void saveWorld(GWorld world, int worldNumber) {
+    public static void saveWorld(GWorld world, int worldNumber, boolean isWindows) {
         ObjectOutputStream oos = null;
         try {
-            oos = new ObjectOutputStream(new FileOutputStream(WORLD_FILE_PREFIX + worldNumber + WORLD_FILE_SUFFIX));
+            if (isWindows)
+                oos = new ObjectOutputStream(new FileOutputStream(WINDOWS_WORLD_FILE_PREFIX + worldNumber + WORLD_FILE_SUFFIX));
+            else
+                oos = new ObjectOutputStream(new FileOutputStream(UNIX_WORLD_FILE_PREFIX + worldNumber + WORLD_FILE_SUFFIX));
             oos.writeObject((Object) world);
             oos.close();
 
