@@ -9,6 +9,20 @@ import java.util.Scanner;
 
 /**
  * Created by surface on 30/04/2016.
+ *
+ * reads a text file into a GWorld object
+ * Saves the GWorld object with the GWorldLoader class
+ *
+ * format of text file
+ *
+ * 0 is nothing
+ * 1 is living cell
+ * x is wall
+ * e is enemy
+ * p is power-up
+ *
+ * modifiers are done in prefixes. //note, currently no support for modifiers
+ *
  */
 public class GLevelMaker {
     public static GWorld world;
