@@ -125,7 +125,6 @@ public final class GGraphics {
         }
     }
 
-
     private static void drawCells(GWorld world) {
         for (int col = 0; col < world.getWidth(); col++) {
             for (int row = 0; row < world.getHeight(); row++) {
