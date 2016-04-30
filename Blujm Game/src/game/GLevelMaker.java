@@ -64,8 +64,11 @@ public class GLevelMaker {
             e.printStackTrace();
         }
 
+        GGoal levelGoal = new GGoal(25,25);
+        levelGoal.setValuesInRect(true,1,8,4,11);
 
-        GWorld GW = new GWorld(cellArray);
+        GWorld GW = new GWorld(cellArray,levelGoal);
+
 
         GWorldLoader.saveWorld(GW,1);
     }
