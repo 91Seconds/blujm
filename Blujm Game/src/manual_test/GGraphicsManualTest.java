@@ -19,8 +19,7 @@ public class GGraphicsManualTest {
     public void testBG() {
         UI.initialise();
 
-        // Note: may break as constructor is changed
-        GWorld w = new GWorld();
+        GWorld w = new GWorld(22, 18, GWorld.KEY_I_AM_TESTING_ONLY);
         GGraphics.drawWorld(w);
     }
 

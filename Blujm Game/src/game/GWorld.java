@@ -22,7 +22,7 @@ public class GWorld implements Serializable{
      * It may not need to be final, but is for now
      */
     private final String BACKGROUND_IMAGE_PATH = GFileChecker.RESOURCES_ROOT + File.separator
-            + "images" + File.separator + "5x5grid.png";
+            + "images" + File.separator + "background-5x5.png";
 
     /**
      * The number of units (in width, and in height) that
@@ -42,6 +42,23 @@ public class GWorld implements Serializable{
 
         // TODO someone complete this
     }
+
+    /**
+     * Testing constructor only.
+     */
+    public GWorld(int width, int height, String specialKey_dontUseThisConstructorForAnythingButTesting) {
+        if (!specialKey_dontUseThisConstructorForAnythingButTesting
+                .equals(KEY_I_AM_TESTING_ONLY)) {
+            Error e = new Error("This constructor is for testing only. Don't use it");
+            e.printStackTrace();
+            throw e;
+        }
+        cells = new GCell[height][width];
+    }
+    /**
+     * Pass this string into the testing constructor to use it.
+     */
+    public static final String KEY_I_AM_TESTING_ONLY = "KEY_I_AM_TESTING_ONLY";
 
     /**
      * Responds with the neighbour in a given direction to the given row/col
