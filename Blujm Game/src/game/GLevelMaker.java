@@ -42,7 +42,7 @@ public class GLevelMaker {
             for(int i=0;i<25;i++)   {
                 String[] line = sc.nextLine().split(" ");
                 for(int j=0;j<25;j++)   {
-                    System.out.println(line[j]);
+                    System.out.print(line[j]);
                     if(line[j].equals("x")) {
                         cellArray[i][j] = new GCell(GSquare.wallPath,GSquare.wallType);
                     }
@@ -53,6 +53,7 @@ public class GLevelMaker {
                         cellArray[i][j] = null;
                     }
                 }
+                System.out.print("\n");
             }
 
         } catch (FileNotFoundException e) {
