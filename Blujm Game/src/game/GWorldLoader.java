@@ -19,6 +19,12 @@ public class GWorldLoader {
     private static final String UNIX_WORLD_FOLDER = GFileChecker.RESOURCES_ROOT + File.separator + "worlds" + File.separator + "unix";
     private static final String WORLD_FILE_SUFFIX = ".world";
     private static final int GAMESIZE = 25;
+
+    /**
+     * @param includeFilePrefix
+     * @return The world folder path if the above if includeFilePrefix is false,
+     * otherwise it will include the "/world-" on the end as well
+     */
     public static String getWorldFolderPath(boolean includeFilePrefix) {
         String folder = WINDOWS_WORLD_FOLDER;
         if (File.separator.equals("/")) folder = UNIX_WORLD_FOLDER;
