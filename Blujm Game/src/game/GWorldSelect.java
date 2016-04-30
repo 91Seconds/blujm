@@ -21,7 +21,7 @@ public class GWorldSelect {
 
     //Image file for the background and title of world select screen
     private String backgroundImage = GFileChecker.RESOURCES_ROOT + File.separator
-            + "images" + File.separator + "Menu.png";
+            + "images" + File.separator + "LevelSelect.png";
     private String buttonImage = GFileChecker.RESOURCES_ROOT + File.separator
             + "images" + File.separator + "world-select-button.png";
 
@@ -34,7 +34,7 @@ public class GWorldSelect {
     //Outlines the possible area for world select buttons
     public static final int LEFT = GGraphics.WORLD_LEFT + 2*spacing;
     private static final int RIGHT = GGraphics.WORLD_LEFT + GGraphics.WORLD_WIDTH - 4*spacing;
-    private static final int TOP = GGraphics.WORLD_TOP + 90;
+    private static final int TOP = GGraphics.WORLD_TOP + 150;
     private static final int BOT = GGraphics.WORLD_HEIGHT - 2*spacing;
 
     private static final int cellsPerRow = 5;
@@ -43,9 +43,45 @@ public class GWorldSelect {
 
     public GWorldSelect(){
         //Iterates through the worlds folder to find the names of the world to be loaded
-
+        UI.setMouseListener(this::doMouse);
         File f = new File(worldsFolder);
         worlds = f.list();
+    }
+
+    public void doMouse(String action, double x, double y){
+        if(action.equals("released")){
+            int world = worldSelect(x,y);
+            if(world != -1){
+                GWorldLoader.loadWorld(world);
+                GMain.main(new String[9]);
+            }
+        }
+    }
+
+    /**
+     * Returns button clicked on or -1 if not on a button
+     * @param x
+     * @param y
+     * @return
+     */
+    public int worldSelect(double x, double y){
+        int row = 0;
+        int col = 0;
+        int buttonLeft = 0;
+        int buttonTop = 0;
+        for(int counter = 0; counter < worlds.length; counter++){
+            row = counter / cellsPerRow;
+            col = counter % cellsPerRow;
+            buttonLeft = LEFT + (col*spacing) + spacing +col*buttonWidth;
+            buttonTop = TOP + (row*spacing) + spacing + row*buttonHeight;
+            if(x > buttonLeft && x < buttonLeft + buttonWidth &&
+                    y > buttonTop && y < buttonTop + buttonHeight){
+                UI.println("on button!");
+                return counter;
+            }
+        }
+        UI.println("not on button");
+        return -1;
     }
 
     public void update(){
