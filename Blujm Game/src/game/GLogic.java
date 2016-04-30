@@ -93,15 +93,15 @@ public class GLogic {
 
     private void checkMovements() {
         if(moveDown) {
-            drow = 1;
+            dRow = 1;
         } else if(moveUp) {
-            drow = -1;
+            dRow = -1;
         }
 
         if(moveRight) {
-            dcol = 1;
+            dCol = 1;
         } else if(moveLeft) {
-            dcol = -1;
+            dCol = -1;
         }
 
     }

@@ -54,7 +54,7 @@ public class GLevelMaker {
                         cellArray[i][j] = null;
                     }
                     if(line[j].equals("e")) {
-                        cellArray[i][j] = new GCell(GSquare.enemyPath,GSquare.enemyType);
+                        cellArray[i][j] = new GCell(GSquare.ENEMY_PATH,GSquare.ENEMY_TYPE);
                     }
                 }
                 System.out.print("\n");
