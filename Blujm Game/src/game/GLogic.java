@@ -17,6 +17,35 @@ public class GLogic {
     }
 
     public void update() {
+        int width = world.getWidth();
+        int height = world.getHeight();
+        boolean[][] updated = new boolean[height][width];
 
+        GSquare currentSquare;
+
+        for(int i = 0; i < height; i++) {
+            for(int j = 0; j < width; j++) {
+                currentSquare = world.getCell(i, j);
+                if(currentSquare instanceof GCell) {
+                    switch(currentSquare.getType()) {
+                        case "user":
+                            // defer
+                            break;
+                        case "wall":
+                            // don't move
+                            break;
+                    }
+                } else if(currentSquare instanceof GPowerup) {
+                    switch(currentSquare.getType()) {
+                        case "expand":
+                            // todo
+                            break;
+                        case "contract":
+                            // todo
+                            break;
+                    }
+                }
+            }
+        }
     }
 }

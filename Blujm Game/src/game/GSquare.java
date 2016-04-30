@@ -6,6 +6,7 @@ package game;
 public abstract class GSquare {
 
     private String imagePath;
+    private String type;
 
     public GSquare(String imagePath){
         this.imagePath = imagePath;
@@ -14,7 +15,6 @@ public abstract class GSquare {
     public String getImagePath(){
         return imagePath;
     }
-    public void setImagePath(String newImageName){
-        imagePath = newImageName;
-    }
+
+    public String getType() { return type; }
 }
