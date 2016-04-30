@@ -9,6 +9,7 @@ import java.io.Serializable;
  */
 public abstract class GSquare implements Serializable{
 
+<<<<<<< HEAD
     protected static final String userType = "user";
     protected static final String wallType = "wall";
     protected static final String enemyType = "enemy";
@@ -16,6 +17,13 @@ public abstract class GSquare implements Serializable{
     protected static final String userPath = GFileChecker.RESOURCES_ROOT + File.separator + "images" + File.separator + "live-cell.png";
     protected static final String wallPath = GFileChecker.RESOURCES_ROOT + File.separator + "images" + File.separator + "wall3.png";
     protected static final String enemyPath = GFileChecker.RESOURCES_ROOT + File.separator + "images" + File.separator + "background-image-placeholder.png";
+=======
+    protected static final String USER_TYPE = "user";
+    protected static final String WALL_TYPE = "wall";
+
+    protected static final String USER_PATH = GFileChecker.RESOURCES_ROOT + File.separator + "images" + File.separator + "live-cell.png";
+    protected static final String WALL_PATH = GFileChecker.RESOURCES_ROOT + File.separator + "images" + File.separator + "wall3.png";
+>>>>>>> 58382c0fbf75bd506a0ec4a2c2e7d48c1c830c49
 
     private String imagePath;
     private String type;

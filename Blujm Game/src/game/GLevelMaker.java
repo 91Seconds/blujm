@@ -45,10 +45,10 @@ public class GLevelMaker {
                 for(int j=0;j<25;j++)   {
                     System.out.print(line[j]);
                     if(line[j].equals("x")) {
-                        cellArray[i][j] = new GCell(GSquare.wallPath,GSquare.wallType);
+                        cellArray[i][j] = new GCell(GSquare.WALL_PATH,GSquare.WALL_TYPE);
                     }
                     if(line[j].equals("1")) {
-                        cellArray[i][j] = new GCell(GSquare.userPath,GSquare.userType);
+                        cellArray[i][j] = new GCell(GSquare.USER_PATH,GSquare.USER_TYPE);
                     }
                     if(line[j].equals("0")) {
                         cellArray[i][j] = null;
