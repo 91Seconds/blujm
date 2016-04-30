@@ -13,3 +13,4 @@ public class GPowerup extends GSquare implements Serializable{
         super(imageName, type);
     }
 }
+//Todo make this work ffs omg wtf

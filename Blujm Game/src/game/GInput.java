@@ -14,6 +14,8 @@ public class GInput {
 
     GLogic logic;
 
+
+    //coordinates are for the button areas
     public void doMouse(String action, double x, double y){
         if(action.equals("released")){
             if(x > 63 && x < 764 && y > 268 && y <570){
