@@ -22,6 +22,11 @@ public final class GGraphics {
      */
     private GGraphics() {}
 
+    public static void drawmenu(){
+        UI.clearGraphics();
+       // UI.drawImage();
+    }
+
     public static void drawWorld(GWorld world) {
 //        UI.clearGraphics();
         drawWorldBackground(world);
