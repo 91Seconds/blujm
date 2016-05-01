@@ -12,6 +12,20 @@ public class GLogic {
 
     private static GLogic currentInstance;
 
+    public static boolean shouldQuit() {
+        return shouldQuit;
+    }
+    public static void setShouldQuit(boolean shouldQuit) {
+        GLogic.shouldQuit = shouldQuit;
+    }
+    public static boolean shouldRestart() {
+        return shouldRestart;
+    }
+    public static void setShouldRestart(boolean shouldRestart) {
+        GLogic.shouldRestart = shouldRestart;
+    }
+
+    private static boolean shouldQuit, shouldRestart;
 
     // Movement functionality
     private static boolean moveUp = false;
@@ -52,6 +66,8 @@ public class GLogic {
 
     private GLogic(GWorld world) {
         this.world = world;
+        shouldQuit = false;
+        shouldRestart = false;
     }
 
     public static GLogic getGLogic(GWorld world) {
