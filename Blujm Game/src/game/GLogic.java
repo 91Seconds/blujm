@@ -154,7 +154,7 @@ public class GLogic {
 
         for(int i = 0; i < height; i++) {
             for(int j = 0; j < width; j++) {
-                if(powerupMatrix[i][j] != null && world.getCell(i, j).getType().equals(GSquare.USER_TYPE)) {
+                if(powerupMatrix[i][j] != null && world.getCell(i, j).getType().equals(GSquare.USER_MOVED_TYPE)) {
                     switch(powerupMatrix[i][j].getType()) {
                         case "grow":
                             world.grow(i, j);
