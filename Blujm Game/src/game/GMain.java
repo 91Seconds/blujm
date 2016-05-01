@@ -47,4 +47,8 @@ public class GMain {
             UI.println("restart game");
         }
     }
+
+    public static int getCurrentLevel() {
+        return currentLevel;
+    }
 }

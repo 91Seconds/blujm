@@ -27,6 +27,10 @@ public final class GGraphics {
     public static final String MENU_PATH = GFileChecker.RESOURCES_ROOT + File.separator
             + "images" + File.separator + "Menu.png";
 
+
+    private static String[] levelText =
+            {"Used WASD to move into the green box", "Eat a cat!"};
+
     /**
      * Prevents any instances of the class
      */
@@ -53,7 +57,12 @@ public final class GGraphics {
         drawWorldBackground(world);
         drawGoal(world.getGoal());
         drawCells(world);
+
+        int currentLevel = GMain.getCurrentLevel();
+
+
         UI.repaintAllGraphics();
+
         //System.out.println("Graphics Drew");
     }
 
