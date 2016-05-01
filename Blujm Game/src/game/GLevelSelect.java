@@ -28,7 +28,7 @@ public class GLevelSelect {
 
     private String worldsFolder = GWorldMaker.WORLD_PROTOTYPE_FOLDER;
     private static final int spacing = 20;
-
+    private boolean onLevelSelect;
 
     //Outlines the possible area for world select buttons
     public static final int LEFT = GGraphics.WORLD_LEFT + 2*spacing;
@@ -45,14 +45,15 @@ public class GLevelSelect {
         UI.setMouseListener(this::doMouse);
         File f = new File(worldsFolder);
         worlds = f.list();
+        onLevelSelect = true;
     }
 
     public void doMouse(String action, double x, double y){
-        if (action.equals("released")){
+        if (onLevelSelect && action.equals("released")){
             int world = worldSelect(x,y);
             if (world != -1){
-                UI.println(world);
                 GWorldMaker.loadWorld(world);
+                onLevelSelect = false;
             }
         }
     }
@@ -75,11 +76,9 @@ public class GLevelSelect {
             buttonTop = TOP + (row*spacing) + spacing + row*buttonHeight;
             if(x > buttonLeft && x < buttonLeft + buttonWidth &&
                     y > buttonTop && y < buttonTop + buttonHeight){
-                UI.println("on button!");
-                return counter;
+                return counter ;
             }
         }
-        UI.println("not on button");
         return -1;
     }
 
@@ -101,7 +100,7 @@ public class GLevelSelect {
             index = worlds[counter].indexOf(".");
             UI.setFontSize(24);
             UI.setColor(Color.BLACK);
-            UI.drawString("World", buttonLeft + buttonWidth* .1, buttonTop + buttonHeight*.5);
+            UI.drawString("Level", buttonLeft + buttonWidth* .1, buttonTop + buttonHeight*.5);
             UI.drawString(worlds[counter].substring(index - 1, index), buttonLeft + buttonWidth*.43,
                             buttonTop + buttonHeight*.85);
         }

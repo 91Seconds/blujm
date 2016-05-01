@@ -11,25 +11,29 @@ public class GLevel {
         this.world = world;
     }
 
-    private boolean shouldExit = false;
     private final GWorld world;
+
+    public static final int KEY_QUIT = 1;
+    public static final int KEY_RESTART = 2;
 
     /**
      * Plays the level until the game quits
      * @return
      */
-    public boolean playLevel() {
+
+    public int playLevel() {
         // Make sure we're getting a fresh GLogic
         GLogic.makeReferenceNull();
         GLogic gLogic = GLogic.getGLogic(world);
 
-        while(shouldExit == false) {
-            shouldExit = gLogic.shouldExit();
+        while (!GLogic.shouldQuit() && !GLogic.shouldRestart()) {
             gLogic.update();
             GGraphics.drawWorld(world);
             UI.sleep(30);
         }
 
-        return true;
+        if (GLogic.shouldRestart()) return KEY_RESTART;
+        return KEY_QUIT;
+
     }
 }
