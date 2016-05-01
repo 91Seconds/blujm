@@ -49,7 +49,6 @@ public class GLogic {
 
     public GLogic(GWorld world) {
         this.world = world;
-
     }
 
     public void update() {
@@ -105,6 +104,10 @@ public class GLogic {
         cleanUpAfterUpdate(updated);
         cleanMovement();
         world.resetCantMoveField();
+
+        if (hasUserWon()) {
+            UI.println("YOU WON! LELZ");
+        }
     }
 
 
@@ -175,5 +178,24 @@ public class GLogic {
         }
     }
 
-    // TODO NEXT: 30/04/16 DYLAN check the ggoal object if the user won
+    private boolean hasUserWon() {
+        return world.getGoal().matchesUserState(getUserTileState());
+    }
+
+    /**
+     * The true values are where the user has a tile there
+     * @return This result is compared with GGoal to check if the user fits the goal
+     */
+    private boolean[][] getUserTileState() {
+        boolean[][] state = new boolean[world.getHeight()][world.getWidth()];
+        for (int col = 0; col < world.getWidth(); col++) {
+            for (int row = 0; row < world.getHeight(); row++) {
+                GCell cell = world.getCell(row, col);
+                if (cell.getType().equals(GSquare.USER_TYPE)) {
+                    state[row][col] = true;
+                }
+            }
+        }
+        return state;
+    }
 }

@@ -15,10 +15,22 @@ public class GWorldLoader {
     /**
      * Fit an integer between the prefix and suffix to get the file name
      */
-    private static final String WINDOWS_WORLD_FILE_PREFIX = GFileChecker.RESOURCES_ROOT + File.separator + "worlds" + File.separator + "windows" + File.separator + "world-";
-    private static final String UNIX_WORLD_FILE_PREFIX = GFileChecker.RESOURCES_ROOT + File.separator + "worlds" + File.separator + "unix" + File.separator + "world-";
+    private static final String WINDOWS_WORLD_FOLDER = GFileChecker.RESOURCES_ROOT + File.separator + "worlds" + File.separator + "windows";
+    private static final String UNIX_WORLD_FOLDER = GFileChecker.RESOURCES_ROOT + File.separator + "worlds" + File.separator + "unix";
     private static final String WORLD_FILE_SUFFIX = ".world";
-    private static final int GAMESIZE = 25;
+    
+    /**
+     * @param includeFilePrefix
+     * @return The world folder path if the above if includeFilePrefix is false,
+     * otherwise it will include the "/world-" on the end as well
+     */
+    public static String getWorldFolderPath(boolean includeFilePrefix) {
+        String folder = WINDOWS_WORLD_FOLDER;
+        if (File.separator.equals("/")) folder = UNIX_WORLD_FOLDER;
+        if (includeFilePrefix) folder +=  File.separator + "world-";
+        return folder;
+    }
+
     /**
      * Private constructor makes this a static-only class
      */
@@ -28,15 +40,12 @@ public class GWorldLoader {
      * Reads a world from a file
      * @return A new GWorld object. Returns null if there is an error
      */
-   public static GWorld loadWorld(int world){
+    public static GWorld loadWorld(int world){
 
         GWorld gWorld = null;
         ObjectInputStream ois = null;
         try {
-            if (File.separator.equals("\\"))
-                ois = new ObjectInputStream(new FileInputStream(WINDOWS_WORLD_FILE_PREFIX + world + WORLD_FILE_SUFFIX));
-            else
-                ois = new ObjectInputStream(new FileInputStream(UNIX_WORLD_FILE_PREFIX + world + WORLD_FILE_SUFFIX));
+            ois = new ObjectInputStream(new FileInputStream(getWorldFolderPath(true) + world + WORLD_FILE_SUFFIX));
             gWorld = (GWorld)(ois.readObject());
             ois.close();
 
@@ -48,16 +57,13 @@ public class GWorldLoader {
             return null;
         }
 
-       return gWorld;
+        return gWorld;
     }
 
     public static void saveWorld(GWorld world, int worldNumber) {
         ObjectOutputStream oos = null;
         try {
-            if (File.separator.equals("\\"))
-                oos = new ObjectOutputStream(new FileOutputStream(WINDOWS_WORLD_FILE_PREFIX + worldNumber + WORLD_FILE_SUFFIX));
-            else
-                oos = new ObjectOutputStream(new FileOutputStream(UNIX_WORLD_FILE_PREFIX + worldNumber + WORLD_FILE_SUFFIX));
+            oos = new ObjectOutputStream(new FileOutputStream(getWorldFolderPath(true) + worldNumber + WORLD_FILE_SUFFIX));
             oos.writeObject((Object) world);
             oos.close();
 
