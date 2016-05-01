@@ -52,22 +52,9 @@ public class GWorldLoader {
      */
     public static GWorld loadWorld(int world){
 
-        GWorld gWorld = null;
-        ObjectInputStream ois = null;
-        try {
-            ois = new ObjectInputStream(new FileInputStream(getWorldFolderPath(true) + world + WORLD_FILE_SUFFIX));
-            gWorld = (GWorld)(ois.readObject());
-            ois.close();
-
-        } catch(IOException e){
-            UI.println("File Reading Error:" + e);
-            return null;
-        } catch (ClassNotFoundException e) {
-            UI.println(e);
-            return null;
-        }
-
-        return gWorld;
+        GWorld toReturn;
+        toReturn = GWorldMaker.txtToWorld(world);
+        return toReturn;
     }
 
     public static void saveWorld(GWorld world, int worldNumber) {
