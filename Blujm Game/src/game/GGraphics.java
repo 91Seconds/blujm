@@ -30,11 +30,22 @@ public final class GGraphics {
             + "images" + File.separator + "level-complete.png";
 
 
-    private static String[] levelText =
-            {"Use WASD to move!", "Cells can split too!" ,"Powerups can increase size",
-                "They can also decrease size", "Eat a cat!",
-                    "Sorry, that was weird", "I don't know what came over me",
-                    "Apart from cats", "Can I has win Blujm?", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""};
+    private static String[] levelText = {
+            "Use WASD to move!",
+            "Cells can split too!",
+            "Powerups can increase size",
+            "They can also decrease size",
+            "Eat a",
+            "Sorry, that was weird",
+            "I don't know what came\nover me",
+            "This one is fun",
+            "Can I has win Blujm?",
+            "", // don't touch these empty ones in between
+            "",
+            "",
+            "Eat a cat",
+            "", "", "", "", "", "", "", ""
+    };
 
     /**
      * Prevents any instances of the class
@@ -49,7 +60,7 @@ public final class GGraphics {
         UI.drawImage(MENU_PATH,0,0);
         //drawing menu
 
-       // drawMenu()
+        // drawMenu()
     }
     //ToDo make this method great again
 
