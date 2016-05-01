@@ -27,7 +27,7 @@ public class GLevel {
             gInput.update();
             gLogic.update();
             GGraphics.drawWorld(world);
-            UI.sleep(10);
+            UI.sleep(30);
         }
 
         return true;

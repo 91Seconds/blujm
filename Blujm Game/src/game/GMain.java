@@ -13,16 +13,19 @@ public class GMain {
     public static final int WINDOW_HEIGHT = 1000;
     public static final double DIVIDER_POSITION = 0;
 
-    private static GSideMenu sideMenu;
-
-    // TODO we will have to move the code in the main method into a new class
-    // if we are to have a main menu screen (do we need one?)
+    private GSideMenu sideMenu;
 
     public static void main(String[] args) {
+        GMain main = new GMain();
+    }
+
+    public GMain() {
         UI.initialise();
         UI.setWindowSize(WINDOW_WIDTH, WINDOW_HEIGHT);
         UI.setDivider(DIVIDER_POSITION);
         UI.setImmediateRepaint(false);
+
+//        UI.setKeyListener(this::doKey); // TODO restart button
 
         sideMenu = new GSideMenu(currentLevel, System.currentTimeMillis());
 //        gSideMenu.update(); // TODO refactor side menu class to work
@@ -34,5 +37,12 @@ public class GMain {
         GWorld world = GWorldLoader.loadWorld(levelNum);
         GLevel level = new GLevel(world);
         level.playLevel();
+    }
+
+    public void doKey(String key) {
+        UI.println(key + ": adfadsf");
+        if (key.equals("r") || key.equals("R")) {
+            UI.println("restart game");
+        }
     }
 }
