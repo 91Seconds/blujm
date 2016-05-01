@@ -27,7 +27,7 @@ public class GLevelSelect {
 
 
 
-    private String worldsFolder = GWorldLoader.getWorldFolderPath(false);
+    private String worldsFolder = GWorldLoader.getWorldFolderPath();
     private static final int spacing = 20;
 
 
@@ -52,10 +52,8 @@ public class GLevelSelect {
         if(action.equals("released")){
             int world = worldSelect(x,y);
             if(world != -1){
-                File worldFile = new File(GWorldLoader.getWorldFolderPath(true) + world + ".world");
-                UI.println(worldFile.getPath());
-                GWorld loadedWorld = GWorldMaker.loadWorldFromPrototype(worldFile);
-                GWorldLoader.saveWorld(loadedWorld, world);
+                UI.println(world);
+                GWorldLoader.loadWorld(world);
             }
         }
     }

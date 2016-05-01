@@ -28,7 +28,7 @@ public class GWorldLoader {
     private static final String WINDOWS_WORLD_FOLDER = GFileChecker.RESOURCES_ROOT + File.separator + "worlds" + File.separator + "windows";
     private static final String UNIX_WORLD_FOLDER = GFileChecker.RESOURCES_ROOT + File.separator + "worlds" + File.separator + "unix";
     private static final String WORLD_FILE_SUFFIX = ".world";
-    
+    private static final String WORLD_FOLDER = GFileChecker.RESOURCES_ROOT + File.separator + "worlds";
     /**
      * @param includeFilePrefix
      * @return The world folder path if the above if includeFilePrefix is false,
@@ -41,6 +41,10 @@ public class GWorldLoader {
         return folder;
     }
 
+    public static String getWorldFolderPath(){
+        return WORLD_FOLDER;
+    }
+
     /**
      * Private constructor makes this a static-only class
      */
@@ -50,10 +54,10 @@ public class GWorldLoader {
      * Reads a world from a file
      * @return A new GWorld object. Returns null if there is an error
      */
-    public static GWorld loadWorld(int world){
+    public static GWorld loadWorld(int worldNum){
 
         GWorld toReturn;
-        toReturn = GWorldMaker.txtToWorld(world);
+        toReturn = GWorldMaker.txtToWorld(worldNum);
         return toReturn;
     }
 

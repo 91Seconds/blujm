@@ -43,7 +43,7 @@ public class GWorldMaker {
     }
 
     private static void loadAndSaveFromDefaultPrototype()   {
-        File world = new File(GFileChecker.RESOURCES_ROOT + File.separator + "world-prototype.txt");
+        File world = new File(GFileChecker.RESOURCES_ROOT + File.separator + "worlds/world-prototype.txt");
         GWorldLoader.saveWorld(loadWorldFromPrototype(world), 1);
     }
 
@@ -55,7 +55,8 @@ public class GWorldMaker {
     }
 
     public static GWorld txtToWorld(int world){
-        File worldFile = new File(WORLD_PROTOTYPE_PREFIX + world + WORLD_PROTOTYPE_FILE_SUFFIX);
+        String worldPath = WORLD_PROTOTYPE_PREFIX + world + WORLD_PROTOTYPE_FILE_SUFFIX;
+        File worldFile = new File(worldPath);
         return loadWorldFromPrototype(worldFile);
     }
 
