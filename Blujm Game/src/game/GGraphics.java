@@ -54,16 +54,19 @@ public final class GGraphics {
      */
     public static void drawWorld(GWorld world) {
 //        UI.clearGraphics();
+        int currentLevel = GMain.getCurrentLevel();
+
         drawWorldBackground(world);
         drawGoal(world.getGoal());
         drawCells(world);
-
-        int currentLevel = GMain.getCurrentLevel();
-
+        drawLevelText(currentLevel);
 
         UI.repaintAllGraphics();
-
         //System.out.println("Graphics Drew");
+    }
+
+    private static void drawLevelText(int currentLevel) {
+        UI.drawString(levelText[currentLevel], 10, 10);
     }
 
     /**
