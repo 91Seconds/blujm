@@ -14,33 +14,33 @@ public class GLogic {
 
 
     // Movement functionality
-    private boolean moveUp = false;
-    private boolean moveDown = false;
-    private boolean moveLeft = false;
-    private boolean moveRight = false;
+    private static boolean moveUp = false;
+    private static boolean moveDown = false;
+    private static boolean moveLeft = false;
+    private static boolean moveRight = false;
 
     public static void setMoveUp() {
-        if(currentInstance.moveDown == false && currentInstance.moveLeft == false && currentInstance.moveRight == false) {
-            currentInstance.moveUp = true;
+        if(moveDown == false && moveLeft == false && moveRight == false) {
+            moveUp = true;
 //            UI.println("Moving up");
 //            System.out.println("moved up");
        }
     }
     public static void setMoveDown() {
-        if(currentInstance.moveUp == false && currentInstance.moveLeft == false && currentInstance.moveRight == false) {
-            currentInstance.moveDown = true;
+        if(moveUp == false && moveLeft == false && moveRight == false) {
+            moveDown = true;
 //            UI.println("Moving down");
         }
     }
     public static void setMoveLeft() {
-        if(currentInstance.moveRight == false && currentInstance.moveUp == false && currentInstance.moveDown == false) {
-            currentInstance.moveLeft = true;
+        if(moveRight == false && moveUp == false && moveDown == false) {
+            moveLeft = true;
 //            UI.println("Moving left");
         }
     }
     public static void setMoveRight() {
-        if(currentInstance.moveLeft == false && currentInstance.moveUp == false && currentInstance.moveDown == false) {
-            currentInstance.moveRight = true;
+        if(moveLeft == false && moveUp == false && moveDown == false) {
+            moveRight = true;
 //            UI.println("Moving right");
         }
     }
