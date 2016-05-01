@@ -36,8 +36,8 @@ public final class GGraphics {
             "Powerups can increase size",
             "They can also decrease size",
             "Eat a",
-            "Sorry, that was weird",
-            "I don't know what came\nover me",
+            "Sorry,       that was weird",
+            "I don't know what came\nover me     ",
             "This one is fun",
             "Can I has win Blujm?",
             "", // don't touch these empty ones in between
