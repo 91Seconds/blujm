@@ -23,12 +23,6 @@ import java.util.Scanner;
  */
 public class GWorldMaker {
 
-
-    /**
-     * TODO rename this class to something else
-     */
-
-
     public static GWorld world;
 
     public static final String WORLD_PROTOTYPE_FOLDER = GFileChecker.RESOURCES_ROOT + File.separator + "worlds";
@@ -84,7 +78,6 @@ public class GWorldMaker {
                 System.out.print("\n");
             }
 
-            // TODO: 1/05/16 move world height in units into gworld
             while (true) {
                 String line = sc.nextLine();
                 if (line.equals("//GOAL")) break;
