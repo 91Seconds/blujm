@@ -11,6 +11,7 @@ public class GInput {
     private boolean movingDown = false;
     private boolean movingLeft = false;
     private boolean movingRight = false;
+    private boolean shouldExit = false;
 
 
     //coordinates are for the button areas
@@ -48,6 +49,9 @@ public class GInput {
         if(movingRight) {
             GLogic.setMoveRight();
         }
+        if(shouldExit) {
+            GLogic.setShouldExit();
+        }
 
         movingUp = false;
         movingDown = false;
@@ -73,6 +77,9 @@ public class GInput {
             case "d":
             case "D":
                 movingRight = true;
+                break;
+            case "r":
+                shouldExit = true;
                 break;
             default:
         }
