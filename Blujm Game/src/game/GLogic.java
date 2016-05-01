@@ -135,6 +135,12 @@ public class GLogic {
                     case "moveGrow":
                         world.move(i, j, dRow, dCol);
                         world.grow(i, j);
+                        break;
+                    case "moveKill":
+                        world.move(i, j, dRow, dCol);
+                        world.setCell(new GCell(GSquare.EMPTY_PATH, GSquare.EMPTY_TYPE), i, j);
+                        break;
+
                     default:
                         break;
                 }
@@ -188,6 +194,10 @@ public class GLogic {
                  return "defer";
              } else if(nextSquare.getType().equals(GSquare.WALL_TYPE)) {
                  return "stay";
+             } else if(nextSquare.getType().equals(GSquare.POWERUP_GROW_TYPE)) {
+                 return "moveGrow";
+             } else if(nextSquare.getType().equals(GSquare.POWERUP_KILL_TYPE)) {
+                 return "moveKill";
              }
         } else {
             return "nothing";
