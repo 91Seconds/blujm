@@ -19,12 +19,11 @@ public class GLevel {
      * @return
      */
     public boolean playLevel() {
-
-        GLogic gLogic = new GLogic(world);
-        GInput gInput = new GInput(gLogic);
+        // Make sure we're getting a fresh GLogic
+        GLogic.makeReferenceNull();
+        GLogic gLogic = GLogic.getGLogic(world);
 
         while(shouldExit == false) {
-            gInput.update();
             gLogic.update();
             GGraphics.drawWorld(world);
             UI.sleep(30);

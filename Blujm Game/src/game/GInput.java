@@ -12,8 +12,6 @@ public class GInput {
     private boolean movingLeft = false;
     private boolean movingRight = false;
 
-    GLogic logic;
-
 
     //coordinates are for the button areas
     public void doMouse(String action, double x, double y){
@@ -32,24 +30,23 @@ public class GInput {
     }
     // TODO need to put in the calls for the above methods and probably correct my code lel huehuehue
 
-    public GInput(GLogic logic) {
+    public GInput() {
         UI.setKeyListener(this::keyboardInput);
         System.out.println("key listener set");
-        this.logic = logic;
     }
 
     public void update() {
         if(movingUp) {
-            logic.setMoveUp();
+            GLogic.setMoveUp();
         }
         if(movingDown) {
-            logic.setMoveDown();
+            GLogic.setMoveDown();
         }
         if(movingLeft) {
-            logic.setMoveLeft();
+            GLogic.setMoveLeft();
         }
         if(movingRight) {
-            logic.setMoveRight();
+            GLogic.setMoveRight();
         }
 
         movingUp = false;
@@ -79,5 +76,7 @@ public class GInput {
                 break;
             default:
         }
+
+        update();
     }
 }

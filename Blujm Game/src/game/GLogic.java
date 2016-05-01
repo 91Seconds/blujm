@@ -10,34 +10,37 @@ import ecs100.*;
  */
 public class GLogic {
 
+    private static GLogic currentInstance;
+
+
     // Movement functionality
     private boolean moveUp = false;
     private boolean moveDown = false;
     private boolean moveLeft = false;
     private boolean moveRight = false;
 
-    public void setMoveUp() {
-        if(moveDown == false && moveLeft == false && moveRight == false) {
-            moveUp = true;
+    public static void setMoveUp() {
+        if(currentInstance.moveDown == false && currentInstance.moveLeft == false && currentInstance.moveRight == false) {
+            currentInstance.moveUp = true;
 //            UI.println("Moving up");
 //            System.out.println("moved up");
        }
     }
-    public void setMoveDown() {
-        if(moveUp == false && moveLeft == false && moveRight == false) {
-            moveDown = true;
+    public static void setMoveDown() {
+        if(currentInstance.moveUp == false && currentInstance.moveLeft == false && currentInstance.moveRight == false) {
+            currentInstance.moveDown = true;
 //            UI.println("Moving down");
         }
     }
-    public void setMoveLeft() {
-        if(moveRight == false && moveUp == false && moveDown == false) {
-            moveLeft = true;
+    public static void setMoveLeft() {
+        if(currentInstance.moveRight == false && currentInstance.moveUp == false && currentInstance.moveDown == false) {
+            currentInstance.moveLeft = true;
 //            UI.println("Moving left");
         }
     }
-    public void setMoveRight() {
-        if(moveLeft == false && moveUp == false && moveDown == false) {
-            moveRight = true;
+    public static void setMoveRight() {
+        if(currentInstance.moveLeft == false && currentInstance.moveUp == false && currentInstance.moveDown == false) {
+            currentInstance.moveRight = true;
 //            UI.println("Moving right");
         }
     }
@@ -47,8 +50,20 @@ public class GLogic {
     private int dRow;
     private int dCol;
 
-    public GLogic(GWorld world) {
+    private GLogic(GWorld world) {
         this.world = world;
+    }
+
+    public static GLogic getGLogic(GWorld world) {
+        if(currentInstance != null) {
+            return currentInstance;
+        } else {
+            return new GLogic(world);
+        }
+    }
+
+    public static void makeReferenceNull() {
+        currentInstance = null;
     }
 
     public void update() {
@@ -71,7 +86,7 @@ public class GLogic {
                 neighbourSquare = world.getCell(i + dRow, j + dCol);
 
                 String decision = getMoveDecision(currentSquare, neighbourSquare);
-                if(!decision.equals("nothing")){
+//                if(!decision.equals("nothing")){
 //                    UI.println("Single movement");
 //                    UI.println(decision);
 //                    UI.println(currentSquare);
@@ -79,7 +94,7 @@ public class GLogic {
 //                    UI.println(neighbourSquare);
 //                    UI.println(neighbourSquare.getType());
 //                    UI.println("\n");
-                }
+//                }
                 switch(decision) {
                     case "defer":
                         continue;
