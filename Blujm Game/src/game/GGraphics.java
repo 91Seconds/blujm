@@ -31,8 +31,8 @@ public final class GGraphics {
 
 
     private static String[] levelText =
-            {"Use WASD to move all squares to the green finish zone!", "Eat a cat!",
-                "I am a banana!"};
+            {"Use WASD to move ", "Cells can split too!" ,"Powerups can increase size",
+                "They can also decrease size"};
 
     /**
      * Prevents any instances of the class
@@ -79,7 +79,7 @@ public final class GGraphics {
         UI.setColor(Color.BLACK);
         int halfString = (levelText[currentLevel].length()) / 2;
         halfString *= 10;
-        UI.drawString(levelText[currentLevel], (WORLD_HEIGHT / 2) - halfString, (WORLD_HEIGHT / 2) - 12);
+        UI.drawString(levelText[currentLevel], (WORLD_HEIGHT*2 / 5) - halfString, (WORLD_HEIGHT / 4) - 10);
     }
 
     /**
