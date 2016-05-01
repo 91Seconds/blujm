@@ -24,6 +24,7 @@ public class GLevel {
         GLogic gLogic = GLogic.getGLogic(world);
 
         while(shouldExit == false) {
+            shouldExit = gLogic.shouldExit();
             gLogic.update();
             GGraphics.drawWorld(world);
             UI.sleep(30);
