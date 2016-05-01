@@ -127,6 +127,7 @@ public class GLogic {
                     case "move":
 //                        UI.println("Moving in this direction");
                         world.move(i, j, dRow, dCol);
+                        world.setCell(new GCell(GSquare.USER_PATH, GSquare.USER_MOVED_TYPE), i + dRow, j + dCol);
                         break;
                     case "stay":
                         break;
@@ -224,6 +225,14 @@ public class GLogic {
                         default:
                             break;
                     }
+                }
+            }
+        }
+
+        for(int i = 0; i < 25; i++) {
+            for(int j = 0; j < 25; j++) {
+                if(world.getCell(i, j).getType().equals(GSquare.USER_MOVED_TYPE)) {
+                    world.setCell(new GCell(GSquare.USER_PATH, GSquare.USER_TYPE), i, j);
                 }
             }
         }

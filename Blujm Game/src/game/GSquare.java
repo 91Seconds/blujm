@@ -10,6 +10,7 @@ import java.io.Serializable;
 public abstract class GSquare implements Serializable{
 
     protected static final String USER_TYPE = "user";
+    protected static final String USER_MOVED_TYPE = "usermoved";
     protected static final String WALL_TYPE = "wall";
     protected static final String ENEMY_TYPE = "enemy";
     protected static final String EMPTY_TYPE = "empty";
