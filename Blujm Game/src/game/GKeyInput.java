@@ -30,9 +30,6 @@ public class GKeyInput {
         if (movingRight) {
             GLogic.setMoveRight();
         }
-        if(shouldExit) {
-            GLogic.setShouldExit();
-        }
 
         movingUp = false;
         movingDown = false;
