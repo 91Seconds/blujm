@@ -25,9 +25,7 @@ public class GMain {
         UI.setDivider(DIVIDER_POSITION);
         UI.setImmediateRepaint(false);
 
-        GInput gInput = new GInput();
-
-//        UI.setKeyListener(this::doKey); // TODO restart button
+        GKeyInput gKeyInput = new GKeyInput();
 
         sideMenu = new GSideMenu(currentLevel, System.currentTimeMillis());
 //        gSideMenu.update(); // TODO refactor side menu class to work
@@ -36,15 +34,12 @@ public class GMain {
     }
 
     private void playLevel(int levelNum) {
-        GWorld world = GWorldMaker.loadWorld(levelNum);
-        GLevel level = new GLevel(world);
-        level.playLevel();
-    }
+        GWorld world;
 
-    public void doKey(String key) {
-        UI.println(key + ": adfadsf");
-        if (key.equals("r") || key.equals("R")) {
-            UI.println("restart game");
-        }
+        GLevel level;
+        do {
+            world = GWorldMaker.loadWorld(levelNum);
+            level = new GLevel(world);
+        } while(level.playLevel() == GLevel.KEY_RESTART);
     }
 }

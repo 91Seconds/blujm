@@ -12,12 +12,32 @@ public class GLogic {
 
     private static GLogic currentInstance;
 
+    public static boolean shouldQuit() {
+        return shouldQuit;
+    }
+    public static void setShouldQuit(boolean shouldQuit) {
+        GLogic.shouldQuit = shouldQuit;
+    }
+    public static boolean shouldRestart() {
+        return shouldRestart;
+    }
+    public static void setShouldRestart(boolean shouldRestart) {
+        GLogic.shouldRestart = shouldRestart;
+    }
+
+    private static boolean shouldQuit, shouldRestart;
 
     // Movement functionality
     private static boolean moveUp = false;
     private static boolean moveDown = false;
     private static boolean moveLeft = false;
     private static boolean moveRight = false;
+    private static boolean shouldExit = false;
+
+
+    public static void setShouldExit() {
+        shouldExit = true;
+    }
 
     public static void setMoveUp() {
         if(moveDown == false && moveLeft == false && moveRight == false) {
@@ -45,6 +65,10 @@ public class GLogic {
         }
     }
 
+    public static boolean shouldExit() {
+        return shouldExit;
+    }
+
     private GWorld world;
 
     private int dRow;
@@ -52,6 +76,8 @@ public class GLogic {
 
     private GLogic(GWorld world) {
         this.world = world;
+        shouldQuit = false;
+        shouldRestart = false;
     }
 
     public static GLogic getGLogic(GWorld world) {
