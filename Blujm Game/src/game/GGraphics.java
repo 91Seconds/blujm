@@ -29,7 +29,8 @@ public final class GGraphics {
 
 
     private static String[] levelText =
-            {"Used WASD to move into the green box", "Eat a cat!"};
+            {"Use WASD to move all squares to the green finish zone!", "Eat a cat!",
+                "I am a banana!"};
 
     /**
      * Prevents any instances of the class
@@ -68,6 +69,7 @@ public final class GGraphics {
     private static void drawLevelText(int currentLevel) {
         Graphics2D graphics = UI.getGraphics();
         graphics.setFont(new Font("Monospaced", Font.PLAIN, 30));
+        UI.setColor(Color.BLACK);
         int halfString = (levelText[currentLevel].length()) / 2;
         halfString *= 10;
         UI.drawString(levelText[currentLevel], (WORLD_HEIGHT / 2) - halfString, (WORLD_HEIGHT / 2) - 12);
