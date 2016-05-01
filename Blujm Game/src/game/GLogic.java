@@ -105,12 +105,10 @@ public class GLogic {
         if(dRow == 0 && dCol == 0) {
             return; // no change
         }
-
-        GSquare checkForPowerups;
         GSquare[][] powerupMatrix = new GSquare[25][25];
         for(int i = 0; i < height; i++) {
             for(int j = 0; j < width; j++) {
-                checkForPowerups = world.getCell(i, j);
+                GSquare checkForPowerups = world.getCell(i, j);
                 if(checkForPowerups.getType().equals(GSquare.POWERUP_GROW_TYPE)
                         || checkForPowerups.getType().equals(GSquare.POWERUP_KILL_TYPE) ) {
                     powerupMatrix[i][j] = checkForPowerups;
@@ -154,13 +152,14 @@ public class GLogic {
 
         for(int i = 0; i < height; i++) {
             for(int j = 0; j < width; j++) {
-                if(powerupMatrix[i][j] != null && world.getCell(i, j).getType().equals(GSquare.USER_MOVED_TYPE)) {
+                if (powerupMatrix[i][j] == null) continue;
+                if(world.getCell(i, j).getType().equals(GSquare.USER_MOVED_TYPE)) {
                     switch(powerupMatrix[i][j].getType()) {
                         case "grow":
                             world.grow(i, j);
                             break;
                         case "kill":
-                            //world.kill(i, j);
+                            world.kill(i, j);
                             break;
                     }
                 }
@@ -168,6 +167,7 @@ public class GLogic {
         }
 
         cleanUpAfterUpdate(updated);
+
         cleanMovement();
         world.resetCantMoveField();
 
