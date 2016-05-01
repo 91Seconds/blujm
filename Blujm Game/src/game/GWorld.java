@@ -84,10 +84,10 @@ public class GWorld implements Serializable {
     }
 
     public void grow(int row, int col) {
-        for(int i = (col - 1); i < (col + 2); i++) {
-            for(int j = (row - 1); j < (row + 2); j++) {
-                if(cells[i][j].getType().equals(GSquare.EMPTY_TYPE)) {
-                    cells[i][j] = new GCell(GSquare.USER_PATH, GSquare.USER_TYPE);
+        for(int c = (col - 1); c < (col + 2); c++) {
+            for(int r = (row - 1); r < (row + 2); r++) {
+                if(cells[r][c].getType().equals(GSquare.EMPTY_TYPE)) {
+                    cells[r][c] = new GCell(GSquare.USER_PATH, GSquare.USER_TYPE);
                 }
             }
         }
