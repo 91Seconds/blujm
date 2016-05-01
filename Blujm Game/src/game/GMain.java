@@ -13,7 +13,7 @@ public class GMain {
     public static final int WINDOW_HEIGHT = 1000;
     public static final double DIVIDER_POSITION = 0;
 
-    private GSideMenu sideMenu;
+    private GLevelSelect gLevelSelect;
 
     public static void main(String[] args) {
         GMain main = new GMain();
@@ -25,21 +25,42 @@ public class GMain {
         UI.setDivider(DIVIDER_POSITION);
         UI.setImmediateRepaint(false);
 
+        @SuppressWarnings("unused")
         GKeyInput gKeyInput = new GKeyInput();
 
-        sideMenu = new GSideMenu(currentLevel, System.currentTimeMillis());
-//        gSideMenu.update(); // TODO refactor side menu class to work
+        gLevelSelect = new GLevelSelect();
+        gLevelSelect.update();
+        UI.setMouseListener(this::doMouse);
 
-        playLevel(currentLevel);
+//        playLevel(currentLevel);
     }
 
     private void playLevel(int levelNum) {
-        GWorld world;
+        gLevelSelect.setDisable(true);
 
+        GWorld world;
         GLevel level;
-        do {
+
+        while (true) {
+            UI.clearGraphics();
             world = GWorldMaker.loadWorld(levelNum);
             level = new GLevel(world);
-        } while(level.playLevel() == GLevel.KEY_RESTART);
+
+            int result = level.playLevel(levelNum);
+            if (result == GLevel.KEY_RESTART) continue;
+            if (result == GLevel.KEY_QUIT) break;
+        }
+
+        gLevelSelect.setDisable(false);
+    }
+
+    public void doMouse(String action, double x, double y) {
+        gLevelSelect.update();
+
+        if (action.equals("released")){
+            int level = gLevelSelect.worldSelect(x,y);
+            if (level != -1)
+                playLevel(level);
+        }
     }
 }

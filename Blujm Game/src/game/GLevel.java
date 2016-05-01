@@ -21,13 +21,15 @@ public class GLevel {
      * @return
      */
 
-    public int playLevel() {
+    public int playLevel(int levelNum) {
         // Make sure we're getting a fresh GLogic
         GLogic.makeReferenceNull();
         GLogic gLogic = GLogic.getGLogic(world);
+        GSideMenu sideMenu = new GSideMenu(levelNum);
 
         while (!GLogic.shouldQuit() && !GLogic.shouldRestart()) {
             gLogic.update();
+            sideMenu.update();
             GGraphics.drawWorld(world);
             UI.sleep(30);
         }

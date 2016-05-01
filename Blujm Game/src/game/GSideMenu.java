@@ -23,28 +23,26 @@ public class GSideMenu {
             + "images" + File.separator + "side-menu-1.png";
 
     private long startTimeMillis;
-    private int level;
 
-    public static void main(String[]args){
-        GSideMenu g = new GSideMenu(0,System.currentTimeMillis());
-        g.update();
-        //g.toReadableTime();
-    }
-
-    //Need to implement level incrementing in other classes before this one
-    public GSideMenu(int level, long timeMillis){
-        startTimeMillis = currentTimeMillis();
+    private void setLevel(int level) {
         this.level = level;
     }
 
-    public String toReadableTime(){
+    private int level;
+
+    public GSideMenu(int level) {
+        startTimeMillis = currentTimeMillis();
+        setLevel(level);
+    }
+
+    public String toReadableTime() {
         long millisDifference = System.currentTimeMillis() - startTimeMillis;
         SimpleDateFormat sdf = new SimpleDateFormat("mm:ss");
         Date resultDate = new Date(millisDifference);
         return sdf.format(resultDate);
     }
 
-    public void update(){
+    public void update() {
         UI.drawImage(fName, LEFT, TOP, SIDE_MENU_WIDTH, SIDE_MENU_HEIGHT);
         UI.setFontSize(28);
         UI.setColor(Color.WHITE);
