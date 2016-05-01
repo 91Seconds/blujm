@@ -25,6 +25,13 @@ import java.util.Scanner;
  *
  */
 public class GWorldMaker {
+
+
+    /**
+     * TODO rename this class to something else
+     */
+
+
     public static GWorld world;
 
     public static void main(String[] args){

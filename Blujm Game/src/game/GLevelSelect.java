@@ -8,10 +8,10 @@ import java.io.File;
 /**
  * Created by Daniel Young on 4/30/2016.
  */
-public class GWorldSelect {
+public class GLevelSelect {
 
     public static void main(String[] args){
-        GWorldSelect temp = new GWorldSelect();
+        GLevelSelect temp = new GLevelSelect();
         temp.update();
 
     }
@@ -41,7 +41,7 @@ public class GWorldSelect {
     private static final int buttonWidth = ((RIGHT - LEFT) - (cellsPerRow + 1)*spacing) / cellsPerRow;
     private static final int buttonHeight = ((BOT - TOP) - (cellsPerRow + 1)*spacing) / cellsPerRow;
 
-    public GWorldSelect(){
+    public GLevelSelect(){
         //Iterates through the worlds folder to find the names of the world to be loaded
         UI.setMouseListener(this::doMouse);
         File f = new File(worldsFolder);

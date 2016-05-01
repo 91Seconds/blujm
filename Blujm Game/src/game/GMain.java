@@ -2,23 +2,18 @@ package game;
 
 import ecs100.UI;
 
-import java.io.File;
-
 /**
  * Created by Dylan on 24/04/16.
  */
 public class GMain {
 
+    private static int currentLevel = 1;
 
-    private static boolean shouldExit = false;
-    private static int currentWorld = 1;
-
-    /**
-     * Keep these public so the manual test can reuse these values
-     */
     public static final int WINDOW_WIDTH = 1000;
     public static final int WINDOW_HEIGHT = 1000;
     public static final double DIVIDER_POSITION = 0;
+
+    private static GSideMenu sideMenu;
 
     // TODO we will have to move the code in the main method into a new class
     // if we are to have a main menu screen (do we need one?)
@@ -29,18 +24,15 @@ public class GMain {
         UI.setDivider(DIVIDER_POSITION);
         UI.setImmediateRepaint(false);
 
-        GWorld world = GWorldLoader.loadWorld(currentWorld);
-        GLogic gLogic = new GLogic(world);
-        GInput gInput = new GInput(gLogic);
-        GSideMenu gSideMenu = new GSideMenu(currentWorld, System.currentTimeMillis());
+        sideMenu = new GSideMenu(currentLevel, System.currentTimeMillis());
+//        gSideMenu.update(); // TODO refactor side menu class to work
 
-        while(shouldExit == false) {
-            gInput.update();
-            gLogic.update();
-            gSideMenu.update();
-            GGraphics.drawWorld(world);
-            UI.sleep(10);
-        }
+        playLevel(currentLevel);
+    }
 
+    private static void playLevel(int levelNum) {
+        GWorld world = GWorldLoader.loadWorld(levelNum);
+        GLevel level = new GLevel(world);
+        level.playLevel();
     }
 }

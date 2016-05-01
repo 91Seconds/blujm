@@ -12,6 +12,16 @@ import java.io.*;
  */
 public class GWorldLoader {
 
+
+    /**
+     * WE WON'T NEED THIS CLASS ANYMORE TODO REMOVE THIS CLASS and move the constants
+     */
+
+
+
+
+
+
     /**
      * Fit an integer between the prefix and suffix to get the file name
      */
