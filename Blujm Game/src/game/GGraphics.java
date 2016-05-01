@@ -32,7 +32,7 @@ public final class GGraphics {
 
     private static String[] levelText =
             {"Use WASD to move ", "Cells can split too!" ,"Powerups can increase size",
-                "They can also decrease size"};
+                "They can also decrease size", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""};
 
     /**
      * Prevents any instances of the class
