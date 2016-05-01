@@ -16,8 +16,8 @@ import java.util.Scanner;
  * 1 is living cell
  * x is wall
  * e is enemy
- * p is power-up
- *
+ * + is increase
+ * - is kill
  * modifiers are done in prefixes. //note, currently no support for modifiers
  *
  */
@@ -61,6 +61,12 @@ public class GWorldMaker {
                     }
                     if(line[col].equals("e")) {
                         cellArray[row][col] = new GCell(GSquare.ENEMY_PATH,GSquare.ENEMY_TYPE);
+                    }
+                    if(line[col].equals("+")) {
+                        cellArray[row][col] = new GCell(GSquare.POWERUP_GROW_TYPE, GSquare.POWERUP_GROW_PATH);
+                    }
+                    if(line[col].equals("-")) {
+                        cellArray[row][col] = new GCell(GSquare.POWERUP_KILL_TYPE, GSquare.POWERUP_GROW_PATH);
                     }
                 }
                 System.out.print("\n");
