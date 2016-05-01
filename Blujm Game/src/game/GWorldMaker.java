@@ -33,6 +33,8 @@ public class GWorldMaker {
 
 
     public static GWorld world;
+    private static final String WORLD_PROTOTYPE_PREFIX = GFileChecker.RESOURCES_ROOT + File.separator + "worlds" + File.separator + "world-";
+    private static final String WORLD_PROTOTYPE_FILE_SUFFIX = ".txt";
 
     public static void main(String[] args){
         UI.initialise();
@@ -50,6 +52,11 @@ public class GWorldMaker {
         File worldFile = new File(path);
         GWorld world = loadWorldFromPrototype(worldFile);
         GWorldLoader.saveWorld(world, 1);
+    }
+
+    public static GWorld txtToWorld(int world){
+        File worldFile = new File(WORLD_PROTOTYPE_PREFIX + world + WORLD_PROTOTYPE_FILE_SUFFIX);
+        return loadWorldFromPrototype(worldFile);
     }
 
     public static GWorld loadWorldFromPrototype(File world) {
