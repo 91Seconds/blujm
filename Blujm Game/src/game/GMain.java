@@ -15,6 +15,8 @@ public class GMain {
 
     private GLevelSelect gLevelSelect;
 
+    private boolean isWaitingForUserToClickWin = false;
+
     public static void main(String[] args) {
         GMain main = new GMain();
     }
@@ -49,15 +51,28 @@ public class GMain {
             int result = level.playLevel(levelNum);
             if (result == GLevel.KEY_RESTART) continue;
             if (result == GLevel.KEY_QUIT) break;
+
+            if (result == GLevel.KEY_WON) {
+                GGraphics.drawWin();
+                isWaitingForUserToClickWin = true;
+                return;
+            }
         }
 
         gLevelSelect.setDisable(false);
     }
 
     public void doMouse(String action, double x, double y) {
-        gLevelSelect.update();
-
         if (action.equals("released")){
+            if (isWaitingForUserToClickWin) {
+                gLevelSelect.setDisable(false);
+                gLevelSelect.update();
+                isWaitingForUserToClickWin = false;
+                return;
+            }
+
+            gLevelSelect.update();
+
             int level = gLevelSelect.worldSelect(x,y);
             if (level != -1)
                 playLevel(level);

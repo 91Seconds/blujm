@@ -15,6 +15,7 @@ public class GLevel {
 
     public static final int KEY_QUIT = 1;
     public static final int KEY_RESTART = 2;
+    public static final int KEY_WON = 3;
 
     /**
      * Plays the level until the game quits
@@ -27,7 +28,7 @@ public class GLevel {
         GLogic gLogic = GLogic.getGLogic(world);
         GSideMenu sideMenu = new GSideMenu(levelNum);
 
-        while (!GLogic.shouldQuit() && !GLogic.shouldRestart()) {
+        while (!GLogic.shouldQuit() && !GLogic.shouldRestart() && !GLogic.hasWon()) {
             gLogic.update();
             sideMenu.update();
             GGraphics.drawWorld(world);
@@ -35,6 +36,7 @@ public class GLevel {
         }
 
         if (GLogic.shouldRestart()) return KEY_RESTART;
+        if (GLogic.hasWon()) return KEY_WON;
         return KEY_QUIT;
 
     }

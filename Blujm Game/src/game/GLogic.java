@@ -25,7 +25,14 @@ public class GLogic {
         GLogic.shouldRestart = shouldRestart;
     }
 
-    private static boolean shouldQuit, shouldRestart, hasWon;
+    private static boolean shouldQuit;
+    private static boolean shouldRestart;
+
+    public static boolean hasWon() {
+        return hasWon;
+    }
+
+    private static boolean hasWon;
 
     // Movement functionality
     private static boolean moveUp = false;
@@ -70,6 +77,7 @@ public class GLogic {
         this.world = world;
         shouldQuit = false;
         shouldRestart = false;
+        hasWon = false;
     }
 
     public static GLogic getGLogic(GWorld world) {
@@ -145,7 +153,7 @@ public class GLogic {
         world.resetCantMoveField();
 
         if (hasUserWon()) {
-            GLogic.set
+            hasWon = true;
         }
     }
 

@@ -26,6 +26,8 @@ public final class GGraphics {
             + "images" + File.separator + "goal-square.png";
     public static final String MENU_PATH = GFileChecker.RESOURCES_ROOT + File.separator
             + "images" + File.separator + "Menu.png";
+    public static final String WIN_PATH = GFileChecker.RESOURCES_ROOT + File.separator
+            + "images" + File.separator + "level-complete.png";
 
 
     private static String[] levelText =
@@ -64,6 +66,11 @@ public final class GGraphics {
 
         UI.repaintAllGraphics();
         //System.out.println("Graphics Drew");
+    }
+
+    public static void drawWin() {
+        UI.drawImage(WIN_PATH, WORLD_LEFT, WORLD_TOP, WORLD_WIDTH, WORLD_HEIGHT);
+        UI.repaintAllGraphics();
     }
 
     private static void drawLevelText(int currentLevel) {

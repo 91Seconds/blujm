@@ -93,6 +93,7 @@ public class GLevelSelect {
     }
 
     public void update(){
+        UI.clearGraphics();
         if (disable) return;
 
         UI.drawImage(backgroundImage, GGraphics.WORLD_LEFT, GGraphics.WORLD_TOP, GGraphics.WORLD_WIDTH, GGraphics.WORLD_HEIGHT);
