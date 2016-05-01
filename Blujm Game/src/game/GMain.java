@@ -33,8 +33,8 @@ public class GMain {
         playLevel(currentLevel);
     }
 
-    private static void playLevel(int levelNum) {
-        GWorld world = GWorldLoader.loadWorld(levelNum);
+    private void playLevel(int levelNum) {
+        GWorld world = GWorldMaker.loadWorld(levelNum);
         GLevel level = new GLevel(world);
         level.playLevel();
     }

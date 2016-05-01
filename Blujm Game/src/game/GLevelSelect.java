@@ -26,8 +26,7 @@ public class GLevelSelect {
             + "images" + File.separator + "world-select-button.png";
 
 
-
-    private String worldsFolder = GWorldLoader.getWorldFolderPath();
+    private String worldsFolder = GWorldMaker.WORLD_PROTOTYPE_FOLDER;
     private static final int spacing = 20;
 
 
@@ -49,11 +48,11 @@ public class GLevelSelect {
     }
 
     public void doMouse(String action, double x, double y){
-        if(action.equals("released")){
+        if (action.equals("released")){
             int world = worldSelect(x,y);
-            if(world != -1){
+            if (world != -1){
                 UI.println(world);
-                GWorldLoader.loadWorld(world);
+                GWorldMaker.loadWorld(world);
             }
         }
     }

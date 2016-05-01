@@ -1,8 +1,5 @@
 package game;
 
-import ecs100.UI;
-import ecs100.UIFileChooser;
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
@@ -33,34 +30,18 @@ public class GWorldMaker {
 
 
     public static GWorld world;
-    private static final String WORLD_PROTOTYPE_PREFIX = GFileChecker.RESOURCES_ROOT + File.separator + "worlds" + File.separator + "world-";
-    private static final String WORLD_PROTOTYPE_FILE_SUFFIX = ".txt";
 
-    public static void main(String[] args){
-        UI.initialise();
-        UI.addButton("Load World from txt", GWorldMaker::loadChosenPrototype);
-        UI.addButton("Load Default Prototype", GWorldMaker::loadAndSaveFromDefaultPrototype);
-    }
+    public static final String WORLD_PROTOTYPE_FOLDER = GFileChecker.RESOURCES_ROOT + File.separator + "worlds";
+    public static final String WORLD_PROTOTYPE_FILE_PREFIX = "world-";
+    public static final String WORLD_PROTOTYPE_FILE_SUFFIX = ".txt";
 
-    private static void loadAndSaveFromDefaultPrototype()   {
-        File world = new File(GFileChecker.RESOURCES_ROOT + File.separator + "worlds/world-prototype.txt");
-        GWorldLoader.saveWorld(loadWorldFromPrototype(world), 1);
-    }
-
-    private static void loadChosenPrototype() {
-        String path = UIFileChooser.open("open a world in plaintext");
-        File worldFile = new File(path);
-        GWorld world = loadWorldFromPrototype(worldFile);
-        GWorldLoader.saveWorld(world, 1);
-    }
-
-    public static GWorld txtToWorld(int world){
-        String worldPath = WORLD_PROTOTYPE_PREFIX + world + WORLD_PROTOTYPE_FILE_SUFFIX;
+    public static GWorld loadWorld(int world){
+        String worldPath = WORLD_PROTOTYPE_FOLDER + File.separator + WORLD_PROTOTYPE_FILE_PREFIX + world + WORLD_PROTOTYPE_FILE_SUFFIX;
         File worldFile = new File(worldPath);
-        return loadWorldFromPrototype(worldFile);
+        return loadWorld(worldFile);
     }
 
-    public static GWorld loadWorldFromPrototype(File world) {
+    public static GWorld loadWorld(File world) {
         GCell[][] cellArray = new GCell[GGraphics.WORLD_HEIGHT_IN_UNITS][GGraphics.WORLD_WIDTH_IN_UNITS];
         try {
             Scanner sc = new Scanner(world);
