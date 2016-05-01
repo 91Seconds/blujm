@@ -35,13 +35,13 @@ public abstract class GSquare implements Serializable{
     protected static final String POWERUP_KILL_PATH =
             GFileChecker.RESOURCES_ROOT + File.separator + "images" + File.separator  + "powerup-kill.png";
     protected static final String POWERUP_TELEPORT_UP_PATH =
-            GFileChecker.RESOURCES_ROOT + File.separator + "images" + File.separator + "tpup.png";
+            GFileChecker.RESOURCES_ROOT + File.separator + "images" + File.separator + "TPUp.png";
     protected static final String POWERUP_TELEPORT_DOWN_PATH =
-            GFileChecker.RESOURCES_ROOT + File.separator + "images" + File.separator + "tpdown.png";
+            GFileChecker.RESOURCES_ROOT + File.separator + "images" + File.separator + "TPDown.png";
     protected static final String POWERUP_TELEPORT_LEFT_PATH =
-            GFileChecker.RESOURCES_ROOT + File.separator + "images" + File.separator + "tpleft.png";
+            GFileChecker.RESOURCES_ROOT + File.separator + "images" + File.separator + "TPLeft.png";
     protected static final String POWERUP_TELEPORT_RIGHT_PATH =
-            GFileChecker.RESOURCES_ROOT + File.separator + "images" + File.separator + "tpright.png";
+            GFileChecker.RESOURCES_ROOT + File.separator + "images" + File.separator + "TPRight.png";
 
     private String imagePath;
     private String type;
