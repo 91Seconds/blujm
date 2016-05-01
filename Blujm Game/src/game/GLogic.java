@@ -1,6 +1,8 @@
 package game;
 import ecs100.*;
 
+import java.util.Arrays;
+
 /**
  * Created by Dylan on 29/04/16.
  *
@@ -109,8 +111,7 @@ public class GLogic {
         for(int i = 0; i < height; i++) {
             for(int j = 0; j < width; j++) {
                 GSquare checkForPowerups = world.getCell(i, j);
-                if(checkForPowerups.getType().equals(GSquare.POWERUP_GROW_TYPE)
-                        || checkForPowerups.getType().equals(GSquare.POWERUP_KILL_TYPE) ) {
+                if(Arrays.asList(GSquare.POWERUP_TYPES).contains(checkForPowerups.getType())) {
                     powerupMatrix[i][j] = checkForPowerups;
                 }
             }
@@ -163,7 +164,19 @@ public class GLogic {
                             break;
                         case GSquare.POWERUP_TELEPORT_RIGHT_TYPE:
                             world.setCell(new GCell(GCell.EMPTY_PATH, GCell.EMPTY_TYPE), r, c);
-                            world.setCell(new GCell(GCell.EMPTY_PATH, GCell.EMPTY_TYPE), r, c + 5);
+                            world.setCell(new GCell(GCell.USER_PATH, GCell.USER_TYPE), r, c + 5);
+                            break;
+                        case GSquare.POWERUP_TELEPORT_LEFT_TYPE:
+                            world.setCell(new GCell(GCell.EMPTY_PATH, GCell.EMPTY_TYPE), r, c);
+                            world.setCell(new GCell(GCell.USER_PATH, GCell.USER_TYPE), r, c - 5);
+                            break;
+                        case GSquare.POWERUP_TELEPORT_UP_TYPE:
+                            world.setCell(new GCell(GCell.EMPTY_PATH, GCell.EMPTY_TYPE), r, c);
+                            world.setCell(new GCell(GCell.USER_PATH, GCell.USER_TYPE), r - 5, c);
+                            break;
+                        case GSquare.POWERUP_TELEPORT_DOWN_TYPE:
+                            world.setCell(new GCell(GCell.EMPTY_PATH, GCell.EMPTY_TYPE), r, c);
+                            world.setCell(new GCell(GCell.USER_PATH, GCell.USER_TYPE), r + 5, c);
                             break;
                     }
                 }
@@ -217,16 +230,12 @@ public class GLogic {
                  return "defer";
              } else if(nextSquare.getType().equals(GSquare.WALL_TYPE)) {
                  return "stay";
-             } else if(nextSquare.getType().equals(GSquare.POWERUP_GROW_TYPE)) {
-                 return "move";
-             } else if(nextSquare.getType().equals(GSquare.POWERUP_KILL_TYPE)) {
-                 return "move";
              }
         } else {
             return "nothing";
         }
 
-        return "nothing";
+        return "move";
     }
 
     private void cleanUpAfterUpdate(boolean[][] updated) {
