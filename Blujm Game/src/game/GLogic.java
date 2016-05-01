@@ -25,19 +25,15 @@ public class GLogic {
         GLogic.shouldRestart = shouldRestart;
     }
 
-    private static boolean shouldQuit, shouldRestart;
+    private static boolean shouldQuit, shouldRestart, hasWon;
 
     // Movement functionality
     private static boolean moveUp = false;
     private static boolean moveDown = false;
     private static boolean moveLeft = false;
     private static boolean moveRight = false;
-    private static boolean shouldExit = false;
 
 
-    public static void setShouldExit() {
-        shouldExit = true;
-    }
 
     public static void setMoveUp() {
         if(moveDown == false && moveLeft == false && moveRight == false) {
@@ -63,10 +59,6 @@ public class GLogic {
             moveRight = true;
 //            UI.println("Moving right");
         }
-    }
-
-    public static boolean shouldExit() {
-        return shouldExit;
     }
 
     private GWorld world;
@@ -153,7 +145,7 @@ public class GLogic {
         world.resetCantMoveField();
 
         if (hasUserWon()) {
-            UI.println("YOU WON! LELZ");
+            GLogic.set
         }
     }
 
