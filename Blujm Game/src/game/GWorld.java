@@ -93,6 +93,10 @@ public class GWorld implements Serializable {
         }
     }
 
+    public void kill(int row, int col) {
+        cells[row][col] = new GCell(GCell.EMPTY_PATH, GCell.EMPTY_TYPE);
+    }
+
     public String getBACKGROUND_IMAGE_PATH() {
         return BACKGROUND_IMAGE_PATH;
     }

@@ -66,7 +66,7 @@ public class GWorldMaker {
                         cellArray[row][col] = new GCell(GSquare.POWERUP_GROW_PATH, GSquare.POWERUP_GROW_TYPE);
                     }
                     if(line[col].equals("-")) {
-                        cellArray[row][col] = new GCell(GSquare.POWERUP_KILL_PATH, GSquare.POWERUP_GROW_TYPE);
+                        cellArray[row][col] = new GCell(GSquare.POWERUP_KILL_PATH, GSquare.POWERUP_KILL_TYPE);
                     }
                 }
                 System.out.print("\n");
