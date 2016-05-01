@@ -150,16 +150,20 @@ public class GLogic {
             }
         }
 
-        for(int i = 0; i < height; i++) {
-            for(int j = 0; j < width; j++) {
-                if (powerupMatrix[i][j] == null) continue;
-                if(world.getCell(i, j).getType().equals(GSquare.USER_MOVED_TYPE)) {
-                    switch(powerupMatrix[i][j].getType()) {
-                        case "grow":
-                            world.grow(i, j);
+        for(int r = 0; r < height; r++) {
+            for(int c = 0; c < width; c++) {
+                if (powerupMatrix[r][c] == null) continue;
+                if(world.getCell(r, c).getType().equals(GSquare.USER_MOVED_TYPE)) {
+                    switch(powerupMatrix[r][c].getType()) {
+                        case GSquare.POWERUP_GROW_TYPE:
+                            world.grow(r, c);
                             break;
-                        case "kill":
-                            world.kill(i, j);
+                        case GSquare.POWERUP_KILL_TYPE:
+                            world.kill(r, c);
+                            break;
+                        case GSquare.POWERUP_TELEPORT_RIGHT_TYPE:
+                            world.setCell(new GCell(GCell.EMPTY_PATH, GCell.EMPTY_TYPE), r, c);
+                            world.setCell(new GCell(GCell.EMPTY_PATH, GCell.EMPTY_TYPE), r, c + 5);
                             break;
                     }
                 }
