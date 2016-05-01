@@ -60,7 +60,8 @@ public class GKeyInput {
             case "R":
                 GLogic.setShouldRestart(true);
                 break;
-            case "Escape":
+            case "q":
+            case "Q":
                 GLogic.setShouldQuit(true);
             default:
         }
