@@ -84,8 +84,8 @@ public class GWorld implements Serializable {
     }
 
     public void grow(int row, int col) {
-        for(int c = (col - 1); c < (col + 2); c++) {
-            for(int r = (row - 1); r < (row + 2); r++) {
+        for(int r = (row - 1); r < (row + 2); r++) {
+            for(int c = (col - 1); c < (col + 2); c++) {
                 if(cells[r][c].getType().equals(GSquare.EMPTY_TYPE)) {
                     cells[r][c] = new GCell(GSquare.USER_PATH, GSquare.USER_TYPE);
                 }

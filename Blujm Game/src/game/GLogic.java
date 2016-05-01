@@ -106,6 +106,18 @@ public class GLogic {
             return; // no change
         }
 
+        GSquare checkForPowerups;
+        GSquare[][] powerupMatrix = new GSquare[25][25];
+        for(int i = 0; i < height; i++) {
+            for(int j = 0; j < width; j++) {
+                checkForPowerups = world.getCell(i, j);
+                if(checkForPowerups.getType().equals(GSquare.POWERUP_GROW_TYPE)
+                        || checkForPowerups.getType().equals(GSquare.POWERUP_KILL_TYPE) ) {
+                    powerupMatrix[i][j] = checkForPowerups;
+                }
+            }
+        }
+
         for(int i = 0; i < height; i++) {
             for(int j = 0; j < width; j++) {
                 currentSquare = world.getCell(i, j);
@@ -133,19 +145,25 @@ public class GLogic {
                         break;
                     case "nothing":
                         break;
-                    case "moveGrow":
-                        world.move(i, j, dRow, dCol);
-                        world.grow(i + dRow, j + dCol);
-                        break;
-                    case "moveKill":
-                        world.move(i, j, dRow, dCol);
-                        world.setCell(new GCell(GSquare.EMPTY_PATH, GSquare.EMPTY_TYPE), i + dRow, j + dCol);
-                        break;
-
                     default:
                         break;
                 }
                 updated[i][j] = true;
+            }
+        }
+
+        for(int i = 0; i < height; i++) {
+            for(int j = 0; j < width; j++) {
+                if(powerupMatrix[i][j] != null && world.getCell(i, j).getType().equals(GSquare.USER_TYPE)) {
+                    switch(powerupMatrix[i][j].getType()) {
+                        case "grow":
+                            world.grow(i, j);
+                            break;
+                        case "kill":
+                            //world.kill(i, j);
+                            break;
+                    }
+                }
             }
         }
 
@@ -196,9 +214,9 @@ public class GLogic {
              } else if(nextSquare.getType().equals(GSquare.WALL_TYPE)) {
                  return "stay";
              } else if(nextSquare.getType().equals(GSquare.POWERUP_GROW_TYPE)) {
-                 return "moveGrow";
+                 return "move";
              } else if(nextSquare.getType().equals(GSquare.POWERUP_KILL_TYPE)) {
-                 return "moveKill";
+                 return "move";
              }
         } else {
             return "nothing";
