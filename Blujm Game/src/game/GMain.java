@@ -25,6 +25,8 @@ public class GMain {
         UI.setDivider(DIVIDER_POSITION);
         UI.setImmediateRepaint(false);
 
+        GInput gInput = new GInput();
+
 //        UI.setKeyListener(this::doKey); // TODO restart button
 
         sideMenu = new GSideMenu(currentLevel, System.currentTimeMillis());

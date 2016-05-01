@@ -10,32 +10,35 @@ import ecs100.*;
  */
 public class GLogic {
 
-    // Movement functionality
-    private boolean moveUp = false;
-    private boolean moveDown = false;
-    private boolean moveLeft = false;
-    private boolean moveRight = false;
+    private static GLogic currentInstance;
 
-    public void setMoveUp() {
+
+    // Movement functionality
+    private static boolean moveUp = false;
+    private static boolean moveDown = false;
+    private static boolean moveLeft = false;
+    private static boolean moveRight = false;
+
+    public static void setMoveUp() {
         if(moveDown == false && moveLeft == false && moveRight == false) {
             moveUp = true;
 //            UI.println("Moving up");
 //            System.out.println("moved up");
        }
     }
-    public void setMoveDown() {
+    public static void setMoveDown() {
         if(moveUp == false && moveLeft == false && moveRight == false) {
             moveDown = true;
 //            UI.println("Moving down");
         }
     }
-    public void setMoveLeft() {
+    public static void setMoveLeft() {
         if(moveRight == false && moveUp == false && moveDown == false) {
             moveLeft = true;
 //            UI.println("Moving left");
         }
     }
-    public void setMoveRight() {
+    public static void setMoveRight() {
         if(moveLeft == false && moveUp == false && moveDown == false) {
             moveRight = true;
 //            UI.println("Moving right");
@@ -47,8 +50,20 @@ public class GLogic {
     private int dRow;
     private int dCol;
 
-    public GLogic(GWorld world) {
+    private GLogic(GWorld world) {
         this.world = world;
+    }
+
+    public static GLogic getGLogic(GWorld world) {
+        if(currentInstance != null) {
+            return currentInstance;
+        } else {
+            return new GLogic(world);
+        }
+    }
+
+    public static void makeReferenceNull() {
+        currentInstance = null;
     }
 
     public void update() {
@@ -71,7 +86,7 @@ public class GLogic {
                 neighbourSquare = world.getCell(i + dRow, j + dCol);
 
                 String decision = getMoveDecision(currentSquare, neighbourSquare);
-                if(!decision.equals("nothing")){
+//                if(!decision.equals("nothing")){
 //                    UI.println("Single movement");
 //                    UI.println(decision);
 //                    UI.println(currentSquare);
@@ -79,7 +94,7 @@ public class GLogic {
 //                    UI.println(neighbourSquare);
 //                    UI.println(neighbourSquare.getType());
 //                    UI.println("\n");
-                }
+//                }
                 switch(decision) {
                     case "defer":
                         continue;
