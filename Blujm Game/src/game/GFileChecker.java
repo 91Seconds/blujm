@@ -10,7 +10,7 @@ import java.io.File;
  */
 public class GFileChecker {
 
-    public static final String RESOURCES_ROOT = "Blujm Game" + File.separator + "resources"; // TODO
+    public static final String RESOURCES_ROOT = "Blujm Game" + File.separator + "resources";
 
     private GFileChecker() {}
 
