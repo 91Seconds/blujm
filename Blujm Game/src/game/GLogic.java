@@ -134,7 +134,7 @@ public class GLogic {
                         break;
                     case "moveGrow":
                         world.move(i, j, dRow, dCol);
-                        world.grow(i, j);
+                        world.grow(i + dRow, j + dCol);
                         break;
                     case "moveKill":
                         world.move(i, j, dRow, dCol);

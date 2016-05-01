@@ -63,10 +63,10 @@ public class GWorldMaker {
                         cellArray[row][col] = new GCell(GSquare.ENEMY_PATH,GSquare.ENEMY_TYPE);
                     }
                     if(line[col].equals("+")) {
-                        cellArray[row][col] = new GCell(GSquare.POWERUP_GROW_TYPE, GSquare.POWERUP_GROW_PATH);
+                        cellArray[row][col] = new GCell(GSquare.POWERUP_GROW_PATH, GSquare.POWERUP_GROW_TYPE);
                     }
                     if(line[col].equals("-")) {
-                        cellArray[row][col] = new GCell(GSquare.POWERUP_KILL_TYPE, GSquare.POWERUP_GROW_PATH);
+                        cellArray[row][col] = new GCell(GSquare.POWERUP_KILL_PATH, GSquare.POWERUP_GROW_TYPE);
                     }
                 }
                 System.out.print("\n");
