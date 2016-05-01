@@ -8,10 +8,10 @@ import java.io.File;
 /**
  * Created by Daniel Young on 4/30/2016.
  */
-public class GWorldSelect {
+public class GLevelSelect {
 
     public static void main(String[] args){
-        GWorldSelect temp = new GWorldSelect();
+        GLevelSelect temp = new GLevelSelect();
         temp.update();
 
     }
@@ -26,8 +26,7 @@ public class GWorldSelect {
             + "images" + File.separator + "world-select-button.png";
 
 
-
-    private String worldsFolder = GWorldLoader.getWorldFolderPath(false);
+    private String worldsFolder = GWorldMaker.WORLD_PROTOTYPE_FOLDER;
     private static final int spacing = 20;
 
 
@@ -41,7 +40,7 @@ public class GWorldSelect {
     private static final int buttonWidth = ((RIGHT - LEFT) - (cellsPerRow + 1)*spacing) / cellsPerRow;
     private static final int buttonHeight = ((BOT - TOP) - (cellsPerRow + 1)*spacing) / cellsPerRow;
 
-    public GWorldSelect(){
+    public GLevelSelect(){
         //Iterates through the worlds folder to find the names of the world to be loaded
         UI.setMouseListener(this::doMouse);
         File f = new File(worldsFolder);
@@ -49,13 +48,11 @@ public class GWorldSelect {
     }
 
     public void doMouse(String action, double x, double y){
-        if(action.equals("released")){
+        if (action.equals("released")){
             int world = worldSelect(x,y);
-            if(world != -1){
-                File worldFile = new File(GWorldLoader.getWorldFolderPath(true) + world + ".world");
-                UI.println(worldFile.getPath());
-                GWorld loadedWorld = GWorldMaker.loadWorldFromPrototype(worldFile);
-                GWorldLoader.saveWorld(loadedWorld, world);
+            if (world != -1){
+                UI.println(world);
+                GWorldMaker.loadWorld(world);
             }
         }
     }
