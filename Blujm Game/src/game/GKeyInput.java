@@ -38,7 +38,6 @@ public class GKeyInput {
     }
 
     private void keyboardInput(String key) {
-
         switch(key) {
             case "w":
             case "W":
@@ -61,6 +60,8 @@ public class GKeyInput {
             case "R":
                 GLogic.setShouldRestart(true);
                 break;
+            case "Escape":
+                GLogic.setShouldQuit(true);
             default:
         }
 

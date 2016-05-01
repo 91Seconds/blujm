@@ -60,6 +60,7 @@ public class GMain {
         }
 
         gLevelSelect.setDisable(false);
+        gLevelSelect.update();
     }
 
     public void doMouse(String action, double x, double y) {
