@@ -17,6 +17,11 @@ public abstract class GSquare implements Serializable{
 
     protected static final String POWERUP_GROW_TYPE = "grow";
     protected static final String POWERUP_KILL_TYPE = "kill";
+    protected static final String POWERUP_TELEPORT_UP_TYPE = "tup";
+    protected static final String POWERUP_TELEPORT_DOWN_TYPE = "tdown";
+    protected static final String POWERUP_TELEPORT_RIGHT_TYPE = "tright";
+    protected static final String POWERUP_TELEPORT_LEFT_TYPE = "tleft";
+
 
 
     protected static final String USER_PATH = GFileChecker.RESOURCES_ROOT + File.separator + "images" + File.separator + "live-cell.png";
@@ -28,6 +33,14 @@ public abstract class GSquare implements Serializable{
             GFileChecker.RESOURCES_ROOT + File.separator + "images" + File.separator  + "powerup.-increase.png";
     protected static final String POWERUP_KILL_PATH =
             GFileChecker.RESOURCES_ROOT + File.separator + "images" + File.separator  + "powerup-kill.png";
+    protected static final String POWERUP_TELEPORT_UP_PATH =
+            GFileChecker.RESOURCES_ROOT + File.separator + "images" + File.separator + "tpup.png";
+    protected static final String POWERUP_TELEPORT_DOWN_PATH =
+            GFileChecker.RESOURCES_ROOT + File.separator + "images" + File.separator + "tpdown.png";
+    protected static final String POWERUP_TELEPORT_LEFT_PATH =
+            GFileChecker.RESOURCES_ROOT + File.separator + "images" + File.separator + "tpleft.png";
+    protected static final String POWERUP_TELEPORT_RIGHT_PATH =
+            GFileChecker.RESOURCES_ROOT + File.separator + "images" + File.separator + "tpright.png";
 
     private String imagePath;
     private String type;
