@@ -22,7 +22,8 @@ public abstract class GSquare implements Serializable{
     protected static final String POWERUP_TELEPORT_RIGHT_TYPE = "tright";
     protected static final String POWERUP_TELEPORT_LEFT_TYPE = "tleft";
 
-
+    protected static final String[] POWERUP_TYPES = {POWERUP_GROW_TYPE, POWERUP_KILL_TYPE, POWERUP_TELEPORT_UP_TYPE,
+            POWERUP_TELEPORT_DOWN_TYPE, POWERUP_TELEPORT_LEFT_TYPE, POWERUP_TELEPORT_RIGHT_TYPE};
 
     protected static final String USER_PATH = GFileChecker.RESOURCES_ROOT + File.separator + "images" + File.separator + "live-cell.png";
     protected static final String WALL_PATH = GFileChecker.RESOURCES_ROOT + File.separator + "images" + File.separator + "wall3.png";
