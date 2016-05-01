@@ -138,7 +138,7 @@ public class GLogic {
                         break;
                     case "moveKill":
                         world.move(i, j, dRow, dCol);
-                        world.setCell(new GCell(GSquare.EMPTY_PATH, GSquare.EMPTY_TYPE), i, j);
+                        world.setCell(new GCell(GSquare.EMPTY_PATH, GSquare.EMPTY_TYPE), i + dRow, j + dCol);
                         break;
 
                     default:
