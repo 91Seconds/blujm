@@ -20,7 +20,7 @@ public class GSideMenu {
     public static int TOP = GGraphics.WORLD_TOP;
 
     private String fName = GFileChecker.RESOURCES_ROOT + File.separator
-            + "images" + File.separator + "side-menu-1.png";
+            + "images" + File.separator + "side-menu-2.png";
 
     private long startTimeMillis;
 
