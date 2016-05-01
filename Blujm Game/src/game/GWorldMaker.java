@@ -15,7 +15,7 @@ import java.util.Scanner;
  * 0 is nothing
  * 1 is living cell
  * x is wall
- * e is enemy
+
  * + is increase
  * - is kill
  * modifiers are done in prefixes. //note, currently no support for modifiers
