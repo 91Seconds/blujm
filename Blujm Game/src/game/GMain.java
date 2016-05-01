@@ -7,7 +7,7 @@ import ecs100.UI;
  */
 public class GMain {
 
-    private static int currentLevel = 1;
+    private static int currentLevel = 0;
 
     public static final int WINDOW_WIDTH = 1000;
     public static final int WINDOW_HEIGHT = 1000;
@@ -39,7 +39,7 @@ public class GMain {
 
     private void playLevel(int levelNum) {
         gLevelSelect.setDisable(true);
-
+        currentLevel = levelNum;
         GWorld world;
         GLevel level;
 

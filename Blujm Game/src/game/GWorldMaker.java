@@ -68,6 +68,18 @@ public class GWorldMaker {
                     if(line[col].equals("-")) {
                         cellArray[row][col] = new GCell(GSquare.POWERUP_KILL_PATH, GSquare.POWERUP_KILL_TYPE);
                     }
+                    if(line[col].equals("l")) {
+                        cellArray[row][col] = new GCell(GSquare.POWERUP_TELEPORT_LEFT_PATH, GSquare.POWERUP_TELEPORT_LEFT_TYPE);
+                    }
+                    if(line[col].equals("d")) {
+                        cellArray[row][col] = new GCell(GSquare.POWERUP_TELEPORT_DOWN_PATH, GSquare.POWERUP_TELEPORT_DOWN_TYPE);
+                    }
+                    if(line[col].equals("r")) {
+                        cellArray[row][col] = new GCell(GSquare.POWERUP_TELEPORT_RIGHT_PATH, GSquare.POWERUP_TELEPORT_RIGHT_TYPE);
+                    }
+                    if(line[col].equals("u")) {
+                        cellArray[row][col] = new GCell(GSquare.POWERUP_TELEPORT_UP_PATH, GSquare.POWERUP_TELEPORT_UP_TYPE);
+                    }
                 }
                 System.out.print("\n");
             }
