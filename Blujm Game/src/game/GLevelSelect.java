@@ -114,7 +114,7 @@ public class GLevelSelect {
             UI.setFontSize(24);
             UI.setColor(Color.BLACK);
             UI.drawString("Level", buttonLeft + buttonWidth* .1, buttonTop + buttonHeight*.5);
-            UI.drawString(worlds[counter].substring(index - 1, index), buttonLeft + buttonWidth*.43,
+            UI.drawString(counter + "", buttonLeft + buttonWidth*.43,
                             buttonTop + buttonHeight*.85);
         }
         UI.repaintAllGraphics();
