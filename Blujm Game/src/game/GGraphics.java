@@ -66,7 +66,11 @@ public final class GGraphics {
     }
 
     private static void drawLevelText(int currentLevel) {
-        UI.drawString(levelText[currentLevel], 10, 10);
+        Graphics2D graphics = UI.getGraphics();
+        graphics.setFont(new Font("Monospaced", Font.PLAIN, 30));
+        int halfString = (levelText[currentLevel].length()) / 2;
+        halfString *= 10;
+        UI.drawString(levelText[currentLevel], (WORLD_HEIGHT / 2) - halfString, (WORLD_HEIGHT / 2) - 12);
     }
 
     /**
