@@ -84,11 +84,9 @@ public class GWorld implements Serializable {
     }
 
     public void grow(int row, int col) {
-        String userImagePath = GSquare.USER_PATH;
-
-        for(int i = row - 1; i < row + 1; i++) {
-            for(int j = col - 1; j < col + 1; j++) {
-                if(cells[i][j] == null) {
+        for(int i = (row - 1); i <= (row + 1); i++) {
+            for(int j = (col - 1); j <= (col + 1); j++) {
+                if(cells[i][j].getType().equals(GSquare.EMPTY_TYPE)) {
                     cells[i][j] = new GCell(GSquare.USER_PATH, GSquare.USER_TYPE);
                 }
             }
